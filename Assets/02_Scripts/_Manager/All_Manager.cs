@@ -12,6 +12,7 @@ public class All_Manager : Singleton<All_Manager>
     public Pool_Manager Pool_M;
     public UI_Manager UI_M;
     public CoroutineManager Coroutine_M;
+    public Object_Pool Obj_Pool;
 
     void Start()
     {
@@ -25,6 +26,7 @@ public class All_Manager : Singleton<All_Manager>
         if (Resource_M == null) Debug.Log("Resource_Manager 없음");
         if (Audio_M == null) Debug.Log("Audio_Manager 없음");
         if (Coroutine_M == null) Debug.Log("Coroutine_Manager 없음");
+        if (Obj_Pool == null) Debug.Log("Object_Pool 없음");
 
         Setting_M.Game_Start();
     }
