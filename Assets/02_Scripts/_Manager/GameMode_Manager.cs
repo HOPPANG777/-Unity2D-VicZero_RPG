@@ -34,7 +34,8 @@ public class GameMode_Manager : Singleton<GameMode_Manager>
     public void Battle_Start()
     {
         // 전투 시작시 캐릭터 등장 애니메이션 등 연출
-            // 해당 시작은 유닛의 속도에 따라 플레이어 턴과 적의 턴이 정해져야 한다.
+        // 해당 시작은 유닛의 속도에 따라 플레이어 턴과 적의 턴이 정해져야 한다.
+        Debug.Log("전투시작");
         turn = Turn_State.Player_Turn;
     }
 
@@ -46,14 +47,14 @@ public class GameMode_Manager : Singleton<GameMode_Manager>
         {
             return;
         }
-        All_Manager.instance.Coroutine_M.Start_Run_Coroutine(Player_Attack());
+        StartCoroutine(Player_Attack());
     }
 
     IEnumerator Player_Attack()
     {
-        // 공격 스킬, 데미지 코드등 작성 -> UI쪽으로 옮기거나 할 필요가 있음
+        // 공격 스킬, 데미지 코드등 작성
         yield return new WaitForSeconds(1.0f);
-        //Debug.Log("플레이어 공격 활성화 확인");
+        Debug.Log("플레이어 공격 활성화 확인");
         if (!isLive)
         {
             turn = Turn_State.Battle_Win;
@@ -62,9 +63,8 @@ public class GameMode_Manager : Singleton<GameMode_Manager>
         else
         {
             turn = Turn_State.Enemy_Turn;
-            All_Manager.instance.Coroutine_M.Start_Run_Coroutine(Enemy_Turn());
+            StartCoroutine(Enemy_Turn());
         }
-
 
     }
 
@@ -76,6 +76,7 @@ public class GameMode_Manager : Singleton<GameMode_Manager>
     IEnumerator Enemy_Turn()
     {
         yield return new WaitForSeconds(1.0f);
+        Debug.Log("적 공격 확인");
         turn = Turn_State.Enemy_Turn;
     }
 }

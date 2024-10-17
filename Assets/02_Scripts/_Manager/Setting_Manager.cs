@@ -63,6 +63,8 @@ public class Setting_Manager : Singleton<Setting_Manager>
     public void Game_Start()
     {
         GM_State = Game_State.Ingame;
+
+        All_Manager.instance.GameMode_M.Battle_Awake();
     }
 
     // 게임 종료
