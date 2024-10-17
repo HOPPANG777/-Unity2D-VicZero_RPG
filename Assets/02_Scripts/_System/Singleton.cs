@@ -7,45 +7,81 @@ using UnityEngine;
 [DisallowMultipleComponent]  // Áßº¹ ÄÄÆ÷³ÍÆ® Ãß°¡ ¹æÁö
 public abstract class Singleton<T> : MonoBehaviour where T : MonoBehaviour
 {
-    private static T Instance;
-    private static bool isApplicationQuit = false;
-
+    private static T _Instance;
     public static T instance
     {
         get
         {
-            if (isApplicationQuit == true)
-                return null;
-
-            if (Instance == null)
+            if (_Instance == null)
             {
-                T[] Find_Instance = FindObjectsOfType<T>();
-                if (Find_Instance.Length > 0)
-                {
-                    Instance = Find_Instance[0];
-                    DontDestroyOnLoad(Instance.gameObject);
-                }
-
-                if (Find_Instance.Length > 1)
-                {
-                    for (int i = 1; i < Find_Instance.Length; i++)
-                        Destroy(Find_Instance[i].gameObject);
-                }
-
-                if (Instance == null)
-                {
-                    GameObject Create_GameObject = new GameObject(typeof(T).Name);
-                    DontDestroyOnLoad(Create_GameObject);
-                    Instance = Create_GameObject.AddComponent<T>();
-                }
+                GameObject singletonObject = new GameObject();
+                _Instance = singletonObject.AddComponent<T>();
+                Debug.Log("singleton Manager has been created " + _Instance.name);
             }
-            return Instance;
+            return _Instance;
         }
     }
-
-    private void OnApplicationQuit()
+    protected virtual void Awake()
     {
-        isApplicationQuit = true;
+        if (_Instance == null)
+        {
+            _Instance = this as T;
+            DontDestroyOnLoad(gameObject);
+            Debug.Log("singleton Manager has been created " + _Instance.name);
+        }
+        else
+            Destroy(gameObject);
     }
 
+
+    private void OnDestroy()
+    {
+        Debug.Log(_Instance.name + " ÆÄ±«µÊ");
+    }
+
+
+    //private static T Instance;
+    //private static bool isApplicationQuit = false;
+
+    //public static T instance
+    //{
+    //    get
+    //    {
+    //        if (isApplicationQuit == true)
+    //            return null;
+
+    //        if (Instance == null)
+    //        {
+    //            T[] Find_Instance = FindObjectsOfType<T>();
+    //            if (Find_Instance.Length > 0)
+    //            {
+    //                Instance = Find_Instance[0];
+    //                DontDestroyOnLoad(Instance.gameObject);
+    //            }
+
+    //            if (Find_Instance.Length > 1)
+    //            {
+    //                for (int i = 1; i < Find_Instance.Length; i++)
+    //                    Destroy(Find_Instance[i].gameObject);
+    //            }
+
+    //            if (Instance == null)
+    //            {
+    //                GameObject Create_GameObject = new GameObject(typeof(T).Name);
+    //                DontDestroyOnLoad(Create_GameObject);
+    //                Instance = Create_GameObject.AddComponent<T>();
+    //            }
+    //        }
+    //        return Instance;
+    //    }
+    //}
+
+
+
+    //private void OnApplicationQuit()
+    //{
+    //    isApplicationQuit = true;
+    //}
+
 }
+
