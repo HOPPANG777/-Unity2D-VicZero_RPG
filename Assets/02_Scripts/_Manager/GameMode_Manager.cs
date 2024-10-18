@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class GameMode_Manager : Singleton<GameMode_Manager>
 {
+    public List<Unit_Base> Player_List = new List<Unit_Base>(); 
+    public List<Unit_Base> Enemy_List = new List<Unit_Base>(); 
+
     // 턴
     public enum Battle_State
     {
@@ -34,49 +37,85 @@ public class GameMode_Manager : Singleton<GameMode_Manager>
         // 전투 시작시 캐릭터 등장 애니메이션 등 연출
         // 해당 시작은 유닛의 속도에 따라 플레이어 턴과 적의 턴이 정해져야 한다.
         //Debug.Log("전투시작");
-        
-        if (All_Manager.instance.Resource_M.)
 
+        Unit_Base Faster_Unit = null;
+        int HighSpeed = int.MinValue;
+
+        for (int i = 0; i < Player_List.Count; i++)
+        {
+            if (Player_List[i] == null) return;
+
+            if (Player_List[i].CurrentUnitBaseSTO.UnitInfo.unitSpeed > HighSpeed)
+            {
+                HighSpeed = Player_List[i].CurrentUnitBaseSTO.UnitInfo.unitSpeed;
+                Faster_Unit = Player_List[i];
+            }
+        }
+
+        for (int i = 0; i < Enemy_List.Count; i++)
+        {
+            if (Enemy_List[i] == null) return;
+
+            if (Enemy_List[i].CurrentUnitBaseSTO.UnitInfo.unitSpeed > HighSpeed)
+            {
+                HighSpeed = Enemy_List[i].CurrentUnitBaseSTO.UnitInfo.unitSpeed;
+                Faster_Unit = Enemy_List[i];
+            }
+        }
+
+        if (Player_List.Contains(Faster_Unit)) All_Manager.instance.Coroutine_M.Start_Coroutine(Player_Turn());
+        if (Enemy_List.Contains(Faster_Unit)) All_Manager.instance.Coroutine_M.Start_Coroutine(Enemy_Turn());
+    }
+
+    // 플레이어 턴
+    IEnumerator Player_Turn()
+    {
+        yield return new WaitForSeconds(1f);
+        //Debug.Log("플레이어 턴 확인");
+        battleState = Battle_State.PLAYER_TURN;
+    }
+
+    // 플레이어 턴
+    IEnumerator Enemy_Turn()
+    {
+        yield return new WaitForSeconds(1f);
+        //Debug.Log("적 턴 확인");
+        battleState = Battle_State.ENEMY_TURN;
     }
 
     //플레이어 공격
-    public void Player_Attack_Button()
-    {
-        // 버튼이 계속 눌리는 것을 방지
-        if (turn != Turn_State.Player_Turn)
-        {
-            return;
-        }
-        StartCoroutine(Player_Attack());
-    }
+    //public void Player_Attack_Button()
+    //{
+    //    // 버튼이 계속 눌리는 것을 방지
+    //    if (turn != Turn_State.Player_Turn)
+    //    {
+    //        return;
+    //    }
+    //    StartCoroutine(Player_Attack());
+    //}
 
-    IEnumerator Player_Attack()
-    {
-        // 공격 스킬, 데미지 코드등 작성
-        yield return new WaitForSeconds(1.0f);
-        Debug.Log("플레이어 공격 활성화 확인");
-        if (!isLive)
-        {
-            turn = Turn_State.Battle_Win;
-            Battle_End();
-        }
-        else
-        {
-            turn = Turn_State.Enemy_Turn;
-            StartCoroutine(Enemy_Turn());
-        }
+    //IEnumerator Player_Attack()
+    //{
+    //    // 공격 스킬, 데미지 코드등 작성
+    //    yield return new WaitForSeconds(1.0f);
+    //    Debug.Log("플레이어 공격 활성화 확인");
+    //    if (!isLive)
+    //    {
+    //        turn = Turn_State.Battle_Win;
+    //        Battle_End();
+    //    }
+    //    else
+    //    {
+    //        turn = Turn_State.Enemy_Turn;
+    //        StartCoroutine(Enemy_Turn());
+    //    }
 
-    }
+    //}
 
     public void Battle_End()
     {
         Debug.Log("전투 종료 확인");
     }
 
-    IEnumerator Enemy_Turn()
-    {
-        yield return new WaitForSeconds(1.0f);
-        Debug.Log("적 공격 확인");
-        turn = Turn_State.Enemy_Turn;
-    }
+
 }

@@ -4,11 +4,9 @@ using UnityEngine;
 
 public class CoroutineManager : Singleton<CoroutineManager>
 {
-    public void Start_Coroutine(IEnumerator Coroutine, IEnumerator Temp_Coroutine)
+    public void Start_Coroutine(IEnumerator Coroutine)
     {
-        Temp_Coroutine = Coroutine;
-
-        StartCoroutine(Temp_Coroutine);
+        StartCoroutine(Coroutine);
     }
 
     public IEnumerator Start_Run_Coroutine(IEnumerator Coroutine)
