@@ -525,7 +525,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -639,6 +639,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db9d2b05435ed514cae7db3d65ce6160, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  STO_PlayerUnits: []
+  STO_EnemyUnits: []
 --- !u!1 &1514108274
 GameObject:
   m_ObjectHideFlags: 0
@@ -1016,7 +1018,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c3c0888e6ab648438e79c38765fe76e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  turn: 0
+  Player_List: []
+  Enemy_List: []
+  battleState: 0
   isLive: 0
 --- !u!1 &2060808747
 GameObject:
