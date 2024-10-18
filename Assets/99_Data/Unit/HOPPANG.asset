@@ -9,17 +9,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6534a177ebc7d4842ba93b9d798d21d5, type: 3}
-  m_Name: UnitData
+  m_Script: {fileID: 11500000, guid: 03d970891373d3a4d9d2ad92bbbec2f1, type: 3}
+  m_Name: HOPPANG
   m_EditorClassIdentifier: 
   _dieSound: {fileID: 0}
   _animController: {fileID: 0}
-  _unitRenderer: {fileID: 0}
+  _unitSprite: {fileID: 0}
   _unitInfo:
     unitName: 
-    unitLevel: 0
-    maxHP: 0
-    currentHP: 0
+    unitHP: 0
+    unitSpeed: 0
     attackPower: 0
     defensePower: 0
   _teamType: 0

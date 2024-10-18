@@ -13,13 +13,6 @@ public class STO_PlayerUnit : STO_UnitBase
     public override void Set_UnitData(STO_UnitBase STO_Unit)
     {
         base.Set_UnitData(STO_Unit);
-        STO_PlayerUnit STO_Player = STO_Unit as STO_PlayerUnit
+        STO_PlayerUnit STO_Player = STO_Unit as STO_PlayerUnit;
     }
-
-    public override void Set_UnitStat(STO_UnitBase STO_Unit)
-    {
-        base.Set_UnitStat(STO_Unit);
-    }
-
-
 }

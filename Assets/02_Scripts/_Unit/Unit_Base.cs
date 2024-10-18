@@ -6,14 +6,13 @@ using UnityEngine;
 [System.Serializable]
 public struct UnitBase_Info
 {
-    public string unitName;
     public int unitHP;
     public int unitSpeed;
     public int attackPower;
     public int defensePower;
 }
 
-public class Unit_Base : MonoBehaviour, ITeamMember
+public abstract class Unit_Base : MonoBehaviour, ITeamMember
 {
     [Header("Unit_Base")]
     public Rigidbody2D unitRB;
@@ -26,7 +25,11 @@ public class Unit_Base : MonoBehaviour, ITeamMember
     public STO_UnitBase CurrentUnitBaseSTO { get { return _currentUnitBaseSTO; } }
 
     public TeamType TeamType { get { return _currentUnitBaseSTO.teamType; } set { _currentUnitBaseSTO.teamType = value; } }
-    public UnitBase_Info UnitBase_Info { get { return _currentUnitBaseSTO.UnitInfo; } set { _currentUnitBaseSTO.UnitInfo = value; } }
+    public UnitBase_Info UnitBase_Stat;
+
+    //¿Ø¥÷ ¿Ã∏ß
+    [SerializeField] protected string _unitName;
+    public string UnitName { get { return _unitName; } set { _unitName = value; } }
 
     //¿Ø¥÷ ∑π∫ß
     [SerializeField] protected int _unitLevel;
@@ -40,6 +43,6 @@ public class Unit_Base : MonoBehaviour, ITeamMember
     [SerializeField] protected int _currentHP;
     public int CurrentHP { get { return _currentHP; } set { _currentHP = value; } }
 
-
-    
+    //¿Ø¥÷ Ω∫≈» ºº∆√
+    public abstract void Set_UnitStat(Unit_Base Unit, STO_UnitBase STO_Unit);
 }

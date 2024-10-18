@@ -59,7 +59,15 @@ public class Setting_Manager : Singleton<Setting_Manager>
                 break;
             case Game_State.INTBATTLE:
                 {
-                    All_Manager.instance.GameMode_M.Battle_Awake();
+                    if (Game_Stop == false)
+                    {
+                        Game_Time += Time.deltaTime;
+                        All_Manager.instance.GameMode_M.Battle_Awake();
+                    }
+                    else
+                    {
+
+                    }
                 }
                 break;
         }

@@ -20,13 +20,16 @@ public class STO_UnitBase : ScriptableObject
     public Sprite UnitSprite { get { return _unitSprite; } set { _unitSprite = value; } }
      
     // ¿Ø¥÷ ¡§∫∏ Ω∫∆Æ∑∞∆Æ
-    [SerializeField] protected UnitBase_Info _unitInfo;
-    public UnitBase_Info UnitInfo { get { return _unitInfo; } set { _unitInfo = value; } }
+    [SerializeField] protected UnitBase_Info[] _unitInfo;
+    public UnitBase_Info[] UnitInfo { get { return _unitInfo; } set { _unitInfo = value; } }
 
     // ¿Ø¥÷ ∆¿ ≈∏¿‘
     [SerializeField] TeamType _teamType;
     public TeamType teamType { get { return _teamType; } set { _teamType = value; } }
 
+    // ¿Ø¥÷ ¿Ã∏ß
+    [SerializeField] protected string _unitName;
+    public string UnitName { get { return _unitName; } set { _unitName = value; } }
 
     public virtual void Set_UnitData(STO_UnitBase STO_Unit)
     {
@@ -35,18 +38,6 @@ public class STO_UnitBase : ScriptableObject
         this._animController = STO_Unit.AnimController;
         this._unitSprite = STO_Unit.UnitSprite;
 
-        Set_UnitStat(STO_Unit);
-
         this._teamType = STO_Unit.teamType;
     }
-
-    public virtual void Set_UnitStat(STO_UnitBase STO_Unit)
-    {
-        this._unitInfo.unitName = STO_Unit.UnitInfo.unitName;
-        this._unitInfo.unitHP = STO_Unit.UnitInfo.unitHP;
-        this._unitInfo.unitSpeed = STO_Unit.UnitInfo.unitSpeed;
-        this._unitInfo.attackPower = STO_Unit.UnitInfo.attackPower;
-        this._unitInfo.defensePower = STO_Unit.UnitInfo.defensePower;
-    }
-
 }

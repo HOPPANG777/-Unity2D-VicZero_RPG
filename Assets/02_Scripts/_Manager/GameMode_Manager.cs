@@ -36,8 +36,7 @@ public class GameMode_Manager : Singleton<GameMode_Manager>
     {
         // 전투 시작시 캐릭터 등장 애니메이션 등 연출
         // 해당 시작은 유닛의 속도에 따라 플레이어 턴과 적의 턴이 정해져야 한다.
-        //Debug.Log("전투시작");
-
+        // Debug.Log("전투시작");
         Unit_Base Faster_Unit = null;
         int HighSpeed = int.MinValue;
 
@@ -45,9 +44,9 @@ public class GameMode_Manager : Singleton<GameMode_Manager>
         {
             if (Player_List[i] == null) return;
 
-            if (Player_List[i].CurrentUnitBaseSTO.UnitInfo.unitSpeed > HighSpeed)
+            if (Player_List[i].UnitBase_Stat.unitSpeed > HighSpeed)
             {
-                HighSpeed = Player_List[i].CurrentUnitBaseSTO.UnitInfo.unitSpeed;
+                HighSpeed = Player_List[i].UnitBase_Stat.unitSpeed;
                 Faster_Unit = Player_List[i];
             }
         }
@@ -56,9 +55,9 @@ public class GameMode_Manager : Singleton<GameMode_Manager>
         {
             if (Enemy_List[i] == null) return;
 
-            if (Enemy_List[i].CurrentUnitBaseSTO.UnitInfo.unitSpeed > HighSpeed)
+            if (Enemy_List[i].UnitBase_Stat.unitSpeed > HighSpeed)
             {
-                HighSpeed = Enemy_List[i].CurrentUnitBaseSTO.UnitInfo.unitSpeed;
+                HighSpeed = Enemy_List[i].UnitBase_Stat.unitSpeed;
                 Faster_Unit = Enemy_List[i];
             }
         }
@@ -79,14 +78,24 @@ public class GameMode_Manager : Singleton<GameMode_Manager>
         yield return new WaitForSeconds(1f);
         //Debug.Log("플레이어 턴 확인");
         battleState = Battle_State.PLAYER_TURN;
+
+
+
+        // 해당 턴이 종료된뒤 에너미 턴으로 변경
+        battleState = Battle_State.ENEMY_TURN;
     }
 
-    // 플레이어 턴
+    // 에너미 턴
     IEnumerator Enemy_Turn()
     {
         yield return new WaitForSeconds(1f);
-        //Debug.Log("적 턴 확인");
+        //Debug.Log("에너미 턴 확인");
         battleState = Battle_State.ENEMY_TURN;
+
+
+
+        // 해당 턴이 종료된뒤 플레이어 턴으로 변경
+        battleState = Battle_State.PLAYER_TURN;
     }
 
 }

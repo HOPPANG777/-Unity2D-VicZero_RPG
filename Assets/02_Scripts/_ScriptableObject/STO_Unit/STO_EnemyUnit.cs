@@ -18,8 +18,4 @@ public class STO_EnemyUnit : STO_UnitBase
         this._rewardExp = STO_Enemy.RewardExp;
     }
 
-    public override void Set_UnitStat(STO_UnitBase STO_Unit)
-    {
-        base.Set_UnitStat(STO_Unit);
-    }
 }
