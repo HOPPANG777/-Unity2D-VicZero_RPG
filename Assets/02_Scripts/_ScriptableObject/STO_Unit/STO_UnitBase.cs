@@ -38,6 +38,8 @@ public class STO_UnitBase : ScriptableObject
         this._animController = STO_Unit.AnimController;
         this._unitSprite = STO_Unit.UnitSprite;
 
+        this._unitName = STO_Unit.UnitName;
+
         this._teamType = STO_Unit.teamType;
     }
 }
