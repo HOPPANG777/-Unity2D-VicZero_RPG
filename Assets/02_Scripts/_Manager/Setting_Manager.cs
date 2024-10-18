@@ -62,7 +62,14 @@ public class Setting_Manager : Singleton<Setting_Manager>
                     if (Game_Stop == false)
                     {
                         Game_Time += Time.deltaTime;
-                        All_Manager.instance.GameMode_M.Battle_Awake();
+                        if (All_Manager.instance.GameMode_M.battleState != GameMode_Manager.Battle_State.START)
+                        {
+                            All_Manager.instance.GameMode_M.Battle_Awake();
+                        }
+                        else
+                        {
+
+                        }
                     }
                     else
                     {

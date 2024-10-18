@@ -11,6 +11,7 @@ public class GameMode_Manager : Singleton<GameMode_Manager>
     // ео
     public enum Battle_State
     {
+        IDLE,
         START,
         PLAYER_TURN,
         ENEMY_TURN,
