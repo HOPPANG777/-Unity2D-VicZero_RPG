@@ -67,6 +67,12 @@ public class GameMode_Manager : Singleton<GameMode_Manager>
         if (Enemy_List.Contains(Faster_Unit)) All_Manager.instance.Coroutine_M.Start_Coroutine(Enemy_Turn());
     }
 
+    // 전투 종료
+    public void Battle_End()
+    {
+        Debug.Log("전투 종료 확인");
+    }
+
     // 플레이어 턴
     IEnumerator Player_Turn()
     {
@@ -82,40 +88,5 @@ public class GameMode_Manager : Singleton<GameMode_Manager>
         //Debug.Log("적 턴 확인");
         battleState = Battle_State.ENEMY_TURN;
     }
-
-    //플레이어 공격
-    //public void Player_Attack_Button()
-    //{
-    //    // 버튼이 계속 눌리는 것을 방지
-    //    if (turn != Turn_State.Player_Turn)
-    //    {
-    //        return;
-    //    }
-    //    StartCoroutine(Player_Attack());
-    //}
-
-    //IEnumerator Player_Attack()
-    //{
-    //    // 공격 스킬, 데미지 코드등 작성
-    //    yield return new WaitForSeconds(1.0f);
-    //    Debug.Log("플레이어 공격 활성화 확인");
-    //    if (!isLive)
-    //    {
-    //        turn = Turn_State.Battle_Win;
-    //        Battle_End();
-    //    }
-    //    else
-    //    {
-    //        turn = Turn_State.Enemy_Turn;
-    //        StartCoroutine(Enemy_Turn());
-    //    }
-
-    //}
-
-    public void Battle_End()
-    {
-        Debug.Log("전투 종료 확인");
-    }
-
 
 }
