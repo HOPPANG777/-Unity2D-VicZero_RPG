@@ -2,17 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class STO_PlayerUnit : MonoBehaviour
+[CreateAssetMenu(fileName = "PlayerData", menuName = "UnitData/PlayerData", order = 1)]
+public class STO_PlayerUnit : STO_UnitBase
 {
-    // Start is called before the first frame update
-    void Start()
+    //[Header("STO_PlayerUnit")]
+    // 플레이어 레벨
+    // 스킬추가 해야함
+
+
+    public override void Set_UnitData(STO_UnitBase STO_Unit)
     {
-        
+        base.Set_UnitData(STO_Unit);
+        STO_PlayerUnit STO_Player = STO_Unit as STO_PlayerUnit
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void Set_UnitStat(STO_UnitBase STO_Unit)
     {
-        
+        base.Set_UnitStat(STO_Unit);
     }
+
+
 }

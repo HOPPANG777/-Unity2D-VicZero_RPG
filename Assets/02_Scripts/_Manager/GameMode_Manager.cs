@@ -3,21 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-
-
 public class GameMode_Manager : Singleton<GameMode_Manager>
 {
     // 턴
-    public enum Turn_State
+    public enum Battle_State
     {
-        Battle_Start,
-        Player_Turn,
-        Enemy_Turn,
-        Battle_Win,
-        Battle_Defeat
+        START,
+        PLAYER_TURN,
+        ENEMY_TURN,
+        WIN,
+        LOST
     }
 
-    public Turn_State turn;
+    public Battle_State battleState;
     public bool isLive;
 
     IEnumerator Temp_Coroutine;
@@ -26,7 +24,7 @@ public class GameMode_Manager : Singleton<GameMode_Manager>
     public void Battle_Awake()
     {
         // 여기에 전투 시작시 타이틀 띄워서 전투 시작 알림 보낼수도 있음
-        turn = Turn_State.Battle_Start;
+        battleState = Battle_State.START;
         Battle_Start();
     }
 
@@ -35,8 +33,10 @@ public class GameMode_Manager : Singleton<GameMode_Manager>
     {
         // 전투 시작시 캐릭터 등장 애니메이션 등 연출
         // 해당 시작은 유닛의 속도에 따라 플레이어 턴과 적의 턴이 정해져야 한다.
-        Debug.Log("전투시작");
-        turn = Turn_State.Player_Turn;
+        //Debug.Log("전투시작");
+        
+        if (All_Manager.instance.Resource_M.)
+
     }
 
     //플레이어 공격

@@ -11,6 +11,14 @@ public class STO_UnitBase : ScriptableObject
     [SerializeField] AudioClip _dieSound;
     public AudioClip DieSound { get { return _dieSound; } set { _dieSound = value; } }
 
+    //유닛 애니메이터 컨트롤러
+    [SerializeField] RuntimeAnimatorController _animController;
+    public RuntimeAnimatorController AnimController { get { return _animController; } set { _animController = value; } }
+
+    //유닛 스프라이트
+    [SerializeField] Sprite _unitSprite;
+    public Sprite UnitSprite { get { return _unitSprite; } set { _unitSprite = value; } }
+     
     // 유닛 정보 스트럭트
     [SerializeField] protected UnitBase_Info _unitInfo;
     public UnitBase_Info UnitInfo { get { return _unitInfo; } set { _unitInfo = value; } }
@@ -20,9 +28,25 @@ public class STO_UnitBase : ScriptableObject
     public TeamType teamType { get { return _teamType; } set { _teamType = value; } }
 
 
-    virtual public void Set_UnitData(STO_UnitBase STO_Unit)
+    public virtual void Set_UnitData(STO_UnitBase STO_Unit)
     {
-        
+        this._dieSound = STO_Unit.DieSound;
+
+        this._animController = STO_Unit.AnimController;
+        this._unitSprite = STO_Unit.UnitSprite;
+
+        Set_UnitStat(STO_Unit);
+
+        this._teamType = STO_Unit.teamType;
+    }
+
+    public virtual void Set_UnitStat(STO_UnitBase STO_Unit)
+    {
+        this._unitInfo.unitName = STO_Unit.UnitInfo.unitName;
+        this._unitInfo.unitHP = STO_Unit.UnitInfo.unitHP;
+        this._unitInfo.unitSpeed = STO_Unit.UnitInfo.unitSpeed;
+        this._unitInfo.attackPower = STO_Unit.UnitInfo.attackPower;
+        this._unitInfo.defensePower = STO_Unit.UnitInfo.defensePower;
     }
 
 }

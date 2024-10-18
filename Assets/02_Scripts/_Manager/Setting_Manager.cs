@@ -11,7 +11,8 @@ public enum Game_State
     Idle,   // 기본상태 : 게임 실행 이전
     Ingame,
     GameOver,
-    GameClear
+    GameClear,
+    InBattle
 }
 
 public class Setting_Manager : Singleton<Setting_Manager>
@@ -56,6 +57,11 @@ public class Setting_Manager : Singleton<Setting_Manager>
                     Game_Time = 0.0f;
                 }
                 break;
+            case Game_State.InBattle:
+                {
+                    All_Manager.instance.GameMode_M.Battle_Awake();
+                }
+                break;
         }
     }
 
@@ -63,8 +69,6 @@ public class Setting_Manager : Singleton<Setting_Manager>
     public void Game_Start()
     {
         GM_State = Game_State.Ingame;
-
-        All_Manager.instance.GameMode_M.Battle_Awake();
     }
 
     // 게임 종료

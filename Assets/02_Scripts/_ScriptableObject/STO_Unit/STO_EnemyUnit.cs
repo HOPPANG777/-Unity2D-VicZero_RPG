@@ -2,17 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class STO_EnemyUnit : MonoBehaviour
+[CreateAssetMenu(fileName = "EnemyBaseData", menuName = "UnitData/EnemyBaseData", order = 1)]
+public class STO_EnemyUnit : STO_UnitBase
 {
-    // Start is called before the first frame update
-    void Start()
+    [Header("STO_EnemyUnit")]
+    // 지급 경험치
+    [SerializeField] protected int _rewardExp;
+    public int RewardExp { get { return _rewardExp; } set { _rewardExp = value; } }
+
+    public override void Set_UnitData(STO_UnitBase STO_Unit)
     {
-        
+        base.Set_UnitData(STO_Unit);
+        STO_EnemyUnit STO_Enemy = STO_Unit as STO_EnemyUnit;
+
+        this._rewardExp = STO_Enemy.RewardExp;
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void Set_UnitStat(STO_UnitBase STO_Unit)
     {
-        
+        base.Set_UnitStat(STO_Unit);
     }
 }
