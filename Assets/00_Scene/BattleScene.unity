@@ -361,6 +361,7 @@ GameObject:
   - component: {fileID: 418422086}
   - component: {fileID: 418422085}
   - component: {fileID: 418422084}
+  - component: {fileID: 418422087}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -456,6 +457,32 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &418422087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 418422083}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71a4392a57bde39439ab848bae438713, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unitRB: {fileID: 0}
+  unitBC: {fileID: 0}
+  unitAnimator: {fileID: 418422084}
+  _unitBaseSTO: {fileID: 11400000, guid: 3a0730d1862e9614cb8773135c2eaa57, type: 2}
+  _currentUnitBaseSTO: {fileID: 11400000, guid: 3a0730d1862e9614cb8773135c2eaa57, type: 2}
+  UnitBase_Stat:
+    unitHP: 0
+    unitSpeed: 0
+    attackPower: 0
+    defensePower: 0
+  _unitName: 
+  _unitLevel: 0
+  _maxHP: 0
+  _currentHP: 0
 --- !u!1 &501892910
 GameObject:
   m_ObjectHideFlags: 0
@@ -538,7 +565,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 501892913}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1849361225}
+        m_TargetAssemblyTypeName: GameMode_Manager, Assembly-CSharp
+        m_MethodName: OnAttackButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &501892913
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1345,6 +1384,7 @@ GameObject:
   - component: {fileID: 1433196491}
   - component: {fileID: 1433196490}
   - component: {fileID: 1433196489}
+  - component: {fileID: 1433196492}
   m_Layer: 0
   m_Name: GameObject (4)
   m_TagString: Untagged
@@ -1440,6 +1480,32 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1433196492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1433196488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a86d023d047a5d5458f81f39d4ec896a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unitRB: {fileID: 0}
+  unitBC: {fileID: 0}
+  unitAnimator: {fileID: 1433196489}
+  _unitBaseSTO: {fileID: 11400000, guid: d857e59fc9ca15d45a01fdd51e8db0d1, type: 2}
+  _currentUnitBaseSTO: {fileID: 11400000, guid: d857e59fc9ca15d45a01fdd51e8db0d1, type: 2}
+  UnitBase_Stat:
+    unitHP: 0
+    unitSpeed: 0
+    attackPower: 0
+    defensePower: 0
+  _unitName: 
+  _unitLevel: 0
+  _maxHP: 0
+  _currentHP: 0
 --- !u!1 &1582190257
 GameObject:
   m_ObjectHideFlags: 0
@@ -2005,8 +2071,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c3c0888e6ab648438e79c38765fe76e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player_List: []
-  Enemy_List: []
+  Player_List:
+  - {fileID: 418422087}
+  Enemy_List:
+  - {fileID: 1433196492}
   battleState: 0
   isLive: 0
 --- !u!1 &1865117342

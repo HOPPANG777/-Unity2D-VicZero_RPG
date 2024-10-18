@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 public class GameMode_Manager : Singleton<GameMode_Manager>
@@ -22,7 +23,7 @@ public class GameMode_Manager : Singleton<GameMode_Manager>
     public Battle_State battleState;
     public bool isLive;
 
-    IEnumerator Temp_Coroutine;
+    //IEnumerator Temp_Coroutine;
 
     // 전투 시작 알림
     public void Battle_Awake()
@@ -37,7 +38,7 @@ public class GameMode_Manager : Singleton<GameMode_Manager>
     {
         // 전투 시작시 캐릭터 등장 애니메이션 등 연출
         // 해당 시작은 유닛의 속도에 따라 플레이어 턴과 적의 턴이 정해져야 한다.
-        // Debug.Log("전투시작");
+        Debug.Log("전투시작");
         Unit_Base Faster_Unit = null;
         int HighSpeed = int.MinValue;
 
@@ -63,8 +64,8 @@ public class GameMode_Manager : Singleton<GameMode_Manager>
             }
         }
 
-        if (Player_List.Contains(Faster_Unit)) All_Manager.instance.Coroutine_M.Start_Coroutine(Player_Turn());
-        if (Enemy_List.Contains(Faster_Unit)) All_Manager.instance.Coroutine_M.Start_Coroutine(Enemy_Turn());
+        if (Player_List.Contains(Faster_Unit)) StartCoroutine(Player_Turn());
+        if (Enemy_List.Contains(Faster_Unit)) StartCoroutine(Enemy_Turn());
     }
 
     // 전투 종료
@@ -80,8 +81,6 @@ public class GameMode_Manager : Singleton<GameMode_Manager>
         Debug.Log("플레이어 턴 확인");
         battleState = Battle_State.PLAYER_TURN;
 
-
-
         // 해당 턴이 종료된뒤 에너미 턴으로 변경
         //battleState = Battle_State.ENEMY_TURN;
     }
@@ -91,10 +90,10 @@ public class GameMode_Manager : Singleton<GameMode_Manager>
     {
         yield return new WaitForSeconds(1f);
         Debug.Log("에너미 턴 확인");
-        Debug.Log("에너미 공격!" + All_Manager.instance.Resource_M.ConvertNameToEnemySTO("Interviewer").UnitInfo[0].attackPower);
+        Debug.Log("에너미 공격!" + Enemy_List[0].UnitBase_Stat.attackPower);
         battleState = Battle_State.ENEMY_TURN;
 
-        Debug.Log("플레이어 맞음!" + (Player_List[0].CurrentHP - All_Manager.instance.Resource_M.ConvertNameToEnemySTO("Interviewer").UnitInfo[0].attackPower));
+        Debug.Log("플레이어 맞음!" + (Player_List[0].CurrentHP - Enemy_List[0].UnitBase_Stat.attackPower));
 
         // 해당 턴이 종료된뒤 플레이어 턴으로 변경
         battleState = Battle_State.PLAYER_TURN;
@@ -103,10 +102,10 @@ public class GameMode_Manager : Singleton<GameMode_Manager>
     public void OnAttackButton()
     {
         if (battleState != Battle_State.PLAYER_TURN) return;
-        Debug.Log("플레이어 공격!" + All_Manager.instance.Resource_M.ConvertNameToPlayerSTO("HOPPANG").UnitInfo[0].attackPower);
-        Debug.Log("에너미 처맞음!" + (Enemy_List[0].CurrentHP - All_Manager.instance.Resource_M.ConvertNameToPlayerSTO("HOPPANG").UnitInfo[0].attackPower));
+        Debug.Log("플레이어 공격!" + (Player_List[0].UnitBase_Stat.attackPower));
+        Debug.Log("에너미 처맞음!" + (Enemy_List[0].CurrentHP - Player_List[0].UnitBase_Stat.attackPower));
 
-        All_Manager.instance.Coroutine_M.Start_Coroutine(Enemy_Turn());
+        StartCoroutine(Enemy_Turn());
     }
 
     public void OnSkillButton()

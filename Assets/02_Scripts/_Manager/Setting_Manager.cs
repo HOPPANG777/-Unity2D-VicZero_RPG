@@ -26,6 +26,9 @@ public class Setting_Manager : Singleton<Setting_Manager>
     // 게임 일시정지
     public bool Game_Stop = false;
 
+    // 배틀 스테이지 진입
+    public bool Stage_In = false;
+
     private void Update()
     {
         switch (GM_State)
@@ -62,9 +65,10 @@ public class Setting_Manager : Singleton<Setting_Manager>
                     if (Game_Stop == false)
                     {
                         Game_Time += Time.deltaTime;
-                        if (All_Manager.instance.GameMode_M.battleState != GameMode_Manager.Battle_State.START)
+                        if (!Stage_In)
                         {
                             All_Manager.instance.GameMode_M.Battle_Awake();
+                            Stage_In = true;
                         }
                         else
                         {
