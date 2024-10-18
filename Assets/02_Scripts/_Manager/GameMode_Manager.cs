@@ -77,26 +77,46 @@ public class GameMode_Manager : Singleton<GameMode_Manager>
     IEnumerator Player_Turn()
     {
         yield return new WaitForSeconds(1f);
-        //Debug.Log("플레이어 턴 확인");
+        Debug.Log("플레이어 턴 확인");
         battleState = Battle_State.PLAYER_TURN;
 
 
 
         // 해당 턴이 종료된뒤 에너미 턴으로 변경
-        battleState = Battle_State.ENEMY_TURN;
+        //battleState = Battle_State.ENEMY_TURN;
     }
 
     // 에너미 턴
     IEnumerator Enemy_Turn()
     {
         yield return new WaitForSeconds(1f);
-        //Debug.Log("에너미 턴 확인");
+        Debug.Log("에너미 턴 확인");
+        Debug.Log("에너미 공격!" + All_Manager.instance.Resource_M.ConvertNameToEnemySTO("Interviewer").UnitInfo[0].attackPower);
         battleState = Battle_State.ENEMY_TURN;
 
-
+        Debug.Log("플레이어 맞음!" + (Player_List[0].CurrentHP - All_Manager.instance.Resource_M.ConvertNameToEnemySTO("Interviewer").UnitInfo[0].attackPower));
 
         // 해당 턴이 종료된뒤 플레이어 턴으로 변경
         battleState = Battle_State.PLAYER_TURN;
+    }
+
+    public void OnAttackButton()
+    {
+        if (battleState != Battle_State.PLAYER_TURN) return;
+        Debug.Log("플레이어 공격!" + All_Manager.instance.Resource_M.ConvertNameToPlayerSTO("HOPPANG").UnitInfo[0].attackPower);
+        Debug.Log("에너미 처맞음!" + (Enemy_List[0].CurrentHP - All_Manager.instance.Resource_M.ConvertNameToPlayerSTO("HOPPANG").UnitInfo[0].attackPower));
+
+        All_Manager.instance.Coroutine_M.Start_Coroutine(Enemy_Turn());
+    }
+
+    public void OnSkillButton()
+    {
+
+    }
+
+    public void OnDefenseButton()
+    {
+
     }
 
 }

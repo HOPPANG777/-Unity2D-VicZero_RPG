@@ -4,6 +4,17 @@ using UnityEngine;
 
 public class Unit_Player : Unit_Base
 {
+
+    protected override void Start()
+    {
+        base.Start();
+    }
+
+    protected override void SetFirstStatus()
+    {
+        base.SetFirstStatus();
+    }
+
     public override void Set_UnitStat(Unit_Base Unit, STO_UnitBase STO_Unit)
     {
         Unit.UnitName = STO_Unit.UnitName;

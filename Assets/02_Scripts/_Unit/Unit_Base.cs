@@ -43,6 +43,17 @@ public abstract class Unit_Base : MonoBehaviour, ITeamMember
     [SerializeField] protected int _currentHP;
     public int CurrentHP { get { return _currentHP; } set { _currentHP = value; } }
 
+    protected virtual void Start()
+    {
+        SetFirstStatus();
+    }
+    protected virtual void SetFirstStatus()
+    {
+        _currentUnitBaseSTO.Set_UnitData(UnitBaseSTO);
+        Set_UnitStat(this, _currentUnitBaseSTO);
+    }
+
+
     //¿Ø¥÷ Ω∫≈» ºº∆√
     public abstract void Set_UnitStat(Unit_Base Unit, STO_UnitBase STO_Unit);
 }
