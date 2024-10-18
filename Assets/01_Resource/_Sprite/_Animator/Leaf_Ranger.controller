@@ -89,42 +89,42 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: 5794127590720827052}
-    m_Position: {x: 360, y: 70, z: 0}
+    m_Position: {x: 500, y: 100, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 8928014245341227970}
-    m_Position: {x: 370, y: 110, z: 0}
+    m_Position: {x: 500, y: 150, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 6223780115554351639}
-    m_Position: {x: 370, y: 190, z: 0}
+    m_Position: {x: 500, y: 200, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 3523520108742266016}
-    m_Position: {x: 580, y: 180, z: 0}
+    m_Position: {x: 500, y: 450, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -8367178962943000379}
-    m_Position: {x: 650, y: 310, z: 0}
+    m_Position: {x: 500, y: 350, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 3094938215423199065}
-    m_Position: {x: 190, y: 270, z: 0}
+    m_Position: {x: 500, y: 0, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -5671707647078475386}
-    m_Position: {x: 520, y: 430, z: 0}
+    m_Position: {x: 500, y: 300, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 6625470197712606188}
-    m_Position: {x: 210, y: 380, z: 0}
+    m_Position: {x: 500, y: 50, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -6632658479679448443}
-    m_Position: {x: 430, y: 270, z: 0}
+    m_Position: {x: 500, y: 250, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1630282022848297085}
-    m_Position: {x: 430, y: 340, z: 0}
+    m_Position: {x: 500, y: 400, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
   m_StateMachineTransitions: {}
   m_StateMachineBehaviours: []
-  m_AnyStatePosition: {x: 50, y: 20, z: 0}
-  m_EntryPosition: {x: 50, y: 120, z: 0}
-  m_ExitPosition: {x: 800, y: 120, z: 0}
+  m_AnyStatePosition: {x: -160, y: 0, z: 0}
+  m_EntryPosition: {x: -160, y: 70, z: 0}
+  m_ExitPosition: {x: -160, y: 140, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
   m_DefaultState: {fileID: 3094938215423199065}
 --- !u!91 &9100000
@@ -141,7 +141,7 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer

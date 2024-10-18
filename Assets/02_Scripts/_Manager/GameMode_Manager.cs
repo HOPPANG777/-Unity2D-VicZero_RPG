@@ -78,8 +78,8 @@ public class GameMode_Manager : Singleton<GameMode_Manager>
     IEnumerator Player_Turn()
     {
         yield return new WaitForSeconds(1f);
-        Debug.Log("플레이어 턴 확인");
         battleState = Battle_State.PLAYER_TURN;
+        Debug.Log("플레이어 턴 확인");
 
         // 해당 턴이 종료된뒤 에너미 턴으로 변경
         //battleState = Battle_State.ENEMY_TURN;
@@ -89,17 +89,16 @@ public class GameMode_Manager : Singleton<GameMode_Manager>
     IEnumerator Enemy_Turn()
     {
         yield return new WaitForSeconds(1f);
-        Debug.Log("에너미 턴 확인");
-        Debug.Log("에너미 공격!" + Enemy_List[0].UnitBase_Stat.attackPower);
         battleState = Battle_State.ENEMY_TURN;
+        Debug.Log("에너미 턴 확인");
 
-        Debug.Log("플레이어 맞음!" + (Player_List[0].CurrentHP - Enemy_List[0].UnitBase_Stat.attackPower));
+        Enemy_Attack();
 
         // 해당 턴이 종료된뒤 플레이어 턴으로 변경
-        battleState = Battle_State.PLAYER_TURN;
+        StartCoroutine(Player_Turn());
     }
 
-    public void OnAttackButton()
+    public void On_Attack_Button()
     {
         if (battleState != Battle_State.PLAYER_TURN) return;
         Debug.Log("플레이어 공격!" + (Player_List[0].UnitBase_Stat.attackPower));
@@ -108,14 +107,20 @@ public class GameMode_Manager : Singleton<GameMode_Manager>
         StartCoroutine(Enemy_Turn());
     }
 
-    public void OnSkillButton()
+    public void On_Skill_Button()
     {
 
     }
 
-    public void OnDefenseButton()
+    public void On_Defense_Button()
     {
 
+    }
+
+    public void Enemy_Attack()
+    {
+        Debug.Log("에너미 공격!" + Enemy_List[0].UnitBase_Stat.attackPower);
+        Debug.Log("플레이어 맞음!" + (Player_List[0].CurrentHP - Enemy_List[0].UnitBase_Stat.attackPower));
     }
 
 }
