@@ -77,6 +77,7 @@ ScriptedImporter:
     defaultPivotSpace: 0
     defaultPivotAlignment: 7
     customPivotPosition: {x: 0.5, y: 0.5}
+    mosaicPadding: 4
     spritePadding: 0
     generateModelPrefab: 1
     generateAnimationClips: 1
@@ -89,6 +90,7 @@ ScriptedImporter:
     defaultPivotSpace: 0
     defaultPivotAlignment: 7
     customPivotPosition: {x: 0.5, y: 0.5}
+    mosaicPadding: 4
     spritePadding: 0
     generateModelPrefab: 1
     generateAnimationClips: 1
@@ -428,120 +430,135 @@ ScriptedImporter:
     layerType: 0
     blendMode: 0
     cells:
-    - name: Happy_Sheep_Frame_0
+    - name: Frame_0
       frameIndex: 0
+      additiveSortOrder: 0
       cellRect:
         x: 43
         y: 42
         width: 43
         height: 38
       spriteId: 0547195903a0d504db4ac9b99abc2eb5
-    - name: Happy_Sheep_Frame_1
+    - name: Frame_1
       frameIndex: 1
+      additiveSortOrder: 0
       cellRect:
         x: 43
         y: 42
         width: 43
         height: 38
       spriteId: b8265d293c073e94588176bb7d761f95
-    - name: Happy_Sheep_Frame_2
+    - name: Frame_2
       frameIndex: 2
+      additiveSortOrder: 0
       cellRect:
         x: 43
         y: 42
         width: 43
         height: 38
       spriteId: c8ae0c7786eafca459e5e16ad48e0ff3
-    - name: Happy_Sheep_Frame_3
+    - name: Frame_3
       frameIndex: 3
+      additiveSortOrder: 0
       cellRect:
         x: 43
         y: 42
         width: 43
         height: 38
       spriteId: dfeb22b880ef31249b80378bbd8aa0a3
-    - name: Happy_Sheep_Frame_4
+    - name: Frame_4
       frameIndex: 4
+      additiveSortOrder: 0
       cellRect:
         x: 43
         y: 42
         width: 43
         height: 37
       spriteId: ec2aa197a41f3c549b86170ccc31cf72
-    - name: Happy_Sheep_Frame_5
+    - name: Frame_5
       frameIndex: 5
+      additiveSortOrder: 0
       cellRect:
         x: 42
         y: 42
         width: 46
         height: 36
       spriteId: 3b02dcdc431ccd441996ea2775523216
-    - name: Happy_Sheep_Frame_6
+    - name: Frame_6
       frameIndex: 6
+      additiveSortOrder: 0
       cellRect:
         x: 42
         y: 42
         width: 46
         height: 36
       spriteId: aabc9d986821d5944b315a880c9e7c76
-    - name: Happy_Sheep_Frame_7
+    - name: Frame_7
       frameIndex: 7
+      additiveSortOrder: 0
       cellRect:
         x: 43
         y: 42
         width: 44
         height: 37
       spriteId: 2bd5df9058208c144b63cb84cdda7741
-    - name: Happy_Sheep_Frame_8
+    - name: Frame_8
       frameIndex: 8
+      additiveSortOrder: 0
       cellRect:
         x: 43
         y: 42
         width: 43
         height: 38
       spriteId: 75f2fa8890399424fb2993ec08181850
-    - name: Happy_Sheep_Frame_9
+    - name: Frame_9
       frameIndex: 9
+      additiveSortOrder: 0
       cellRect:
         x: 43
         y: 42
         width: 43
         height: 38
       spriteId: 902da5f5542d15945939fb710d5db90d
-    - name: Happy_Sheep_Frame_10
+    - name: Frame_10
       frameIndex: 10
+      additiveSortOrder: 0
       cellRect:
         x: 45
         y: 42
         width: 38
         height: 48
       spriteId: cc68b3a8c9fa2724b9a55e685d8ea124
-    - name: Happy_Sheep_Frame_11
+    - name: Frame_11
       frameIndex: 11
+      additiveSortOrder: 0
       cellRect:
         x: 43
         y: 42
         width: 45
         height: 50
       spriteId: 9720162788003f64fabf342174b69a1f
-    - name: Happy_Sheep_Frame_12
+    - name: Frame_12
       frameIndex: 12
+      additiveSortOrder: 0
       cellRect:
         x: 43
         y: 42
         width: 45
         height: 51
       spriteId: 56eac10ab586c6c4fb2a13e73ac87ad4
-    - name: Happy_Sheep_Frame_13
+    - name: Frame_13
       frameIndex: 13
+      additiveSortOrder: 0
       cellRect:
         x: 43
         y: 42
         width: 45
         height: 45
       spriteId: 77e3a642ea602f0439c1df105e73749d
-    - name: Happy_Sheep_Frame_14
+    - name: Frame_14
       frameIndex: 14
+      additiveSortOrder: 0
       cellRect:
         x: 38
         y: 42
@@ -551,6 +568,7 @@ ScriptedImporter:
     linkedCells: []
     parentIndex: -1
   platformSettings: []
+  generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
   canvasSize: {x: 128, y: 128}

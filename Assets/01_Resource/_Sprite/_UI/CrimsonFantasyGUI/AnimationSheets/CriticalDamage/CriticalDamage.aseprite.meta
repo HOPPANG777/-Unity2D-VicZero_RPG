@@ -77,6 +77,7 @@ ScriptedImporter:
     defaultPivotSpace: 0
     defaultPivotAlignment: 7
     customPivotPosition: {x: 0.5, y: 0.5}
+    mosaicPadding: 4
     spritePadding: 0
     generateModelPrefab: 1
     generateAnimationClips: 1
@@ -89,6 +90,7 @@ ScriptedImporter:
     defaultPivotSpace: 0
     defaultPivotAlignment: 7
     customPivotPosition: {x: 0.5, y: 0.5}
+    mosaicPadding: 4
     spritePadding: 0
     generateModelPrefab: 1
     generateAnimationClips: 1
@@ -528,160 +530,180 @@ ScriptedImporter:
     layerType: 0
     blendMode: 0
     cells:
-    - name: CriticalDamage_Frame_0
+    - name: Frame_0
       frameIndex: 0
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
         width: 64
         height: 16
       spriteId: c71003c7f3dc5a14193c4f2d23dca99a
-    - name: CriticalDamage_Frame_1
+    - name: Frame_1
       frameIndex: 1
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
         width: 64
         height: 16
       spriteId: 01a0151e718aac947804fb718698761c
-    - name: CriticalDamage_Frame_2
+    - name: Frame_2
       frameIndex: 2
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
         width: 64
         height: 16
       spriteId: ecd46eddc82b48a4c995c424124280c8
-    - name: CriticalDamage_Frame_3
+    - name: Frame_3
       frameIndex: 3
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
         width: 64
         height: 16
       spriteId: da447eb60dc7ef644b16d4f8cf5fa774
-    - name: CriticalDamage_Frame_4
+    - name: Frame_4
       frameIndex: 4
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
         width: 64
         height: 16
       spriteId: 35ef5fb43ef86e541ae7442fd07d5e84
-    - name: CriticalDamage_Frame_5
+    - name: Frame_5
       frameIndex: 5
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
         width: 64
         height: 16
       spriteId: 155d7d654114311419b0f91f94e0dc91
-    - name: CriticalDamage_Frame_6
+    - name: Frame_6
       frameIndex: 6
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
         width: 64
         height: 16
       spriteId: 934983ae685b4df4598e29f260139c94
-    - name: CriticalDamage_Frame_7
+    - name: Frame_7
       frameIndex: 7
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
         width: 64
         height: 16
       spriteId: 5c1f20280f64c37459dd07678dc72999
-    - name: CriticalDamage_Frame_8
+    - name: Frame_8
       frameIndex: 8
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
         width: 64
         height: 16
       spriteId: ea42929ad6340a34badfe06dfba9a092
-    - name: CriticalDamage_Frame_9
+    - name: Frame_9
       frameIndex: 9
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
         width: 64
         height: 16
       spriteId: 909171cdcf3ee65458a455e6bebb199b
-    - name: CriticalDamage_Frame_10
+    - name: Frame_10
       frameIndex: 10
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
         width: 64
         height: 16
       spriteId: 238468b26db32fe4d9db9359bfa68a5e
-    - name: CriticalDamage_Frame_11
+    - name: Frame_11
       frameIndex: 11
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
         width: 64
         height: 16
       spriteId: 8142c122789272945938e4db104ab5d3
-    - name: CriticalDamage_Frame_12
+    - name: Frame_12
       frameIndex: 12
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
         width: 64
         height: 16
       spriteId: ea3386b70d4de2d43a3d065fb19d20b4
-    - name: CriticalDamage_Frame_13
+    - name: Frame_13
       frameIndex: 13
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
         width: 64
         height: 16
       spriteId: 7188ca30db358244ea5370da4dbf5a2b
-    - name: CriticalDamage_Frame_14
+    - name: Frame_14
       frameIndex: 14
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
         width: 64
         height: 16
       spriteId: 7314ec726b71e86418d44600921666b5
-    - name: CriticalDamage_Frame_15
+    - name: Frame_15
       frameIndex: 15
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
         width: 64
         height: 16
       spriteId: 322db9bfea7274941a167b01d016e6cf
-    - name: CriticalDamage_Frame_16
+    - name: Frame_16
       frameIndex: 16
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
         width: 64
         height: 16
       spriteId: e94a24fd9d5ae254a8da6886f480f03a
-    - name: CriticalDamage_Frame_17
+    - name: Frame_17
       frameIndex: 17
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
         width: 64
         height: 16
       spriteId: e6fc19a2f60c12c42a8c1d2cfb603677
-    - name: CriticalDamage_Frame_18
+    - name: Frame_18
       frameIndex: 18
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
         width: 64
         height: 16
       spriteId: 5731901e6749ed540b53181c118bb8fe
-    - name: CriticalDamage_Frame_19
+    - name: Frame_19
       frameIndex: 19
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
@@ -775,6 +797,7 @@ ScriptedImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     androidETC2FallbackOverride: 0
+  generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
   canvasSize: {x: 64, y: 16}

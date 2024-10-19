@@ -77,6 +77,7 @@ ScriptedImporter:
     defaultPivotSpace: 0
     defaultPivotAlignment: 7
     customPivotPosition: {x: 0.5, y: 0.5}
+    mosaicPadding: 4
     spritePadding: 0
     generateModelPrefab: 1
     generateAnimationClips: 1
@@ -89,6 +90,7 @@ ScriptedImporter:
     defaultPivotSpace: 0
     defaultPivotAlignment: 7
     customPivotPosition: {x: 0.5, y: 0.5}
+    mosaicPadding: 4
     spritePadding: 0
     generateModelPrefab: 1
     generateAnimationClips: 1
@@ -648,208 +650,234 @@ ScriptedImporter:
     layerType: 0
     blendMode: 0
     cells:
-    - name: MediumDamage_Frame_0
+    - name: Frame_0
       frameIndex: 0
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
         width: 64
         height: 16
       spriteId: f31277aa357d8654ba1aa1dacdd3fad6
-    - name: MediumDamage_Frame_1
+    - name: Frame_1
       frameIndex: 1
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
         width: 64
         height: 16
       spriteId: 6c19c65c15b354047a98cd428da8a416
-    - name: MediumDamage_Frame_2
+    - name: Frame_2
       frameIndex: 2
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
         width: 64
         height: 16
       spriteId: e7fbe078f915f504b8509aef11549d8d
-    - name: MediumDamage_Frame_3
+    - name: Frame_3
       frameIndex: 3
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
         width: 64
         height: 16
       spriteId: a9d808e1a7a87ce4a90e0f0fda5ca499
-    - name: MediumDamage_Frame_4
+    - name: Frame_4
       frameIndex: 4
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
         width: 64
         height: 16
       spriteId: c1b2ebc0f4ef2fe4799ca797c1dd0773
-    - name: MediumDamage_Frame_5
+    - name: Frame_5
       frameIndex: 5
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
         width: 64
         height: 16
       spriteId: fe4617816f84d0f44972f95d2964e6ae
-    - name: MediumDamage_Frame_6
+    - name: Frame_6
       frameIndex: 6
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
         width: 64
         height: 16
       spriteId: 0a316d63776f37b478833788c8e50914
-    - name: MediumDamage_Frame_7
+    - name: Frame_7
       frameIndex: 7
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
         width: 64
         height: 16
       spriteId: 421f4a8d23dcf45408f7f73c8a076ee6
-    - name: MediumDamage_Frame_8
+    - name: Frame_8
       frameIndex: 8
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
         width: 64
         height: 16
       spriteId: 0dc43b82f08c1fe43adffe5308ce4fd2
-    - name: MediumDamage_Frame_9
+    - name: Frame_9
       frameIndex: 9
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
         width: 64
         height: 16
       spriteId: ee5b372a2658bd646811e55ea7ff8de9
-    - name: MediumDamage_Frame_10
+    - name: Frame_10
       frameIndex: 10
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
         width: 64
         height: 16
       spriteId: 9a61137c12c87cc46bb19888cc4d1f98
-    - name: MediumDamage_Frame_11
+    - name: Frame_11
       frameIndex: 11
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
         width: 64
         height: 16
       spriteId: c185bce5e2248384f9dcb0dfee3210e5
-    - name: MediumDamage_Frame_12
+    - name: Frame_12
       frameIndex: 12
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
         width: 64
         height: 16
       spriteId: f1591b627aa6b2445afbd13694179dda
-    - name: MediumDamage_Frame_13
+    - name: Frame_13
       frameIndex: 13
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
         width: 64
         height: 16
       spriteId: a39a04abb487ac140ad088a939cc2af1
-    - name: MediumDamage_Frame_14
+    - name: Frame_14
       frameIndex: 14
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
         width: 64
         height: 16
       spriteId: b681377242007da4fa43a4bbae257591
-    - name: MediumDamage_Frame_15
+    - name: Frame_15
       frameIndex: 15
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
         width: 64
         height: 16
       spriteId: 569820983fff12a42a9d62d652812947
-    - name: MediumDamage_Frame_16
+    - name: Frame_16
       frameIndex: 16
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
         width: 64
         height: 16
       spriteId: 4322a6dba8b3a784e9fe7a1623d59854
-    - name: MediumDamage_Frame_17
+    - name: Frame_17
       frameIndex: 17
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
         width: 64
         height: 16
       spriteId: 193e23a500f4b0642b4bfa0ebb9bd14d
-    - name: MediumDamage_Frame_18
+    - name: Frame_18
       frameIndex: 18
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
         width: 64
         height: 16
       spriteId: c22a194a0b192614996a46267db163a7
-    - name: MediumDamage_Frame_19
+    - name: Frame_19
       frameIndex: 19
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
         width: 64
         height: 16
       spriteId: 968773aae8d539247982add734b783e5
-    - name: MediumDamage_Frame_20
+    - name: Frame_20
       frameIndex: 20
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
         width: 64
         height: 16
       spriteId: 5de5a0979531ea64fa5b59a6efe7d047
-    - name: MediumDamage_Frame_21
+    - name: Frame_21
       frameIndex: 21
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
         width: 64
         height: 16
       spriteId: c5e02bfd6f5f6a7449ba5c97c1d2c922
-    - name: MediumDamage_Frame_22
+    - name: Frame_22
       frameIndex: 22
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
         width: 64
         height: 16
       spriteId: 26353f73baf7d46419f5c656f43978ea
-    - name: MediumDamage_Frame_23
+    - name: Frame_23
       frameIndex: 23
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
         width: 64
         height: 16
       spriteId: 911b0615db19b814d8cbbb1f7dd6f7c9
-    - name: MediumDamage_Frame_24
+    - name: Frame_24
       frameIndex: 24
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
         width: 64
         height: 16
       spriteId: dff0478424d5a0741992375c3c069048
-    - name: MediumDamage_Frame_25
+    - name: Frame_25
       frameIndex: 25
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
@@ -859,6 +887,7 @@ ScriptedImporter:
     linkedCells: []
     parentIndex: -1
   platformSettings: []
+  generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
   canvasSize: {x: 64, y: 16}

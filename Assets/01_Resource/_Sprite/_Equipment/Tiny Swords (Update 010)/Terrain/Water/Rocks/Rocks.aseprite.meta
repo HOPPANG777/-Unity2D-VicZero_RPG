@@ -77,6 +77,7 @@ ScriptedImporter:
     defaultPivotSpace: 0
     defaultPivotAlignment: 7
     customPivotPosition: {x: 0.5, y: 0.5}
+    mosaicPadding: 4
     spritePadding: 0
     generateModelPrefab: 1
     generateAnimationClips: 1
@@ -89,6 +90,7 @@ ScriptedImporter:
     defaultPivotSpace: 0
     defaultPivotAlignment: 7
     customPivotPosition: {x: 0.5, y: 0.5}
+    mosaicPadding: 4
     spritePadding: 0
     generateModelPrefab: 1
     generateAnimationClips: 1
@@ -768,256 +770,288 @@ ScriptedImporter:
     layerType: 0
     blendMode: 0
     cells:
-    - name: Rocks_Frame_0
+    - name: Frame_0
       frameIndex: 0
+      additiveSortOrder: 0
       cellRect:
         x: 26
         y: -393
         width: 638
         height: 482
       spriteId: e0348177e77e4df47ba8cfbc21172b78
-    - name: Rocks_Frame_1
+    - name: Frame_1
       frameIndex: 1
+      additiveSortOrder: 0
       cellRect:
         x: 30
         y: -393
         width: 634
         height: 482
       spriteId: 1b5716cdd18e630458d227dca7bc1532
-    - name: Rocks_Frame_2
+    - name: Frame_2
       frameIndex: 2
+      additiveSortOrder: 0
       cellRect:
         x: 28
         y: -393
         width: 636
         height: 482
       spriteId: e2a22c789de7a5c4aba5cd03b2028775
-    - name: Rocks_Frame_3
+    - name: Frame_3
       frameIndex: 3
+      additiveSortOrder: 0
       cellRect:
         x: 27
         y: -393
         width: 637
         height: 482
       spriteId: b9c6cbe64aba7834ebff50ca0c470a05
-    - name: Rocks_Frame_4
+    - name: Frame_4
       frameIndex: 4
+      additiveSortOrder: 0
       cellRect:
         x: 27
         y: -393
         width: 637
         height: 482
       spriteId: 4c23cdedc0d021d45b449e6555b55c53
-    - name: Rocks_Frame_5
+    - name: Frame_5
       frameIndex: 5
+      additiveSortOrder: 0
       cellRect:
         x: 26
         y: -393
         width: 638
         height: 482
       spriteId: 2c2eaa7ab6adda94ebdd2fdd267d5eb3
-    - name: Rocks_Frame_6
+    - name: Frame_6
       frameIndex: 6
+      additiveSortOrder: 0
       cellRect:
         x: 26
         y: -393
         width: 638
         height: 482
       spriteId: 650f2bd4f4c991246ababa13464efdd5
-    - name: Rocks_Frame_7
+    - name: Frame_7
       frameIndex: 7
+      additiveSortOrder: 0
       cellRect:
         x: 26
         y: -393
         width: 638
         height: 482
       spriteId: 634950ce2f37f5542a1b4cf818c97c3f
-    - name: Rocks_Frame_8
+    - name: Frame_8
       frameIndex: 8
+      additiveSortOrder: 0
       cellRect:
         x: 43
         y: 44
         width: 41
         height: 31
       spriteId: 5932c279c665f4d43963662970f5ffd4
-    - name: Rocks_Frame_9
+    - name: Frame_9
       frameIndex: 9
+      additiveSortOrder: 0
       cellRect:
         x: 42
         y: 45
         width: 41
         height: 30
       spriteId: 8b73b26ffdb22434f87f0a0272ae829d
-    - name: Rocks_Frame_10
+    - name: Frame_10
       frameIndex: 10
+      additiveSortOrder: 0
       cellRect:
         x: 40
         y: 44
         width: 44
         height: 31
       spriteId: 10bd2dec300af80479e9ca2aba6ac05b
-    - name: Rocks_Frame_11
+    - name: Frame_11
       frameIndex: 11
+      additiveSortOrder: 0
       cellRect:
         x: 39
         y: 43
         width: 46
         height: 32
       spriteId: f7dc59c571cdc5b4f825ccefb4f31a1d
-    - name: Rocks_Frame_12
+    - name: Frame_12
       frameIndex: 12
+      additiveSortOrder: 0
       cellRect:
         x: 39
         y: 41
         width: 47
         height: 34
       spriteId: 1e1981fcc8fdd49458dbc1a846722740
-    - name: Rocks_Frame_13
+    - name: Frame_13
       frameIndex: 13
+      additiveSortOrder: 0
       cellRect:
         x: 40
         y: 41
         width: 46
         height: 34
       spriteId: a284fc3dfd198294b9ff96ada646d113
-    - name: Rocks_Frame_14
+    - name: Frame_14
       frameIndex: 14
+      additiveSortOrder: 0
       cellRect:
         x: 41
         y: 41
         width: 44
         height: 34
       spriteId: 3e9d817b56fff684eb1d7b62f510bf49
-    - name: Rocks_Frame_15
+    - name: Frame_15
       frameIndex: 15
+      additiveSortOrder: 0
       cellRect:
         x: 41
         y: 42
         width: 43
         height: 33
       spriteId: 362a854111348ec408492450994baad7
-    - name: Rocks_Frame_16
+    - name: Frame_16
       frameIndex: 16
+      additiveSortOrder: 0
       cellRect:
         x: 34
         y: 41
         width: 65
         height: 52
       spriteId: d2313ca0475a88b47bb02eacb46fdea0
-    - name: Rocks_Frame_17
+    - name: Frame_17
       frameIndex: 17
+      additiveSortOrder: 0
       cellRect:
         x: 33
         y: 42
         width: 68
         height: 51
       spriteId: 5669e330bcca74d42b959baa6a1836ab
-    - name: Rocks_Frame_18
+    - name: Frame_18
       frameIndex: 18
+      additiveSortOrder: 0
       cellRect:
         x: 32
         y: 40
         width: 71
         height: 53
       spriteId: 00cceada73140184baf776841f44f9cd
-    - name: Rocks_Frame_19
+    - name: Frame_19
       frameIndex: 19
+      additiveSortOrder: 0
       cellRect:
         x: 30
         y: 38
         width: 73
         height: 55
       spriteId: e73e2dfc13927404cbed4f0556ffef45
-    - name: Rocks_Frame_20
+    - name: Frame_20
       frameIndex: 20
+      additiveSortOrder: 0
       cellRect:
         x: 29
         y: 37
         width: 75
         height: 56
       spriteId: 7f393b35c71b56a40a0636023d5bf952
-    - name: Rocks_Frame_21
+    - name: Frame_21
       frameIndex: 21
+      additiveSortOrder: 0
       cellRect:
         x: 29
         y: 38
         width: 75
         height: 55
       spriteId: 375f72d83ca7c4749988738dc5627567
-    - name: Rocks_Frame_22
+    - name: Frame_22
       frameIndex: 22
+      additiveSortOrder: 0
       cellRect:
         x: 29
         y: 39
         width: 73
         height: 54
       spriteId: fa479025fead00646bb79b9a409dcd41
-    - name: Rocks_Frame_23
+    - name: Frame_23
       frameIndex: 23
+      additiveSortOrder: 0
       cellRect:
         x: 30
         y: 40
         width: 71
         height: 53
       spriteId: c54e500c03de46c419f85f61e221d639
-    - name: Rocks_Frame_24
+    - name: Frame_24
       frameIndex: 24
+      additiveSortOrder: 0
       cellRect:
         x: 24
         y: 32
         width: 83
         height: 62
       spriteId: 20ae143cab3242b49a06057d823fbdb8
-    - name: Rocks_Frame_25
+    - name: Frame_25
       frameIndex: 25
+      additiveSortOrder: 0
       cellRect:
         x: 23
         y: 34
         width: 86
         height: 60
       spriteId: 1b8468cdd5f1e3541bc4fc5871cab029
-    - name: Rocks_Frame_26
+    - name: Frame_26
       frameIndex: 26
+      additiveSortOrder: 0
       cellRect:
         x: 23
         y: 34
         width: 86
         height: 60
       spriteId: 8f989fdebc312a54b85e3b75adaa9bb4
-    - name: Rocks_Frame_27
+    - name: Frame_27
       frameIndex: 27
+      additiveSortOrder: 0
       cellRect:
         x: 20
         y: 31
         width: 90
         height: 63
       spriteId: afde87be33872424583b3ade2c58f453
-    - name: Rocks_Frame_28
+    - name: Frame_28
       frameIndex: 28
+      additiveSortOrder: 0
       cellRect:
         x: 20
         y: 29
         width: 91
         height: 65
       spriteId: 86982fdd92a64e74483d14d5cc907398
-    - name: Rocks_Frame_29
+    - name: Frame_29
       frameIndex: 29
+      additiveSortOrder: 0
       cellRect:
         x: 20
         y: 30
         width: 91
         height: 64
       spriteId: 6197d87a48dcaed4192cb739115ce9b4
-    - name: Rocks_Frame_30
+    - name: Frame_30
       frameIndex: 30
+      additiveSortOrder: 0
       cellRect:
         x: 20
         y: 30
         width: 91
         height: 64
       spriteId: 675f6c5132ea9af4db81a9b866901b9c
-    - name: Rocks_Frame_31
+    - name: Frame_31
       frameIndex: 31
+      additiveSortOrder: 0
       cellRect:
         x: 20
         y: 31
@@ -1027,6 +1061,7 @@ ScriptedImporter:
     linkedCells: []
     parentIndex: -1
   platformSettings: []
+  generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
   canvasSize: {x: 128, y: 128}

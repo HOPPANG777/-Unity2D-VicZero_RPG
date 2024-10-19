@@ -77,6 +77,7 @@ ScriptedImporter:
     defaultPivotSpace: 0
     defaultPivotAlignment: 7
     customPivotPosition: {x: 0.5, y: 0.5}
+    mosaicPadding: 4
     spritePadding: 0
     generateModelPrefab: 1
     generateAnimationClips: 1
@@ -89,6 +90,7 @@ ScriptedImporter:
     defaultPivotSpace: 0
     defaultPivotAlignment: 7
     customPivotPosition: {x: 0.5, y: 0.5}
+    mosaicPadding: 4
     spritePadding: 0
     generateModelPrefab: 1
     generateAnimationClips: 1
@@ -488,144 +490,162 @@ ScriptedImporter:
     layerType: 0
     blendMode: 0
     cells:
-    - name: GenericRegeneration_Frame_0
+    - name: Frame_0
       frameIndex: 0
+      additiveSortOrder: 0
       cellRect:
         x: 1
         y: 0
         width: 62
         height: 16
       spriteId: 7be535c928d799d4fa6ecd867c3136ea
-    - name: GenericRegeneration_Frame_1
+    - name: Frame_1
       frameIndex: 1
+      additiveSortOrder: 0
       cellRect:
         x: 1
         y: 0
         width: 62
         height: 16
       spriteId: eebc1061542cdb64bb127c4c759786e2
-    - name: GenericRegeneration_Frame_2
+    - name: Frame_2
       frameIndex: 2
+      additiveSortOrder: 0
       cellRect:
         x: 1
         y: 0
         width: 62
         height: 16
       spriteId: a939b84baa71bb142a19806e2160832d
-    - name: GenericRegeneration_Frame_3
+    - name: Frame_3
       frameIndex: 3
+      additiveSortOrder: 0
       cellRect:
         x: 1
         y: 0
         width: 62
         height: 16
       spriteId: 4d0cad4e12981124e978bb74797596f0
-    - name: GenericRegeneration_Frame_4
+    - name: Frame_4
       frameIndex: 4
+      additiveSortOrder: 0
       cellRect:
         x: 1
         y: 0
         width: 62
         height: 16
       spriteId: 4d760040e4ddf244bb369b73a943abd5
-    - name: GenericRegeneration_Frame_5
+    - name: Frame_5
       frameIndex: 5
+      additiveSortOrder: 0
       cellRect:
         x: 1
         y: 0
         width: 62
         height: 16
       spriteId: 1ce347998beff8647948fd4dd1992e5b
-    - name: GenericRegeneration_Frame_6
+    - name: Frame_6
       frameIndex: 6
+      additiveSortOrder: 0
       cellRect:
         x: 1
         y: 0
         width: 62
         height: 16
       spriteId: a21ddfdcf9d10d444bae4aa2aa3ed537
-    - name: GenericRegeneration_Frame_7
+    - name: Frame_7
       frameIndex: 7
+      additiveSortOrder: 0
       cellRect:
         x: 1
         y: 0
         width: 62
         height: 16
       spriteId: 7344259e2ebf1a0469d96faf47c469e3
-    - name: GenericRegeneration_Frame_8
+    - name: Frame_8
       frameIndex: 8
+      additiveSortOrder: 0
       cellRect:
         x: 1
         y: 0
         width: 62
         height: 16
       spriteId: 1ff97dd373507364994a9d3d589747d4
-    - name: GenericRegeneration_Frame_9
+    - name: Frame_9
       frameIndex: 9
+      additiveSortOrder: 0
       cellRect:
         x: 1
         y: 0
         width: 62
         height: 16
       spriteId: b5fc6a5fa165afa4cb9857e7a3a43849
-    - name: GenericRegeneration_Frame_10
+    - name: Frame_10
       frameIndex: 10
+      additiveSortOrder: 0
       cellRect:
         x: 1
         y: 0
         width: 62
         height: 16
       spriteId: be0319ae1e50d0348b6c7168aa46d4c9
-    - name: GenericRegeneration_Frame_11
+    - name: Frame_11
       frameIndex: 11
+      additiveSortOrder: 0
       cellRect:
         x: 1
         y: 0
         width: 62
         height: 16
       spriteId: e353a221321a83247b4678e9f5d620dd
-    - name: GenericRegeneration_Frame_12
+    - name: Frame_12
       frameIndex: 12
+      additiveSortOrder: 0
       cellRect:
         x: 1
         y: 0
         width: 62
         height: 16
       spriteId: 865a4cbabd40071498a3c1c5fb8bd50e
-    - name: GenericRegeneration_Frame_13
+    - name: Frame_13
       frameIndex: 13
+      additiveSortOrder: 0
       cellRect:
         x: 1
         y: 0
         width: 62
         height: 16
       spriteId: e007d6d1a17f606408a8945beb4ebd8d
-    - name: GenericRegeneration_Frame_14
+    - name: Frame_14
       frameIndex: 14
+      additiveSortOrder: 0
       cellRect:
         x: 1
         y: 0
         width: 62
         height: 16
       spriteId: 065c65e33e2e86b4194c03e88cd10935
-    - name: GenericRegeneration_Frame_15
+    - name: Frame_15
       frameIndex: 15
+      additiveSortOrder: 0
       cellRect:
         x: 1
         y: 0
         width: 62
         height: 16
       spriteId: 0268ea6ab15e6414697d425dc0336dad
-    - name: GenericRegeneration_Frame_16
+    - name: Frame_16
       frameIndex: 16
+      additiveSortOrder: 0
       cellRect:
         x: 1
         y: 0
         width: 62
         height: 16
       spriteId: 00054660ed17c0e4cbddbc1b3a4df36f
-    - name: GenericRegeneration_Frame_17
+    - name: Frame_17
       frameIndex: 17
+      additiveSortOrder: 0
       cellRect:
         x: 1
         y: 0
@@ -719,6 +739,7 @@ ScriptedImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     androidETC2FallbackOverride: 0
+  generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
   canvasSize: {x: 64, y: 16}

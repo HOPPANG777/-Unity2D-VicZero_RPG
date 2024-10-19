@@ -77,6 +77,7 @@ ScriptedImporter:
     defaultPivotSpace: 0
     defaultPivotAlignment: 7
     customPivotPosition: {x: 0.5, y: 0.5}
+    mosaicPadding: 4
     spritePadding: 0
     generateModelPrefab: 1
     generateAnimationClips: 1
@@ -89,6 +90,7 @@ ScriptedImporter:
     defaultPivotSpace: 0
     defaultPivotAlignment: 7
     customPivotPosition: {x: 0.5, y: 0.5}
+    mosaicPadding: 4
     spritePadding: 0
     generateModelPrefab: 1
     generateAnimationClips: 1
@@ -648,208 +650,234 @@ ScriptedImporter:
     layerType: 0
     blendMode: 0
     cells:
-    - name: TNT_Yellow_Frame_0
+    - name: Frame_0
       frameIndex: 0
+      additiveSortOrder: 0
       cellRect:
         x: 58
         y: 57
         width: 85
         height: 69
       spriteId: ca9a47c683072294ea66d26de1f678ee
-    - name: TNT_Yellow_Frame_1
+    - name: Frame_1
       frameIndex: 1
+      additiveSortOrder: 0
       cellRect:
         x: 58
         y: 57
         width: 86
         height: 68
       spriteId: fc643e630b4e59a4bb8574b19c6d5347
-    - name: TNT_Yellow_Frame_2
+    - name: Frame_2
       frameIndex: 2
+      additiveSortOrder: 0
       cellRect:
         x: 59
         y: 57
         width: 83
         height: 68
       spriteId: 879daa21b1af66a4b843ff78863aa3ca
-    - name: TNT_Yellow_Frame_3
+    - name: Frame_3
       frameIndex: 3
+      additiveSortOrder: 0
       cellRect:
         x: 60
         y: 57
         width: 83
         height: 68
       spriteId: 094a24bcf6798564ba1f122e5264e032
-    - name: TNT_Yellow_Frame_4
+    - name: Frame_4
       frameIndex: 4
+      additiveSortOrder: 0
       cellRect:
         x: 59
         y: 57
         width: 86
         height: 66
       spriteId: f3fe1201a7692174f97c78676a625903
-    - name: TNT_Yellow_Frame_5
+    - name: Frame_5
       frameIndex: 5
+      additiveSortOrder: 0
       cellRect:
         x: 57
         y: 57
         width: 86
         height: 65
       spriteId: 5d9a8c1f8aa990940b83b39b628a5af0
-    - name: TNT_Yellow_Frame_6
+    - name: Frame_6
       frameIndex: 6
+      additiveSortOrder: 0
       cellRect:
         x: 57
         y: 57
         width: 87
         height: 66
       spriteId: 2d71db3eb1789e94cb4eb4e1895e2031
-    - name: TNT_Yellow_Frame_7
+    - name: Frame_7
       frameIndex: 7
+      additiveSortOrder: 0
       cellRect:
         x: 60
         y: 59
         width: 80
         height: 64
       spriteId: 149b257f3c820544f865ae29688e1beb
-    - name: TNT_Yellow_Frame_8
+    - name: Frame_8
       frameIndex: 8
+      additiveSortOrder: 0
       cellRect:
         x: 61
         y: 59
         width: 80
         height: 67
       spriteId: bf148da75773b5f498f4efa8b035fd0d
-    - name: TNT_Yellow_Frame_9
+    - name: Frame_9
       frameIndex: 9
+      additiveSortOrder: 0
       cellRect:
         x: 60
         y: 59
         width: 83
         height: 60
       spriteId: a29786e15b70c844688f20deb1b244f5
-    - name: TNT_Yellow_Frame_10
+    - name: Frame_10
       frameIndex: 10
+      additiveSortOrder: 0
       cellRect:
         x: 58
         y: 59
         width: 85
         height: 64
       spriteId: 4f823abb8864ac3469095e08b5a75829
-    - name: TNT_Yellow_Frame_11
+    - name: Frame_11
       frameIndex: 11
+      additiveSortOrder: 0
       cellRect:
         x: 57
         y: 59
         width: 82
         height: 67
       spriteId: 0dd2418058214154187b809910c2dab8
-    - name: TNT_Yellow_Frame_12
+    - name: Frame_12
       frameIndex: 12
+      additiveSortOrder: 0
       cellRect:
         x: 58
         y: 59
         width: 80
         height: 60
       spriteId: 69c05549f08a1554bb53f85fa20d75fc
-    - name: TNT_Yellow_Frame_13
+    - name: Frame_13
       frameIndex: 13
+      additiveSortOrder: 0
       cellRect:
         x: 55
         y: 57
         width: 77
         height: 72
       spriteId: cf58373add5a6a445b6307a67dfb77bf
-    - name: TNT_Yellow_Frame_14
+    - name: Frame_14
       frameIndex: 14
+      additiveSortOrder: 0
       cellRect:
         x: 51
         y: 57
         width: 76
         height: 75
       spriteId: af6680875d50f6b4d90a8da3c135b013
-    - name: TNT_Yellow_Frame_15
+    - name: Frame_15
       frameIndex: 15
+      additiveSortOrder: 0
       cellRect:
         x: 56
         y: 57
         width: 75
         height: 60
       spriteId: 798d9e01413afd8489a7ab573b2387a8
-    - name: TNT_Yellow_Frame_16
+    - name: Frame_16
       frameIndex: 16
+      additiveSortOrder: 0
       cellRect:
         x: 58
         y: 57
         width: 74
         height: 63
       spriteId: bca26689e933ff34691de98a3c787dce
-    - name: TNT_Yellow_Frame_17
+    - name: Frame_17
       frameIndex: 17
+      additiveSortOrder: 0
       cellRect:
         x: 57
         y: 57
         width: 73
         height: 68
       spriteId: 69cc40f8f36826d4fa30a3bcca3d0361
-    - name: TNT_Yellow_Frame_18
+    - name: Frame_18
       frameIndex: 18
+      additiveSortOrder: 0
       cellRect:
         x: 55
         y: 57
         width: 64
         height: 81
       spriteId: 87276a549b2335e4fa63d6a62a15f2c2
-    - name: TNT_Yellow_Frame_19
+    - name: Frame_19
       frameIndex: 19
+      additiveSortOrder: 0
       cellRect:
         x: 59
         y: 57
         width: 66
         height: 72
       spriteId: 39a1ec6a91247f04792fe9bbe92e3f22
-    - name: TNT_Yellow_Frame_20
+    - name: Frame_20
       frameIndex: 20
+      additiveSortOrder: 0
       cellRect:
         x: 84
         y: 75
         width: 27
         height: 51
       spriteId: 5080dc45526b86f41ba95f9a70939ccd
-    - name: TNT_Yellow_Frame_21
+    - name: Frame_21
       frameIndex: 21
+      additiveSortOrder: 0
       cellRect:
         x: 84
         y: 75
         width: 27
         height: 52
       spriteId: 85793f528ec72584fac8836cee01eb9c
-    - name: TNT_Yellow_Frame_22
+    - name: Frame_22
       frameIndex: 22
+      additiveSortOrder: 0
       cellRect:
         x: 84
         y: 75
         width: 26
         height: 51
       spriteId: 04502eed7049004428f91292ea26725d
-    - name: TNT_Yellow_Frame_23
+    - name: Frame_23
       frameIndex: 23
+      additiveSortOrder: 0
       cellRect:
         x: 84
         y: 75
         width: 25
         height: 50
       spriteId: 1b3b8e34d8e20104fbaa34352abd0ef8
-    - name: TNT_Yellow_Frame_24
+    - name: Frame_24
       frameIndex: 24
+      additiveSortOrder: 0
       cellRect:
         x: 84
         y: 75
         width: 27
         height: 51
       spriteId: b67b39bf0921d6948bb9168e3b728d4b
-    - name: TNT_Yellow_Frame_25
+    - name: Frame_25
       frameIndex: 25
+      additiveSortOrder: 0
       cellRect:
         x: 84
         y: 75
@@ -859,6 +887,7 @@ ScriptedImporter:
     linkedCells: []
     parentIndex: -1
   platformSettings: []
+  generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
   canvasSize: {x: 192, y: 192}

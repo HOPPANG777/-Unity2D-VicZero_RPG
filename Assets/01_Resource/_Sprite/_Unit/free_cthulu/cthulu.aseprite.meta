@@ -112,6 +112,7 @@ ScriptedImporter:
     defaultPivotSpace: 0
     defaultPivotAlignment: 7
     customPivotPosition: {x: 0.5, y: 0.5}
+    mosaicPadding: 4
     spritePadding: 0
     generateModelPrefab: 1
     generateAnimationClips: 1
@@ -124,6 +125,7 @@ ScriptedImporter:
     defaultPivotSpace: 0
     defaultPivotAlignment: 7
     customPivotPosition: {x: 0.5, y: 0.5}
+    mosaicPadding: 4
     spritePadding: 0
     generateModelPrefab: 1
     generateAnimationClips: 1
@@ -1463,520 +1465,585 @@ ScriptedImporter:
     layerType: 0
     blendMode: 0
     cells:
-    - name: cthulu_Frame_0
+    - name: Frame_0
       frameIndex: 0
+      additiveSortOrder: 0
       cellRect:
         x: -44
         y: 0
         width: 280
         height: 128
       spriteId: b306a839f407d4a4c9cd70b0e89e0c7b
-    - name: cthulu_Frame_1
+    - name: Frame_1
       frameIndex: 1
+      additiveSortOrder: 0
       cellRect:
         x: -44
         y: 0
         width: 280
         height: 128
       spriteId: 09597c1d8a119e140ae10206b2cb39ca
-    - name: cthulu_Frame_2
+    - name: Frame_2
       frameIndex: 2
+      additiveSortOrder: 0
       cellRect:
         x: -44
         y: 0
         width: 280
         height: 128
       spriteId: 94dc98ece69f59b4b984f6ea94183a6c
-    - name: cthulu_Frame_3
+    - name: Frame_3
       frameIndex: 3
+      additiveSortOrder: 0
       cellRect:
         x: -44
         y: 0
         width: 280
         height: 128
       spriteId: 9cd98655bca614143ae1b66611bb3326
-    - name: cthulu_Frame_4
+    - name: Frame_4
       frameIndex: 4
+      additiveSortOrder: 0
       cellRect:
         x: -44
         y: 0
         width: 280
         height: 128
       spriteId: ef0521d8e542ae444b32092fbb350a8a
-    - name: cthulu_Frame_5
+    - name: Frame_5
       frameIndex: 5
+      additiveSortOrder: 0
       cellRect:
         x: -44
         y: 0
         width: 280
         height: 128
       spriteId: 77df0f876b8d36b42939575c8813b4a0
-    - name: cthulu_Frame_6
+    - name: Frame_6
       frameIndex: 6
+      additiveSortOrder: 0
       cellRect:
         x: -44
         y: 0
         width: 280
         height: 128
       spriteId: 3200fb5c1a842614e9cdf3cd91ed2c85
-    - name: cthulu_Frame_7
+    - name: Frame_7
       frameIndex: 7
+      additiveSortOrder: 0
       cellRect:
         x: -44
         y: 0
         width: 280
         height: 128
       spriteId: bfd7838e6d191ae4b893551d6565ce78
-    - name: cthulu_Frame_8
+    - name: Frame_8
       frameIndex: 8
+      additiveSortOrder: 0
       cellRect:
         x: -44
         y: 0
         width: 280
         height: 128
       spriteId: 8391c7eb45a7325438b044ba5f728407
-    - name: cthulu_Frame_9
+    - name: Frame_9
       frameIndex: 9
+      additiveSortOrder: 0
       cellRect:
         x: -44
         y: 0
         width: 280
         height: 128
       spriteId: f77ea98f596c41d46ae7ae7443913a4b
-    - name: cthulu_Frame_10
+    - name: Frame_10
       frameIndex: 10
+      additiveSortOrder: 0
       cellRect:
         x: -44
         y: 0
         width: 280
         height: 128
       spriteId: 8fadfc63eb2bbf541878fc0d4bbfb109
-    - name: cthulu_Frame_11
+    - name: Frame_11
       frameIndex: 11
+      additiveSortOrder: 0
       cellRect:
         x: -44
         y: 0
         width: 280
         height: 128
       spriteId: 158dbfaefb786b64ca0e9ac99bbc5cad
-    - name: cthulu_Frame_12
+    - name: Frame_12
       frameIndex: 12
+      additiveSortOrder: 0
       cellRect:
         x: -44
         y: 0
         width: 280
         height: 128
       spriteId: 74ac73a09d76b0a4394693a4e1192dc8
-    - name: cthulu_Frame_13
+    - name: Frame_13
       frameIndex: 13
+      additiveSortOrder: 0
       cellRect:
         x: -44
         y: 0
         width: 280
         height: 128
       spriteId: 28d816faa6cb50f4f989d35d0bf2dee0
-    - name: cthulu_Frame_14
+    - name: Frame_14
       frameIndex: 14
+      additiveSortOrder: 0
       cellRect:
         x: -44
         y: 0
         width: 280
         height: 128
       spriteId: 5fb749dde8724684299a3642bab03165
-    - name: cthulu_Frame_15
+    - name: Frame_15
       frameIndex: 15
+      additiveSortOrder: 0
       cellRect:
         x: -44
         y: 0
         width: 280
         height: 128
       spriteId: c0ac5453849bbf3448fd8b1623794cbf
-    - name: cthulu_Frame_16
+    - name: Frame_16
       frameIndex: 16
+      additiveSortOrder: 0
       cellRect:
         x: -44
         y: 0
         width: 280
         height: 128
       spriteId: 4c7c12f32796e904ea79d5473881e090
-    - name: cthulu_Frame_17
+    - name: Frame_17
       frameIndex: 17
+      additiveSortOrder: 0
       cellRect:
         x: -44
         y: 0
         width: 280
         height: 128
       spriteId: 9d8d11c99586e9b41b323b2a627778c4
-    - name: cthulu_Frame_18
+    - name: Frame_18
       frameIndex: 18
+      additiveSortOrder: 0
       cellRect:
         x: -44
         y: 0
         width: 280
         height: 128
       spriteId: 5eec4d5656599b74590df6ab4c16b56c
-    - name: cthulu_Frame_19
+    - name: Frame_19
       frameIndex: 19
+      additiveSortOrder: 0
       cellRect:
         x: -44
         y: 0
         width: 280
         height: 128
       spriteId: 736444f8a059e0449a53385d932395ba
-    - name: cthulu_Frame_20
+    - name: Frame_20
       frameIndex: 20
+      additiveSortOrder: 0
       cellRect:
         x: -44
         y: 0
         width: 280
         height: 128
       spriteId: af1d090e141bd3246910c3776350ca8e
-    - name: cthulu_Frame_21
+    - name: Frame_21
       frameIndex: 21
+      additiveSortOrder: 0
       cellRect:
         x: -44
         y: 0
         width: 280
         height: 128
       spriteId: bd813048557f4d6469a273077a284c9d
-    - name: cthulu_Frame_22
+    - name: Frame_22
       frameIndex: 22
+      additiveSortOrder: 0
       cellRect:
         x: -44
         y: 0
         width: 280
         height: 128
       spriteId: a67342a7bbd1f48449300692f588c625
-    - name: cthulu_Frame_23
+    - name: Frame_23
       frameIndex: 23
+      additiveSortOrder: 0
       cellRect:
         x: -44
         y: 0
         width: 280
         height: 128
       spriteId: 1726dc8f9c20f8e448c8196179c02563
-    - name: cthulu_Frame_24
+    - name: Frame_24
       frameIndex: 24
+      additiveSortOrder: 0
       cellRect:
         x: -44
         y: 0
         width: 280
         height: 128
       spriteId: 0fe069dc678cf494694860d580fb1370
-    - name: cthulu_Frame_25
+    - name: Frame_25
       frameIndex: 25
+      additiveSortOrder: 0
       cellRect:
         x: -44
         y: 0
         width: 280
         height: 128
       spriteId: b253b0219bfa2694bba769368bc9c027
-    - name: cthulu_Frame_26
+    - name: Frame_26
       frameIndex: 26
+      additiveSortOrder: 0
       cellRect:
         x: -44
         y: 0
         width: 280
         height: 128
       spriteId: deb04e665484c9d4fa5df0621d4aae6c
-    - name: cthulu_Frame_27
+    - name: Frame_27
       frameIndex: 27
+      additiveSortOrder: 0
       cellRect:
         x: -44
         y: 0
         width: 280
         height: 128
       spriteId: fff0475f81013ce4188cea0aaca024da
-    - name: cthulu_Frame_28
+    - name: Frame_28
       frameIndex: 28
+      additiveSortOrder: 0
       cellRect:
         x: -44
         y: 0
         width: 280
         height: 128
       spriteId: b604321a02a6cfd41b26c9a908a390b7
-    - name: cthulu_Frame_29
+    - name: Frame_29
       frameIndex: 29
+      additiveSortOrder: 0
       cellRect:
         x: -44
         y: 0
         width: 280
         height: 128
       spriteId: 3c401d36cd1f4cd4a97159ba523987f8
-    - name: cthulu_Frame_30
+    - name: Frame_30
       frameIndex: 30
+      additiveSortOrder: 0
       cellRect:
         x: -44
         y: 0
         width: 280
         height: 128
       spriteId: b85b4eec644bee8419636b5080a9b48d
-    - name: cthulu_Frame_31
+    - name: Frame_31
       frameIndex: 31
+      additiveSortOrder: 0
       cellRect:
         x: -44
         y: 0
         width: 280
         height: 128
       spriteId: 026d7c2ffb24a7344b64624e0b20b100
-    - name: cthulu_Frame_32
+    - name: Frame_32
       frameIndex: 32
+      additiveSortOrder: 0
       cellRect:
         x: -44
         y: 0
         width: 280
         height: 128
       spriteId: cd888b31a72565c42af226a0f11ec767
-    - name: cthulu_Frame_33
+    - name: Frame_33
       frameIndex: 33
+      additiveSortOrder: 0
       cellRect:
         x: -44
         y: 0
         width: 280
         height: 128
       spriteId: ba3773240e4f62447845dccacb94e299
-    - name: cthulu_Frame_34
+    - name: Frame_34
       frameIndex: 34
+      additiveSortOrder: 0
       cellRect:
         x: -44
         y: 0
         width: 280
         height: 128
       spriteId: 83b96f7a927c16a4ea9adf5d4177db62
-    - name: cthulu_Frame_35
+    - name: Frame_35
       frameIndex: 35
+      additiveSortOrder: 0
       cellRect:
         x: -44
         y: 0
         width: 280
         height: 128
       spriteId: e7c55fc4aa3fd514b8a64b053716df15
-    - name: cthulu_Frame_36
+    - name: Frame_36
       frameIndex: 36
+      additiveSortOrder: 0
       cellRect:
         x: -44
         y: 0
         width: 280
         height: 128
       spriteId: a8ff733750245a64fb08358f62b5dbe1
-    - name: cthulu_Frame_37
+    - name: Frame_37
       frameIndex: 37
+      additiveSortOrder: 0
       cellRect:
         x: -44
         y: 0
         width: 280
         height: 128
       spriteId: 9e6f53fd6f132c541b2ec574c44b16b8
-    - name: cthulu_Frame_38
+    - name: Frame_38
       frameIndex: 38
+      additiveSortOrder: 0
       cellRect:
         x: -44
         y: 0
         width: 280
         height: 128
       spriteId: e04c56f92a4b23246bb5161eb98c116c
-    - name: cthulu_Frame_39
+    - name: Frame_39
       frameIndex: 39
+      additiveSortOrder: 0
       cellRect:
         x: -44
         y: 0
         width: 280
         height: 128
       spriteId: 9b64f96dfe650e445aab6474b344525c
-    - name: cthulu_Frame_40
+    - name: Frame_40
       frameIndex: 40
+      additiveSortOrder: 0
       cellRect:
         x: -44
         y: 0
         width: 280
         height: 128
       spriteId: 978c1ba1289b470499303b611b12ee9a
-    - name: cthulu_Frame_41
+    - name: Frame_41
       frameIndex: 41
+      additiveSortOrder: 0
       cellRect:
         x: -44
         y: 0
         width: 280
         height: 128
       spriteId: 6f9e7ff18283f7e44860f39786f00ca5
-    - name: cthulu_Frame_42
+    - name: Frame_42
       frameIndex: 42
+      additiveSortOrder: 0
       cellRect:
         x: -44
         y: 0
         width: 280
         height: 128
       spriteId: ab696e13911d31f4386ec77caf946f90
-    - name: cthulu_Frame_43
+    - name: Frame_43
       frameIndex: 43
+      additiveSortOrder: 0
       cellRect:
         x: -44
         y: 0
         width: 280
         height: 128
       spriteId: d34f119a224f62b47afc61dec7a0eddb
-    - name: cthulu_Frame_44
+    - name: Frame_44
       frameIndex: 44
+      additiveSortOrder: 0
       cellRect:
         x: -44
         y: 0
         width: 280
         height: 128
       spriteId: df14598515122434ebb4cf6479a0ae61
-    - name: cthulu_Frame_45
+    - name: Frame_45
       frameIndex: 45
+      additiveSortOrder: 0
       cellRect:
         x: -44
         y: 0
         width: 280
         height: 128
       spriteId: f5dc25d1d61222344bb013fdae20bfc3
-    - name: cthulu_Frame_46
+    - name: Frame_46
       frameIndex: 46
+      additiveSortOrder: 0
       cellRect:
         x: -44
         y: 0
         width: 280
         height: 128
       spriteId: e7ff5889c0f336d4d82fe4aeff1d2315
-    - name: cthulu_Frame_47
+    - name: Frame_47
       frameIndex: 47
+      additiveSortOrder: 0
       cellRect:
         x: -44
         y: 0
         width: 280
         height: 128
       spriteId: fd48ec2d30cbc21419b12e6f9c6ed5c8
-    - name: cthulu_Frame_48
+    - name: Frame_48
       frameIndex: 48
+      additiveSortOrder: 0
       cellRect:
         x: -44
         y: 0
         width: 280
         height: 128
       spriteId: 056e1a714c02adc44b0f5322f38d76a6
-    - name: cthulu_Frame_49
+    - name: Frame_49
       frameIndex: 49
+      additiveSortOrder: 0
       cellRect:
         x: -44
         y: 0
         width: 280
         height: 128
       spriteId: 76023a9959f0f3d4c935e7a409701d94
-    - name: cthulu_Frame_50
+    - name: Frame_50
       frameIndex: 50
+      additiveSortOrder: 0
       cellRect:
         x: -44
         y: 0
         width: 280
         height: 128
       spriteId: 5fca468e60b8b5943818fdaeddcb5855
-    - name: cthulu_Frame_51
+    - name: Frame_51
       frameIndex: 51
+      additiveSortOrder: 0
       cellRect:
         x: -44
         y: 0
         width: 280
         height: 128
       spriteId: 6b55ff65b0bfc52428d57f327674dcdf
-    - name: cthulu_Frame_52
+    - name: Frame_52
       frameIndex: 52
+      additiveSortOrder: 0
       cellRect:
         x: -44
         y: 0
         width: 280
         height: 128
       spriteId: 7b8b67dfa28f411458d80879f3fd186a
-    - name: cthulu_Frame_53
+    - name: Frame_53
       frameIndex: 53
+      additiveSortOrder: 0
       cellRect:
         x: -44
         y: 0
         width: 280
         height: 128
       spriteId: 72a07127780abff4cb6e178498e9cb60
-    - name: cthulu_Frame_54
+    - name: Frame_54
       frameIndex: 54
+      additiveSortOrder: 0
       cellRect:
         x: -44
         y: 0
         width: 280
         height: 128
       spriteId: b21e35547812dae4d9454e4df6c700df
-    - name: cthulu_Frame_55
+    - name: Frame_55
       frameIndex: 55
+      additiveSortOrder: 0
       cellRect:
         x: -44
         y: 0
         width: 280
         height: 128
       spriteId: 3728a5951ba9662439cbcc1e9d123c1c
-    - name: cthulu_Frame_56
+    - name: Frame_56
       frameIndex: 56
+      additiveSortOrder: 0
       cellRect:
         x: -44
         y: 0
         width: 280
         height: 128
       spriteId: e7ffb905ad838f247b4521d44ff35fba
-    - name: cthulu_Frame_57
+    - name: Frame_57
       frameIndex: 57
+      additiveSortOrder: 0
       cellRect:
         x: -44
         y: 0
         width: 280
         height: 128
       spriteId: d4fd862ecd3b9f848b60a2185ad5f5dd
-    - name: cthulu_Frame_58
+    - name: Frame_58
       frameIndex: 58
+      additiveSortOrder: 0
       cellRect:
         x: -44
         y: 0
         width: 280
         height: 128
       spriteId: 3d1c00fed609a194ca963bea8f668305
-    - name: cthulu_Frame_59
+    - name: Frame_59
       frameIndex: 59
+      additiveSortOrder: 0
       cellRect:
         x: -44
         y: 0
         width: 280
         height: 128
       spriteId: c877e7653386c51409d80658edfcb9ef
-    - name: cthulu_Frame_60
+    - name: Frame_60
       frameIndex: 60
+      additiveSortOrder: 0
       cellRect:
         x: -44
         y: 0
         width: 280
         height: 128
       spriteId: 953e948c9e040504195870fa26c72859
-    - name: cthulu_Frame_61
+    - name: Frame_61
       frameIndex: 61
+      additiveSortOrder: 0
       cellRect:
         x: -44
         y: 0
         width: 280
         height: 128
       spriteId: 0a9acbc05145cd645889b3783af00472
-    - name: cthulu_Frame_62
+    - name: Frame_62
       frameIndex: 62
+      additiveSortOrder: 0
       cellRect:
         x: -44
         y: 0
         width: 280
         height: 128
       spriteId: e01eee2a4895d8e40829b1c4ac6f4baa
-    - name: cthulu_Frame_63
+    - name: Frame_63
       frameIndex: 63
+      additiveSortOrder: 0
       cellRect:
         x: -44
         y: 0
         width: 280
         height: 128
       spriteId: c22d5703d2df1074abf0a0e2cfbd24eb
-    - name: cthulu_Frame_64
+    - name: Frame_64
       frameIndex: 64
+      additiveSortOrder: 0
       cellRect:
         x: -44
         y: 0
@@ -2070,6 +2137,7 @@ ScriptedImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     androidETC2FallbackOverride: 0
+  generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
   canvasSize: {x: 192, y: 112}

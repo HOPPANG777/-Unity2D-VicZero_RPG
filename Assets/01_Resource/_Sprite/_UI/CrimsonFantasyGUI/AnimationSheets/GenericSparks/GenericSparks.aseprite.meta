@@ -77,6 +77,7 @@ ScriptedImporter:
     defaultPivotSpace: 0
     defaultPivotAlignment: 7
     customPivotPosition: {x: 0.5, y: 0.5}
+    mosaicPadding: 4
     spritePadding: 0
     generateModelPrefab: 1
     generateAnimationClips: 1
@@ -89,6 +90,7 @@ ScriptedImporter:
     defaultPivotSpace: 0
     defaultPivotAlignment: 7
     customPivotPosition: {x: 0.5, y: 0.5}
+    mosaicPadding: 4
     spritePadding: 0
     generateModelPrefab: 1
     generateAnimationClips: 1
@@ -328,80 +330,90 @@ ScriptedImporter:
     layerType: 0
     blendMode: 0
     cells:
-    - name: GenericSparks_Frame_0
+    - name: Frame_0
       frameIndex: 0
+      additiveSortOrder: 0
       cellRect:
         x: 3
         y: 1
         width: 59
         height: 14
       spriteId: 2ae687139ecc3164384bd4a1c31933b7
-    - name: GenericSparks_Frame_1
+    - name: Frame_1
       frameIndex: 1
+      additiveSortOrder: 0
       cellRect:
         x: 3
         y: 1
         width: 59
         height: 14
       spriteId: 26b5bd6fe95f7b64f8ada23e64ae3e27
-    - name: GenericSparks_Frame_2
+    - name: Frame_2
       frameIndex: 2
+      additiveSortOrder: 0
       cellRect:
         x: 3
         y: 0
         width: 59
         height: 16
       spriteId: f4e7925ea2b351b4eb37546f48a60ced
-    - name: GenericSparks_Frame_3
+    - name: Frame_3
       frameIndex: 3
+      additiveSortOrder: 0
       cellRect:
         x: 3
         y: 2
         width: 59
         height: 13
       spriteId: 16c905403bfab204d9b8239f450fc601
-    - name: GenericSparks_Frame_4
+    - name: Frame_4
       frameIndex: 4
+      additiveSortOrder: 0
       cellRect:
         x: 3
         y: 1
         width: 59
         height: 15
       spriteId: e243f70584a842d419e413b37c09a9e0
-    - name: GenericSparks_Frame_5
+    - name: Frame_5
       frameIndex: 5
+      additiveSortOrder: 0
       cellRect:
         x: 3
         y: 2
         width: 59
         height: 12
       spriteId: f279116b22cb26946a01c461b58b2e12
-    - name: GenericSparks_Frame_6
+    - name: Frame_6
       frameIndex: 6
+      additiveSortOrder: 0
       cellRect:
         x: 3
         y: 2
         width: 59
         height: 13
       spriteId: 47bf4b3e378d3454dbf291ec7a55f23c
-    - name: GenericSparks_Frame_7
+    - name: Frame_7
       frameIndex: 7
+      additiveSortOrder: 0
       cellRect:
         x: 3
         y: 3
         width: 59
         height: 11
       spriteId: 527193be0b90b1e419f764aa07dfad35
-    - name: GenericSparks_Frame_8
+    - name: Frame_8
       frameIndex: 8
+      additiveSortOrder: 0
       cellRect:
         x: 3
         y: 3
         width: 59
         height: 9
       spriteId: 95cdb01605fceff4996c591f2754ab77
-    - name: GenericSparks_Frame_9
+    - name: Frame_9
       frameIndex: 9
+      additiveSortOrder: 0
       cellRect:
         x: 3
         y: 3
@@ -411,6 +423,7 @@ ScriptedImporter:
     linkedCells: []
     parentIndex: -1
   platformSettings: []
+  generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
   canvasSize: {x: 64, y: 16}

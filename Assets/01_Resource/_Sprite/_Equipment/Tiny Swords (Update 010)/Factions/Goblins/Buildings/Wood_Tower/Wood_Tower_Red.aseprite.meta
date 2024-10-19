@@ -77,6 +77,7 @@ ScriptedImporter:
     defaultPivotSpace: 0
     defaultPivotAlignment: 7
     customPivotPosition: {x: 0.5, y: 0.5}
+    mosaicPadding: 4
     spritePadding: 0
     generateModelPrefab: 1
     generateAnimationClips: 1
@@ -89,6 +90,7 @@ ScriptedImporter:
     defaultPivotSpace: 0
     defaultPivotAlignment: 7
     customPivotPosition: {x: 0.5, y: 0.5}
+    mosaicPadding: 4
     spritePadding: 0
     generateModelPrefab: 1
     generateAnimationClips: 1
@@ -228,40 +230,45 @@ ScriptedImporter:
     layerType: 0
     blendMode: 0
     cells:
-    - name: Wood_Tower_Red_Frame_0
+    - name: Frame_0
       frameIndex: 0
+      additiveSortOrder: 0
       cellRect:
         x: 55
         y: 21
         width: 146
         height: 155
       spriteId: b484fb2575554664d813d2862f92827f
-    - name: Wood_Tower_Red_Frame_1
+    - name: Frame_1
       frameIndex: 1
+      additiveSortOrder: 0
       cellRect:
         x: 63
         y: 21
         width: 130
         height: 155
       spriteId: 3234c8160657a3b4bb19169a4b98c9c0
-    - name: Wood_Tower_Red_Frame_2
+    - name: Frame_2
       frameIndex: 2
+      additiveSortOrder: 0
       cellRect:
         x: 63
         y: 21
         width: 130
         height: 155
       spriteId: 3d45502a967c7de40beee52139e03230
-    - name: Wood_Tower_Red_Frame_3
+    - name: Frame_3
       frameIndex: 3
+      additiveSortOrder: 0
       cellRect:
         x: 63
         y: 21
         width: 130
         height: 155
       spriteId: abca0b5e1b007a74daca24d89b1a2fca
-    - name: Wood_Tower_Red_Frame_4
+    - name: Frame_4
       frameIndex: 4
+      additiveSortOrder: 0
       cellRect:
         x: 65
         y: 21
@@ -271,6 +278,7 @@ ScriptedImporter:
     linkedCells: []
     parentIndex: -1
   platformSettings: []
+  generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
   canvasSize: {x: 256, y: 192}
