@@ -23,5 +23,6 @@ public class Unit_Enemy : Unit_Base
         Unit.UnitBase_Stat.unitSpeed = STO_Unit.UnitInfo[UnitLevel].unitSpeed;
         Unit.UnitBase_Stat.attackPower = STO_Unit.UnitInfo[UnitLevel].attackPower;
         Unit.UnitBase_Stat.defensePower = STO_Unit.UnitInfo[UnitLevel].defensePower;
+        Unit.UnitBase_Stat.unitSP = STO_Unit.UnitInfo[UnitLevel].unitSP;
     }
 }

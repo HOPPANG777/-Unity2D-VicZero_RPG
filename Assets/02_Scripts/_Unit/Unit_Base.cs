@@ -1,3 +1,5 @@
+using JetBrains.Annotations;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,6 +12,7 @@ public struct UnitBase_Info
     public int unitSpeed;
     public int attackPower;
     public int defensePower;
+    public int unitSP;
 }
 
 public abstract class Unit_Base : MonoBehaviour, ITeamMember
@@ -43,6 +46,16 @@ public abstract class Unit_Base : MonoBehaviour, ITeamMember
     [SerializeField] protected int _currentHP;
     public int CurrentHP { get { return _currentHP; } set { _currentHP = value; } }
 
+    //À¯´Ö ÃÖ´ë SP
+    [SerializeField] protected int _maxSP;
+    public int MaxSP { get { return _maxSP; } set { _maxSP = value; } }
+
+    //À¯´Ö ÇöÀç SP
+    [SerializeField] protected int _currentSP;
+    public int CurrentSP { get { return _currentSP; } set { _currentSP = value; } }
+
+
+
     [SerializeField] protected bool _isDead = false;
     public bool IsDead { get { return _isDead; } set { _isDead = value; } }
 
@@ -56,11 +69,15 @@ public abstract class Unit_Base : MonoBehaviour, ITeamMember
         Set_UnitStat(this, _currentUnitBaseSTO);
     }
 
-    public virtual void Hit(int attackPower)
+    public virtual void Hitted(int attackPower)
     {
         if (All_Manager.instance.GameMode_M.isLive == true) return;
 
-        CurrentHP -= attackPower;
+        var Temp_Defense = 100f / (100f + CurrentUnitBaseSTO.UnitInfo[UnitLevel].defensePower) * attackPower;
+
+        int Temp_Defense_Int = Mathf.RoundToInt(Temp_Defense);
+
+        CurrentHP -= Temp_Defense_Int;
 
         Check_Dead();
     }
