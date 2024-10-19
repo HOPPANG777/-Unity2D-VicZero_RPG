@@ -65,6 +65,7 @@ public abstract class Unit_Base : MonoBehaviour, ITeamMember
     protected virtual void SetFirstStatus()
     {
         _currentUnitBaseSTO.Set_UnitData(UnitBaseSTO);
+        Set_UnitStat(this, _currentUnitBaseSTO);
     }
 
     // 맞았을때

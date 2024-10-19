@@ -15,7 +15,6 @@ public class Unit_Interviewer : Unit_Enemy
     protected override void SetFirstStatus()
     {
         base.SetFirstStatus();
-        Set_UnitStat(this, _currentUnitBaseSTO);
     }
     public override void Hitted(int attackPower)
     {
