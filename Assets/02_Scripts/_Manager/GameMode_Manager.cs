@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-public class GameMode_Manager : Singleton<GameMode_Manager>
+public class GameMode_Manager : MonoBehaviour
 {
     public List<Unit_Base> Player_List = new List<Unit_Base>(); 
     public List<Unit_Base> Enemy_List = new List<Unit_Base>(); 

@@ -20,25 +20,32 @@ MonoBehaviour:
     unitSpeed: 0
     attackPower: 0
     defensePower: 0
+    unitSP: 0
   - unitHP: 80
     unitSpeed: 15
     attackPower: 25
     defensePower: 30
+    unitSP: 200
   - unitHP: 110
     unitSpeed: 15
     attackPower: 25
     defensePower: 30
+    unitSP: 250
   - unitHP: 150
     unitSpeed: 15
     attackPower: 25
     defensePower: 30
+    unitSP: 300
   - unitHP: 175
     unitSpeed: 15
     attackPower: 25
     defensePower: 30
+    unitSP: 400
   - unitHP: 200
     unitSpeed: 15
     attackPower: 50
     defensePower: 30
+    unitSP: 500
   _teamType: 0
   _unitName: Frog
+  _animState: 0

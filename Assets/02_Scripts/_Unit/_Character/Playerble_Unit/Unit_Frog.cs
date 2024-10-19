@@ -7,6 +7,8 @@ public class Unit_Frog : Unit_Player
     protected override void Start()
     {
         base.Start();
+        All_Manager.instance.UI_M.Update_Player_Unit_Current_HP((Current_HP / Max_HP), 0);
+        All_Manager.instance.UI_M.Update_Player_Unit_Current_HP(Max_HP, Current_HP, 0);
     }
 
     protected override void SetFirstStatus()
@@ -14,13 +16,26 @@ public class Unit_Frog : Unit_Player
         base.SetFirstStatus();
     }
 
+    public override void Hitted(int attackPower)
+    {
+        base.Hitted(attackPower);
+
+        All_Manager.instance.UI_M.Update_Player_Unit_Current_HP((Current_HP / Max_HP), 0);
+        All_Manager.instance.UI_M.Update_Player_Unit_Current_HP(Max_HP, Current_HP, 0);
+    }
+
+    protected override bool Check_Dead()
+    {
+        return base.Check_Dead();
+    }
+
+    protected override void Unit_Die()
+    {
+        base.Unit_Die();
+    }
+
     public override void Set_UnitStat(Unit_Base Unit, STO_UnitBase STO_Unit)
     {
-        Unit.Unit_Name = STO_Unit.Unit_Name;
-        Unit.UnitBase_Stat.unitHP = STO_Unit.UnitInfo[Unit_Level].unitHP;
-        Unit.Max_HP = Unit.Current_HP = STO_Unit.UnitInfo[Unit_Level].unitHP;
-        Unit.UnitBase_Stat.unitSpeed = STO_Unit.UnitInfo[Unit_Level].unitSpeed;
-        Unit.UnitBase_Stat.attackPower = STO_Unit.UnitInfo[Unit_Level].attackPower;
-        Unit.UnitBase_Stat.defensePower = STO_Unit.UnitInfo[Unit_Level].defensePower;
+        base.Set_UnitStat(Unit, STO_Unit);
     }
 }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Resource_Manager : Singleton<Resource_Manager>
+public class Resource_Manager : MonoBehaviour
 {
     // 플레이어 유닛 ScriptableObject
     public STO_PlayerUnit[] STO_PlayerUnits;

@@ -5,7 +5,7 @@ using UnityEditor.UI;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UI_Manager : Singleton<UI_Manager>
+public class UI_Manager : MonoBehaviour
 {
     [Header("Canvas")]
     // Canvas
@@ -74,11 +74,37 @@ public class UI_Manager : Singleton<UI_Manager>
     public Image Skill_Choice_Image;
     public Image Action_Choice_Image;
 
+    [Header("UI_System")]
+    public GameObject Unit_Selector;
+
+
+    private void Start()
+    {
+        if (All_Manager.instance.Setting_M.Game_Stop == false)
+        {
+
+        }
+        else
+        {
+
+        }
+    }
+
+    private void Update()
+    {
+        if (All_Manager.instance.Setting_M.Game_Stop == false)
+        {
+
+        }
+        
+    }
 
     void Set_UI()
     {
         
     }
+
+
 
     //플레이어 유닛의 현재 HP 이미지
     public void Update_Player_Unit_Current_HP(int p_FillAmount_Value, int Unit_Index)

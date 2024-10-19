@@ -12,8 +12,6 @@ public class Unit_Player : Unit_Base, IUnitAnimationState
 
     public Animation_State Anim_State { get { return _currentPlayerUnitSTO.Anim_State; } set { _currentPlayerUnitSTO.Anim_State = value; } }
 
-
-
     protected override void Start()
     {
         base.Start();

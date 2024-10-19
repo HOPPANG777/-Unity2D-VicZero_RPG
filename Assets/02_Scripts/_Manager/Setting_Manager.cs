@@ -15,7 +15,7 @@ public enum Game_State
     INTBATTLE
 }
 
-public class Setting_Manager : Singleton<Setting_Manager>
+public class Setting_Manager : MonoBehaviour
 {
     // 게임 기본상태
     public Game_State GM_State = Game_State.IDLE;

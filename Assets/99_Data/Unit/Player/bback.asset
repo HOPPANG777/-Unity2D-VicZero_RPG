@@ -20,25 +20,32 @@ MonoBehaviour:
     unitSpeed: 0
     attackPower: 0
     defensePower: 0
+    unitSP: 0
   - unitHP: 100
     unitSpeed: 17
     attackPower: 40
     defensePower: 30
+    unitSP: 30
   - unitHP: 140
     unitSpeed: 17
     attackPower: 45
     defensePower: 30
+    unitSP: 50
   - unitHP: 175
     unitSpeed: 17
     attackPower: 45
     defensePower: 35
+    unitSP: 50
   - unitHP: 235
     unitSpeed: 17
     attackPower: 50
     defensePower: 35
+    unitSP: 70
   - unitHP: 250
     unitSpeed: 17
     attackPower: 60
     defensePower: 50
+    unitSP: 90
   _teamType: 0
   _unitName: bback
+  _animState: 0

@@ -20,25 +20,32 @@ MonoBehaviour:
     unitSpeed: 0
     attackPower: 0
     defensePower: 0
+    unitSP: 0
   - unitHP: 100
     unitSpeed: 19
     attackPower: 40
     defensePower: 25
+    unitSP: 100
   - unitHP: 120
     unitSpeed: 0
     attackPower: 45
     defensePower: 25
+    unitSP: 120
   - unitHP: 125
     unitSpeed: 19
     attackPower: 55
     defensePower: 25
+    unitSP: 120
   - unitHP: 125
     unitSpeed: 19
     attackPower: 65
     defensePower: 25
+    unitSP: 120
   - unitHP: 150
     unitSpeed: 19
     attackPower: 70
     defensePower: 25
+    unitSP: 150
   _teamType: 0
   _unitName: ddhhssjj
+  _animState: 0
