@@ -17,7 +17,8 @@ public enum Animation_State
     SP_ATK,
     ROLL,
     DEFEND,
-    RUN,
+    MOVE,
+    JUMP,
     TAKE_HIT,
     DEATH
 }

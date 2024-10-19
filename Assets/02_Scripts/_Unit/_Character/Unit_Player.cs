@@ -2,8 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Unit_Player : Unit_Base
+public class Unit_Player : Unit_Base, IUnitAnimationState
 {
+
+    public STO_PlayerUnit PlayerUnitSTO { get { return _playerUnitSTO; } }
+    [SerializeField] STO_PlayerUnit _playerUnitSTO;
+    [SerializeField] protected STO_PlayerUnit _currentPlayerUnitSTO;
+    public STO_PlayerUnit CurrentPlayerUnitSTO { get { return _currentPlayerUnitSTO; } }
+
+    public Animation_State Anim_State { get { return _currentPlayerUnitSTO.Anim_State; } set { _currentPlayerUnitSTO.Anim_State = value; } }
+
+
+
     protected override void Start()
     {
         base.Start();
@@ -13,9 +23,6 @@ public class Unit_Player : Unit_Base
     {
         base.SetFirstStatus();
     }
-
-
-   
 
     public override void Set_UnitStat(Unit_Base Unit, STO_UnitBase STO_Unit)
     {

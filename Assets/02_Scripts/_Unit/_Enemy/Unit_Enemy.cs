@@ -2,8 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Unit_Enemy : Unit_Base
+public class Unit_Enemy : Unit_Base, IUnitAnimationState
 {
+    public STO_EnemyUnit EnemyUnitSTO { get { return _enemyUnitSTO; } }
+    [SerializeField] STO_EnemyUnit _enemyUnitSTO;
+    [SerializeField] protected STO_EnemyUnit _currentEnemyUnitSTO;
+    public STO_EnemyUnit CurrentEnemyUnitSTO { get { return _currentEnemyUnitSTO; } }
+
+    public Animation_State Anim_State { get { return _currentEnemyUnitSTO.Anim_State; } set { _currentEnemyUnitSTO.Anim_State = value; } }
+
 
     protected override void Start()
     {

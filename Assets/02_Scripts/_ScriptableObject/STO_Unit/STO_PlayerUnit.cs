@@ -5,9 +5,11 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "PlayerData", menuName = "UnitData/PlayerData", order = 1)]
 public class STO_PlayerUnit : STO_UnitBase
 {
-    //[Header("STO_PlayerUnit")]
-    // 플레이어 레벨
-    // 스킬추가 해야함
+    [Header("STO_PlayerUnit")]
+    // 플레이어 유닛 애니메이션 상태
+    [SerializeField] Animation_State _animState;
+    public Animation_State Anim_State { get { return _animState; } set { _animState = value; } }
+
 
 
     public override void Set_UnitData(STO_UnitBase STO_Unit)
