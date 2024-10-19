@@ -43,6 +43,9 @@ public abstract class Unit_Base : MonoBehaviour, ITeamMember
     [SerializeField] protected int _currentHP;
     public int CurrentHP { get { return _currentHP; } set { _currentHP = value; } }
 
+    [SerializeField] protected bool _isDead = false;
+    public bool IsDead { get { return _isDead; } set { _isDead = value; } }
+
     protected virtual void Start()
     {
         SetFirstStatus();
@@ -51,6 +54,33 @@ public abstract class Unit_Base : MonoBehaviour, ITeamMember
     {
         _currentUnitBaseSTO.Set_UnitData(UnitBaseSTO);
         Set_UnitStat(this, _currentUnitBaseSTO);
+    }
+
+    public virtual void Hit(int attackPower)
+    {
+        if (All_Manager.instance.GameMode_M.isLive == true) return;
+
+        CurrentHP -= attackPower;
+
+        Check_Dead();
+    }
+
+    protected virtual bool Check_Dead()
+    {
+        if (CurrentHP <= 0)
+        {
+            Unit_Die();
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    protected virtual void Unit_Die()
+    {
+        IsDead = true;
     }
 
 

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -21,7 +22,7 @@ public class GameMode_Manager : Singleton<GameMode_Manager>
     }
 
     public Battle_State battleState;
-    public bool isLive;
+    public bool isLive = true;
 
     //IEnumerator Temp_Coroutine;
 
@@ -80,9 +81,6 @@ public class GameMode_Manager : Singleton<GameMode_Manager>
         yield return new WaitForSeconds(1f);
         battleState = Battle_State.PLAYER_TURN;
         Debug.Log("플레이어 턴 확인");
-
-        // 해당 턴이 종료된뒤 에너미 턴으로 변경
-        //battleState = Battle_State.ENEMY_TURN;
     }
 
     // 에너미 턴
@@ -93,9 +91,6 @@ public class GameMode_Manager : Singleton<GameMode_Manager>
         Debug.Log("에너미 턴 확인");
 
         Enemy_Attack();
-
-        // 해당 턴이 종료된뒤 플레이어 턴으로 변경
-        StartCoroutine(Player_Turn());
     }
 
     public void On_Attack_Button()
@@ -121,6 +116,44 @@ public class GameMode_Manager : Singleton<GameMode_Manager>
     {
         Debug.Log("에너미 공격!" + Enemy_List[0].UnitBase_Stat.attackPower);
         Debug.Log("플레이어 맞음!" + (Player_List[0].CurrentHP - Enemy_List[0].UnitBase_Stat.attackPower));
+        StartCoroutine(Player_Turn());
+    }
+
+    public void Lost_or_Win()
+    {
+        for (int i = 0; i < Player_List.Count; i++)
+        {
+            if (Player_List[i].IsDead == true)
+            {
+                isLive = false;
+                Player_Lost();
+                Battle_End();
+            }
+        }
+
+        for (int i = 0; i < Enemy_List.Count; i++)
+        {
+            if (Enemy_List[i].IsDead == true)
+            {
+                isLive = false;
+                Player_Win();
+                Battle_End();
+            }
+        }
+
+    }
+
+    void Player_Win()
+    {
+        // 여기에다가 이제 이겼다고 경험치 주는 거랑 타이틀 띄우는거 하면 될꺼같고
+        battleState = Battle_State.WIN;
+
+    }
+
+    void Player_Lost()
+    {
+        // 졌으면 Lost 타이틀 띄우고 재시작 할꺼냐고 물어보면 된다.
+        battleState = Battle_State.LOST;
     }
 
 }
