@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03d970891373d3a4d9d2ad92bbbec2f1, type: 3}
+  m_Name: Frog
+  m_EditorClassIdentifier: 
+  _dieSound: {fileID: 0}
+  _animController: {fileID: 9100000, guid: a1673bd7d1a3c2a47a3a3b291911f0e8, type: 2}
+  _unitSprite: {fileID: 21300000, guid: a1cfa5d705c61f14091418350efa2745, type: 3}
+  _unitInfo:
+  - unitHP: 0
+    unitSpeed: 0
+    attackPower: 0
+    defensePower: 0
+  - unitHP: 80
+    unitSpeed: 15
+    attackPower: 25
+    defensePower: 30
+  - unitHP: 110
+    unitSpeed: 15
+    attackPower: 25
+    defensePower: 30
+  - unitHP: 150
+    unitSpeed: 15
+    attackPower: 25
+    defensePower: 30
+  - unitHP: 175
+    unitSpeed: 15
+    attackPower: 25
+    defensePower: 30
+  - unitHP: 200
+    unitSpeed: 15
+    attackPower: 50
+    defensePower: 30
+  _teamType: 0
+  _unitName: Frog

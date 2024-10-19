@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ab24dda5cff5a24097d93ac8d66c9ad, type: 3}
+  m_Name: 2stFailed
+  m_EditorClassIdentifier: 
+  _dieSound: {fileID: 0}
+  _animController: {fileID: 9100000, guid: 9092a05a639c27a4aab2f9e1e7ee4816, type: 2}
+  _unitSprite: {fileID: 21300000, guid: 7da34388448764b42a0293c0455eb0b1, type: 3}
+  _unitInfo:
+  - unitHP: 800
+    unitSpeed: 10
+    attackPower: 50
+    defensePower: 70
+  _teamType: 1
+  _unitName: 2stFailed
+  _rewardExp: 2000

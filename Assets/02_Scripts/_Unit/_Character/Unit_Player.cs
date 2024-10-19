@@ -4,6 +4,19 @@ using UnityEngine;
 
 public class Unit_Player : Unit_Base
 {
+    public enum Anim_State
+    { 
+        IDLE,
+        ATK_1,
+        ATK_2,
+        ATK_3,
+        SP_ATK,
+        ROLL,
+        RUN,
+        DEFEND,
+        TAKE_HIT,
+        DEATH
+    }
 
     protected override void Start()
     {
@@ -14,6 +27,65 @@ public class Unit_Player : Unit_Base
     {
         base.SetFirstStatus();
     }
+
+
+    public virtual void Check_State(Anim_State CurrentState)
+    {
+        switch (CurrentState)
+        {
+            case Anim_State.IDLE:
+                {
+
+                }
+                break;
+            case Anim_State.ATK_1:
+                {
+
+                }
+                break;
+            case Anim_State.ATK_2:
+                {
+
+                }
+                break;
+            case Anim_State.ATK_3:
+                {
+
+                }
+                break;
+            case Anim_State.SP_ATK:
+                {
+
+                }
+                break;
+            case Anim_State.ROLL:
+                {
+
+                }
+                break;
+            case Anim_State.RUN:
+                {
+
+                }
+                break;
+            case Anim_State.DEFEND:
+                {
+
+                }
+                break;
+            case Anim_State.TAKE_HIT:
+                {
+
+                }
+                break;
+            case Anim_State.DEATH:
+                {
+
+                }
+                break;
+        }
+    }
+
 
     public override void Set_UnitStat(Unit_Base Unit, STO_UnitBase STO_Unit)
     {

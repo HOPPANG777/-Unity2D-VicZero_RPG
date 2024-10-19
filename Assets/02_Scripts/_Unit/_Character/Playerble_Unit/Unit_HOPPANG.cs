@@ -9,8 +9,6 @@ public class Unit_HOPPANG : Unit_Player
         base.Start();
     }
 
-    
-
 
     protected override void SetFirstStatus()
     {
