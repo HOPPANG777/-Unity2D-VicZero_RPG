@@ -32,32 +32,31 @@ public abstract class Unit_Base : MonoBehaviour, ITeamMember
 
     //À¯´Ö ÀÌ¸§
     [SerializeField] protected string _unitName;
-    public string UnitName { get { return _unitName; } set { _unitName = value; } }
+    public string Unit_Name { get { return _unitName; } set { _unitName = value; } }
 
     //À¯´Ö ·¹º§
     [SerializeField] protected int _unitLevel;
-    public int UnitLevel { get { return _unitLevel; } set { _unitLevel = value; } }
+    public int Unit_Level { get { return _unitLevel; } set { _unitLevel = value; } }
 
     //À¯´Ö ÃÖ´ë Ã¼·Â
     [SerializeField] protected int _maxHP;
-    public int MaxHP { get { return _maxHP; } set { _maxHP = value; } }
+    public int Max_HP { get { return _maxHP; } set { _maxHP = value; } }
 
     //À¯´Ö ÇöÀç Ã¼·Â
     [SerializeField] protected int _currentHP;
-    public int CurrentHP { get { return _currentHP; } set { _currentHP = value; } }
+    public int Current_HP { get { return _currentHP; } set { _currentHP = value; } }
 
     //À¯´Ö ÃÖ´ë SP
     [SerializeField] protected int _maxSP;
-    public int MaxSP { get { return _maxSP; } set { _maxSP = value; } }
+    public int Max_SP { get { return _maxSP; } set { _maxSP = value; } }
 
     //À¯´Ö ÇöÀç SP
     [SerializeField] protected int _currentSP;
-    public int CurrentSP { get { return _currentSP; } set { _currentSP = value; } }
+    public int Current_SP { get { return _currentSP; } set { _currentSP = value; } }
 
-
-
+    //À¯´ÖÀÇ »ç¸Á ÆÇÁ¤
     [SerializeField] protected bool _isDead = false;
-    public bool IsDead { get { return _isDead; } set { _isDead = value; } }
+    public bool Is_Dead { get { return _isDead; } set { _isDead = value; } }
 
     protected virtual void Start()
     {
@@ -66,25 +65,25 @@ public abstract class Unit_Base : MonoBehaviour, ITeamMember
     protected virtual void SetFirstStatus()
     {
         _currentUnitBaseSTO.Set_UnitData(UnitBaseSTO);
-        Set_UnitStat(this, _currentUnitBaseSTO);
     }
 
+    // ¸Â¾ÒÀ»¶§
     public virtual void Hitted(int attackPower)
     {
         if (All_Manager.instance.GameMode_M.isLive == true) return;
 
-        var Temp_Defense = 100f / (100f + CurrentUnitBaseSTO.UnitInfo[UnitLevel].defensePower) * attackPower;
+        var Temp_Defense = 100f / (100f + CurrentUnitBaseSTO.UnitInfo[Unit_Level].defensePower) * attackPower;
 
         int Temp_Defense_Int = Mathf.RoundToInt(Temp_Defense);
 
-        CurrentHP -= Temp_Defense_Int;
+        Current_HP -= Temp_Defense_Int;
 
         Check_Dead();
     }
 
     protected virtual bool Check_Dead()
     {
-        if (CurrentHP <= 0)
+        if (Current_HP <= 0)
         {
             Unit_Die();
             return true;
@@ -97,7 +96,7 @@ public abstract class Unit_Base : MonoBehaviour, ITeamMember
 
     protected virtual void Unit_Die()
     {
-        IsDead = true;
+        Is_Dead = true;
     }
 
 

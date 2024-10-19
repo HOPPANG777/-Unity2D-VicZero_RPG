@@ -26,6 +26,11 @@ public class GameMode_Manager : Singleton<GameMode_Manager>
 
     //IEnumerator Temp_Coroutine;
 
+    public void Start()
+    {
+        
+    }
+
     // 전투 시작 알림
     public void Battle_Awake()
     {
@@ -97,7 +102,7 @@ public class GameMode_Manager : Singleton<GameMode_Manager>
     {
         if (battleState != Battle_State.PLAYER_TURN) return;
         Debug.Log("플레이어 공격!" + (Player_List[0].UnitBase_Stat.attackPower));
-        Debug.Log("에너미 처맞음!" + (Enemy_List[0].CurrentHP - Player_List[0].UnitBase_Stat.attackPower));
+        Debug.Log("에너미 처맞음!" + (Enemy_List[0].Current_HP - Player_List[0].UnitBase_Stat.attackPower));
 
         StartCoroutine(Enemy_Turn());
     }
@@ -115,7 +120,7 @@ public class GameMode_Manager : Singleton<GameMode_Manager>
     public void Enemy_Attack()
     {
         Debug.Log("에너미 공격!" + Enemy_List[0].UnitBase_Stat.attackPower);
-        Debug.Log("플레이어 맞음!" + (Player_List[0].CurrentHP - Enemy_List[0].UnitBase_Stat.attackPower));
+        Debug.Log("플레이어 맞음!" + (Player_List[0].Current_HP - Enemy_List[0].UnitBase_Stat.attackPower));
         StartCoroutine(Player_Turn());
     }
 
@@ -123,7 +128,7 @@ public class GameMode_Manager : Singleton<GameMode_Manager>
     {
         for (int i = 0; i < Player_List.Count; i++)
         {
-            if (Player_List[i].IsDead == true)
+            if (Player_List[i].Is_Dead == true)
             {
                 isLive = false;
                 Player_Lost();
@@ -133,7 +138,7 @@ public class GameMode_Manager : Singleton<GameMode_Manager>
 
         for (int i = 0; i < Enemy_List.Count; i++)
         {
-            if (Enemy_List[i].IsDead == true)
+            if (Enemy_List[i].Is_Dead == true)
             {
                 isLive = false;
                 Player_Win();

@@ -19,7 +19,7 @@ public class Resource_Manager : Singleton<Resource_Manager>
 
         for (int i = 0; i < STO_PlayerUnits.Length; i++)
         {
-            if (STO_PlayerUnits[i].UnitName == name) TempPlayerData = STO_PlayerUnits[i];
+            if (STO_PlayerUnits[i].Unit_Name == name) TempPlayerData = STO_PlayerUnits[i];
         }
 
         return TempPlayerData;
@@ -32,7 +32,7 @@ public class Resource_Manager : Singleton<Resource_Manager>
 
         for (int i = 0; i < STO_EnemyUnits.Length; i++)
         {
-            if (STO_EnemyUnits[i].UnitName == name) TempEnemyData = STO_EnemyUnits[i];
+            if (STO_EnemyUnits[i].Unit_Name == name) TempEnemyData = STO_EnemyUnits[i];
         }
 
         return TempEnemyData;

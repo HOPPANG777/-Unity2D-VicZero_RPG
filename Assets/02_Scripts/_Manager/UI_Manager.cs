@@ -80,27 +80,42 @@ public class UI_Manager : Singleton<UI_Manager>
         
     }
 
-    public void Update_Player_Unit_Current_HP(int p_FillAmount_Value, int Unit_Index, string name, int p_Level)
+    //플레이어 유닛의 현재 HP 이미지
+    public void Update_Player_Unit_Current_HP(int p_FillAmount_Value, int Unit_Index)
     {
-        var Temp_Unit = All_Manager.instance.Resource_M.ConvertNameToPlayerSTO(name);
         Character_Current_HP_Image[Unit_Index].fillAmount = p_FillAmount_Value;
-        Character_HP_Text[Unit_Index].text = Temp_Unit.UnitInfo[p_Level].unitHP.ToString() + "/" + p_FillAmount_Value.ToString();
     }
 
-    public void Update_Enemy_Unit_Current_HP(int p_FillAmount_Value, int Unit_Index, string name, int p_Level)
+    //플레이어 유닛의 현재 SP 이미지
+    public void Update_Player_Unit_Current_SP(int p_FillAmount_Value, int Unit_Index)
     {
-        var Temp_Unit = All_Manager.instance.Resource_M.ConvertNameToEnemySTO(name);
-        Enemy_Current_HP_Image[Unit_Index].fillAmount = p_FillAmount_Value;
-        Enemy_HP_Text[Unit_Index].text = Temp_Unit.UnitInfo[p_Level].unitHP.ToString() + "/" + p_FillAmount_Value.ToString();
-    }
-
-    public void Update_Player_Unit_Current_SP(int p_FillAmount_Value, int Unit_Index, string name, int p_Level)
-    {
-        var Temp_Unit = All_Manager.instance.Resource_M.ConvertNameToPlayerSTO(name);
         Character_Current_SP_Image[Unit_Index].fillAmount = p_FillAmount_Value;
-        Character_SP_Text[Unit_Index].text = Temp_Unit.UnitInfo[p_Level].unitSP.ToString() + "/" + p_FillAmount_Value.ToString();
     }
 
-    
+    //에너미 유닛의 현재 HP 이미지
+    public void Update_Enemy_Unit_Current_HP(int p_FillAmount_Value, int Unit_Index)
+    {  
+        Enemy_Current_HP_Image[Unit_Index].fillAmount = p_FillAmount_Value;
+    }
+
+    //플레이어 유닛의 현재 HP 텍스트
+    public void Update_Player_Unit_Current_HP(int p_Max_Value, int p_Min_Value, int Unit_Index)
+    {
+        Character_HP_Text[Unit_Index].text = p_Max_Value.ToString() + "/" + p_Min_Value.ToString();
+    }
+
+    //플레이어 유닛의 현재 SP 텍스트
+    public void Update_Player_Unit_Current_SP(int p_Max_Value, int p_Min_Value, int Unit_Index)
+    {
+        Character_SP_Text[Unit_Index].text = p_Max_Value.ToString() + "/" + p_Min_Value.ToString();
+    }
+
+    //에너미 유닛의 현재 HP 텍스트
+    public void Update_Enemy_Unit_Current_HP(int p_Max_Value, int p_Min_Value, int Unit_Index)
+    {
+        Enemy_HP_Text[Unit_Index].text = p_Max_Value.ToString() + "/" + p_Min_Value.ToString();
+    }
+
+
 
 }

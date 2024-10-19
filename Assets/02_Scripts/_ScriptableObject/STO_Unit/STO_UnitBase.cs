@@ -29,7 +29,7 @@ public class STO_UnitBase : ScriptableObject
 
     // ¿Ø¥÷ ¿Ã∏ß
     [SerializeField] protected string _unitName;
-    public string UnitName { get { return _unitName; } set { _unitName = value; } }
+    public string Unit_Name { get { return _unitName; } set { _unitName = value; } }
 
     public virtual void Set_UnitData(STO_UnitBase STO_Unit)
     {
@@ -38,7 +38,7 @@ public class STO_UnitBase : ScriptableObject
         this._animController = STO_Unit.AnimController;
         this._unitSprite = STO_Unit.UnitSprite;
 
-        this._unitName = STO_Unit.UnitName;
+        this._unitName = STO_Unit.Unit_Name;
 
         this._teamType = STO_Unit.teamType;
     }
