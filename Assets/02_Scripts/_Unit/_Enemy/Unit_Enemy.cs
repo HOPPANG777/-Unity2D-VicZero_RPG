@@ -27,6 +27,11 @@ public class Unit_Enemy : Unit_Base, IUnitAnimationState
         base.Hitted(attackPower);
     }
 
+    protected override void UpdateStateUI()
+    {
+        base.UpdateStateUI();
+    }
+
     public override void Set_UnitStat(Unit_Base Unit, STO_UnitBase STO_Unit)
     {
         Unit.Unit_Name = STO_Unit.Unit_Name; 

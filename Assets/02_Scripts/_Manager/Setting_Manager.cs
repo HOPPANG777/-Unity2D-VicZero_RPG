@@ -65,7 +65,7 @@ public class Setting_Manager : MonoBehaviour
                     if (Game_Stop == false)
                     {
                         Game_Time += Time.deltaTime;
-                        if (!Stage_In)
+                        if (Stage_In)
                         {
                             All_Manager.instance.GameMode_M.Battle_Awake();
                             Stage_In = true;

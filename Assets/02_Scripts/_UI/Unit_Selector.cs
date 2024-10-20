@@ -11,65 +11,54 @@ public class Unit_Selector : MonoBehaviour
     public GameObject Current_Arrow;
     public Unit_Player Current_Unit;
 
-    void Start()
+    public void Init_Unit_Selector()
     {
-        if (All_Manager.instance.Setting_M.Game_Stop == false)
+        // 플레이어 선택
         {
-            // 플레이어 선택
-            {
-                // 초기 상태에서는 화살표와 컨트롤 패널 비활성화
-                All_Manager.instance.UI_M.Choice_Controll_Panel.gameObject.SetActive(false);
-                Current_Arrow = Instantiate(Arrow_Indicator_Prefab);
-                Current_Arrow.SetActive(false);
-            }
-
-            // 에너미 선택
-            {
-
-            }
+            // 초기 상태에서는 화살표와 컨트롤 패널 비활성화
+            Arrow_Indicator_Prefab = All_Manager.instance.Resource_M.UI_Arrow_Prefab;
+            All_Manager.instance.UI_M.Choice_Controll_Panel.gameObject.SetActive(false);
+            Current_Arrow = Instantiate(Arrow_Indicator_Prefab);
+            Current_Arrow.SetActive(false);
         }
-        else
+
+        // 에너미 선택
         {
 
         }
     }
 
-    void Update()
+ 
+    public void Update_Unit_Selector()
     {
-        if (All_Manager.instance.Setting_M == false)
+        // 플레이어 선택
         {
-            // 플레이어 선택
+            if (Input.GetMouseButtonDown(0)) // 마우스 클릭
             {
-                if (Input.GetMouseButtonDown(0)) // 마우스 클릭
+                Vector3 Mouse_Pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                Collider2D Hit_Collider = Physics2D.OverlapPoint(Mouse_Pos);
+
+                if (Hit_Collider != null)
                 {
-                    Vector3 Mouse_Pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                    Collider2D Hit_Collider = Physics2D.OverlapPoint(Mouse_Pos);
+                    Unit_Player Selected_Unit = Hit_Collider.GetComponent<Unit_Player>();
 
-                    if (Hit_Collider != null)
+                    if (Selected_Unit != null) // 유닛이 클릭되었을 때
                     {
-                        Unit_Player Selected_Unit = Hit_Collider.GetComponent<Unit_Player>();
-
-                        if (Selected_Unit != null) // 유닛이 클릭되었을 때
-                        {
-                            Select_Player_Unit(Selected_Unit);
-                        }
+                        Select_Player_Unit(Selected_Unit);
                     }
                 }
             }
+        }
 
-            // 에너미 선택
-            {
-                if (Input.GetMouseButtonDown(0)) // 마우스 클릭
-                {
-
-                }
-            }
-        }  
-        else
+        // 에너미 선택
         {
+            if (Input.GetMouseButtonDown(0)) // 마우스 클릭
+            {
 
+            }
         }
     }
+
     void Select_Player_Unit(Unit_Player Unit)
     {
         // 이전에 선택된 유닛의 화살표 숨기기

@@ -31,6 +31,10 @@ public class STO_UnitBase : ScriptableObject
     [SerializeField] protected string _unitName;
     public string Unit_Name { get { return _unitName; } set { _unitName = value; } }
 
+    // À¯´ÖÀÇ ¼ø¼­
+    [SerializeField] protected int _unitIndex;
+    public int Unit_Index { get { return _unitIndex; } set { _unitIndex = value; } }
+
     public virtual void Set_UnitData(STO_UnitBase STO_Unit)
     {
         this._dieSound = STO_Unit.DieSound;

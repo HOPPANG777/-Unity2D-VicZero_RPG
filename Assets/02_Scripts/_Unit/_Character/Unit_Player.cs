@@ -17,9 +17,19 @@ public class Unit_Player : Unit_Base, IUnitAnimationState
         base.Start();
     }
 
+    public override void Hitted(int attackPower)
+    {
+        base.Hitted(attackPower);
+    }
+
     protected override void SetFirstStatus()
     {
         base.SetFirstStatus();
+    }
+
+    protected override void UpdateStateUI()
+    {
+        base.UpdateStateUI();
     }
 
     public override void Set_UnitStat(Unit_Base Unit, STO_UnitBase STO_Unit)

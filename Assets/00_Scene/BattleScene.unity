@@ -122,6 +122,50 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &8924036
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8924038}
+  - component: {fileID: 8924037}
+  m_Layer: 0
+  m_Name: Unit_State_Sync
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &8924037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8924036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19806398ae1a63e43b5ceb5dcfec647a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &8924038
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8924036}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1902465775}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &10315659
 GameObject:
   m_ObjectHideFlags: 0
@@ -253,7 +297,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 741b98bbb6a540942b46b60a08e1b188, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Arrow_Indicator_Prefab: {fileID: 940241568684783530, guid: 6a8d9cd0912c9984483a3061375e9099, type: 3}
+  Arrow_Indicator_Prefab: {fileID: 0}
   Current_Arrow: {fileID: 0}
   Current_Unit: {fileID: 0}
 --- !u!4 &13577323
@@ -2573,6 +2617,7 @@ MonoBehaviour:
   _maxSP: 0
   _currentSP: 0
   _isDead: 0
+  _unitIndex: 0
   _playerUnitSTO: {fileID: 11400000, guid: 3a0730d1862e9614cb8773135c2eaa57, type: 2}
   _currentPlayerUnitSTO: {fileID: 11400000, guid: 3a0730d1862e9614cb8773135c2eaa57, type: 2}
 --- !u!61 &418422088
@@ -4807,8 +4852,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83ff397f283a00744949c75d68fc5f3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitRB: {fileID: 0}
-  unitBC: {fileID: 0}
+  unitRB: {fileID: 812010340}
+  unitBC: {fileID: 812010339}
   unitAnimator: {fileID: 812010336}
   _unitBaseSTO: {fileID: 11400000, guid: 5bbf72a2860db8445ab465df1bc68a90, type: 2}
   _currentUnitBaseSTO: {fileID: 11400000, guid: 5bbf72a2860db8445ab465df1bc68a90, type: 2}
@@ -4825,6 +4870,7 @@ MonoBehaviour:
   _maxSP: 0
   _currentSP: 0
   _isDead: 0
+  _unitIndex: 0
   _playerUnitSTO: {fileID: 11400000, guid: 5bbf72a2860db8445ab465df1bc68a90, type: 2}
   _currentPlayerUnitSTO: {fileID: 11400000, guid: 5bbf72a2860db8445ab465df1bc68a90, type: 2}
 --- !u!1 &835535671
@@ -6136,6 +6182,50 @@ Transform:
   - {fileID: 1402891254}
   m_Father: {fileID: 1104159399}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1052491842
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1052491844}
+  - component: {fileID: 1052491843}
+  m_Layer: 0
+  m_Name: Unit_Name_Sync
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1052491843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1052491842}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 272d63faa0b3de6468985c52086ed0a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1052491844
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1052491842}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1902465775}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1057559056
 GameObject:
   m_ObjectHideFlags: 0
@@ -6463,8 +6553,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41ddd962f2a057d4ca96d879a773b873, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitRB: {fileID: 0}
-  unitBC: {fileID: 0}
+  unitRB: {fileID: 1058852993}
+  unitBC: {fileID: 1058852992}
   unitAnimator: {fileID: 1058852989}
   _unitBaseSTO: {fileID: 11400000, guid: 421e43327facbbf46b990cd05ee081ab, type: 2}
   _currentUnitBaseSTO: {fileID: 11400000, guid: 421e43327facbbf46b990cd05ee081ab, type: 2}
@@ -6481,6 +6571,7 @@ MonoBehaviour:
   _maxSP: 0
   _currentSP: 0
   _isDead: 0
+  _unitIndex: 0
   _playerUnitSTO: {fileID: 11400000, guid: 421e43327facbbf46b990cd05ee081ab, type: 2}
   _currentPlayerUnitSTO: {fileID: 11400000, guid: 421e43327facbbf46b990cd05ee081ab, type: 2}
 --- !u!1 &1063714908
@@ -6601,6 +6692,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c9af080f3c9bbb74fa97a72f831bc1d5, type: 2}
   - {fileID: 11400000, guid: 5147e7ad7cc8c284cac70cf0d5182a9b, type: 2}
   - {fileID: 11400000, guid: d857e59fc9ca15d45a01fdd51e8db0d1, type: 2}
+  UI_Arrow_Prefab: {fileID: 940241568684783530, guid: 6a8d9cd0912c9984483a3061375e9099, type: 3}
 --- !u!4 &1068761661
 Transform:
   m_ObjectHideFlags: 0
@@ -7041,16 +7133,18 @@ MonoBehaviour:
   Battle_Panel: {fileID: 1402891253}
   Player_Unit_State_Panel: {fileID: 488945997}
   Character_Panel: {fileID: 1479150589}
-  First_Player_Unit_Panel: {fileID: 1508562424}
-  Second_Player_Unit_Panel: {fileID: 448084962}
-  Third_Player_Unit_Panel: {fileID: 59135579}
-  Fourth_Player_Unit_Panel: {fileID: 43606592}
+  Player_Unit_Panel:
+  - {fileID: 1508562424}
+  - {fileID: 448084962}
+  - {fileID: 59135579}
+  - {fileID: 43606592}
   Enemy_Unit_State_Panel: {fileID: 728024764}
   Choice_Enemy_Panel: {fileID: 1542044932}
-  First_Enemy_Unit_Panel: {fileID: 1344492604}
-  Second_Enemy_Unit_Panel: {fileID: 1099286285}
-  Third_Enemy_Unit_Panel: {fileID: 1343154877}
-  Fourth_Enemy_Unit_Panel: {fileID: 1993144035}
+  Enemy_Unit_Panel:
+  - {fileID: 1344492604}
+  - {fileID: 1099286285}
+  - {fileID: 1343154877}
+  - {fileID: 1993144035}
   Select_Controll_Panel: {fileID: 151617598}
   Choice_Controll_Panel: {fileID: 811900933}
   Attack_Choice_Panel: {fileID: 1665402322}
@@ -7153,7 +7247,9 @@ MonoBehaviour:
   Attack_Choice_Image: {fileID: 2009695663}
   Skill_Choice_Image: {fileID: 861122923}
   Action_Choice_Image: {fileID: 1576462107}
-  Unit_Selector: {fileID: 13577321}
+  Unit_Selector_Arrow: {fileID: 13577322}
+  State_Sync: {fileID: 8924037}
+  Name_Sync: {fileID: 1052491843}
 --- !u!4 &1104159399
 Transform:
   m_ObjectHideFlags: 0
@@ -8941,6 +9037,7 @@ MonoBehaviour:
   _maxSP: 0
   _currentSP: 0
   _isDead: 0
+  _unitIndex: 0
   _enemyUnitSTO: {fileID: 11400000, guid: d857e59fc9ca15d45a01fdd51e8db0d1, type: 2}
   _currentEnemyUnitSTO: {fileID: 11400000, guid: d857e59fc9ca15d45a01fdd51e8db0d1, type: 2}
 --- !u!1 &1457743351
@@ -10550,7 +10647,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1761288411}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -11683,6 +11780,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 13577323}
+  - {fileID: 8924038}
+  - {fileID: 1052491844}
   m_Father: {fileID: 1104159399}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1915245982
@@ -12278,6 +12377,7 @@ MonoBehaviour:
   _maxSP: 0
   _currentSP: 0
   _isDead: 0
+  _unitIndex: 0
   _playerUnitSTO: {fileID: 11400000, guid: 8417466afa276394f81a830703f4618a, type: 2}
   _currentPlayerUnitSTO: {fileID: 11400000, guid: 8417466afa276394f81a830703f4618a, type: 2}
 --- !u!1 &2116643821

@@ -20,6 +20,8 @@ MonoBehaviour:
     unitSpeed: 20
     attackPower: 30
     defensePower: 40
+    unitSP: 0
   _teamType: 1
-  _unitName: Interviewer
+  _unitName: GameGem
   _rewardExp: 10000
+  _animState: 0

@@ -14,18 +14,12 @@ public class UI_Manager : MonoBehaviour
     // Player_Unit_State_Panel
     public Canvas Player_Unit_State_Panel;
     public Image Character_Panel;
-    public Canvas First_Player_Unit_Panel;
-    public Canvas Second_Player_Unit_Panel;
-    public Canvas Third_Player_Unit_Panel;
-    public Canvas Fourth_Player_Unit_Panel;
+    public List<Canvas> Player_Unit_Panel;
 
     // Enemy_Unit_State_Panel
     public Canvas Enemy_Unit_State_Panel;
     public Image Choice_Enemy_Panel;
-    public Canvas First_Enemy_Unit_Panel;
-    public Canvas Second_Enemy_Unit_Panel;
-    public Canvas Third_Enemy_Unit_Panel;
-    public Canvas Fourth_Enemy_Unit_Panel;
+    public List<Canvas> Enemy_Unit_Panel;
 
     // Select_Controlle_Panel
     public Canvas Select_Controll_Panel;
@@ -75,14 +69,19 @@ public class UI_Manager : MonoBehaviour
     public Image Action_Choice_Image;
 
     [Header("UI_System")]
-    public GameObject Unit_Selector;
-
+    public Unit_Selector Unit_Selector_Arrow;
+    public Unit_State_Sync State_Sync;
+    public Unit_Name_Sync Name_Sync;
 
     private void Start()
     {
         if (All_Manager.instance.Setting_M.Game_Stop == false)
         {
-
+            if (All_Manager.instance.Setting_M.Stage_In == true)
+            {
+                Unit_Selector_Arrow.Init_Unit_Selector();
+                Name_Sync.Set_Unit_Name();
+            }
         }
         else
         {
@@ -94,7 +93,10 @@ public class UI_Manager : MonoBehaviour
     {
         if (All_Manager.instance.Setting_M.Game_Stop == false)
         {
-
+            if (All_Manager.instance.Setting_M == true)
+            {
+                Unit_Selector_Arrow.Update_Unit_Selector();
+            }
         }
         
     }
@@ -103,45 +105,4 @@ public class UI_Manager : MonoBehaviour
     {
         
     }
-
-
-
-    //플레이어 유닛의 현재 HP 이미지
-    public void Update_Player_Unit_Current_HP(int p_FillAmount_Value, int Unit_Index)
-    {
-        Character_Current_HP_Image[Unit_Index].fillAmount = p_FillAmount_Value;
-    }
-
-    //플레이어 유닛의 현재 SP 이미지
-    public void Update_Player_Unit_Current_SP(int p_FillAmount_Value, int Unit_Index)
-    {
-        Character_Current_SP_Image[Unit_Index].fillAmount = p_FillAmount_Value;
-    }
-
-    //에너미 유닛의 현재 HP 이미지
-    public void Update_Enemy_Unit_Current_HP(int p_FillAmount_Value, int Unit_Index)
-    {  
-        Enemy_Current_HP_Image[Unit_Index].fillAmount = p_FillAmount_Value;
-    }
-
-    //플레이어 유닛의 현재 HP 텍스트
-    public void Update_Player_Unit_Current_HP(int p_Max_Value, int p_Min_Value, int Unit_Index)
-    {
-        Character_HP_Text[Unit_Index].text = p_Max_Value.ToString() + "/" + p_Min_Value.ToString();
-    }
-
-    //플레이어 유닛의 현재 SP 텍스트
-    public void Update_Player_Unit_Current_SP(int p_Max_Value, int p_Min_Value, int Unit_Index)
-    {
-        Character_SP_Text[Unit_Index].text = p_Max_Value.ToString() + "/" + p_Min_Value.ToString();
-    }
-
-    //에너미 유닛의 현재 HP 텍스트
-    public void Update_Enemy_Unit_Current_HP(int p_Max_Value, int p_Min_Value, int Unit_Index)
-    {
-        Enemy_HP_Text[Unit_Index].text = p_Max_Value.ToString() + "/" + p_Min_Value.ToString();
-    }
-
-
-
 }

@@ -7,8 +7,6 @@ public class Unit_bbaack : Unit_Player
     protected override void Start()
     {
         base.Start();
-        All_Manager.instance.UI_M.Update_Player_Unit_Current_HP((Current_HP / Max_HP), 0);
-        All_Manager.instance.UI_M.Update_Player_Unit_Current_HP(Max_HP, Current_HP, 0);
     }
 
     protected override void SetFirstStatus()
@@ -19,14 +17,16 @@ public class Unit_bbaack : Unit_Player
     public override void Hitted(int attackPower)
     {
         base.Hitted(attackPower);
-
-        All_Manager.instance.UI_M.Update_Player_Unit_Current_HP((Current_HP / Max_HP), 0);
-        All_Manager.instance.UI_M.Update_Player_Unit_Current_HP(Max_HP, Current_HP, 0);
     }
 
     protected override bool Check_Dead()
     {
         return base.Check_Dead();
+    }
+
+    protected override void UpdateStateUI()
+    {
+        base.UpdateStateUI();
     }
 
     protected override void Unit_Die()

@@ -58,9 +58,15 @@ public abstract class Unit_Base : MonoBehaviour, ITeamMember
     [SerializeField] protected bool _isDead = false;
     public bool Is_Dead { get { return _isDead; } set { _isDead = value; } }
 
+    //À¯´ÖÀÇ ¼ø¼­
+    [SerializeField] protected int _unitIndex;
+    public int Unit_Index { get { return _unitIndex; } set { _unitIndex = value; } }
+    
     protected virtual void Start()
     {
         SetFirstStatus();
+
+        UpdateStateUI();
     }
     protected virtual void SetFirstStatus()
     {
@@ -78,6 +84,8 @@ public abstract class Unit_Base : MonoBehaviour, ITeamMember
         int Temp_Defense_Int = Mathf.RoundToInt(Temp_Defense);
 
         Current_HP -= Temp_Defense_Int;
+
+        UpdateStateUI();
 
         Check_Dead();
     }
@@ -98,6 +106,18 @@ public abstract class Unit_Base : MonoBehaviour, ITeamMember
     protected virtual void Unit_Die()
     {
         Is_Dead = true;
+    }
+
+    protected virtual void UpdateStateUI()
+    {
+        if (TeamType == TeamType.ALLY)
+        {
+            All_Manager.instance.UI_M.State_Sync.Update_Unit_State_UI(_currentUnitBaseSTO.Unit_Index, Current_HP, Max_HP, _currentUnitBaseSTO.teamType, Current_SP, Max_SP);
+        }
+        else if (TeamType == TeamType.ENEMY)
+        {
+            All_Manager.instance.UI_M.State_Sync.Update_Unit_State_UI(_currentUnitBaseSTO.Unit_Index, Current_HP, Max_HP, _currentUnitBaseSTO.teamType, Current_SP, Max_SP);
+        }
     }
 
 

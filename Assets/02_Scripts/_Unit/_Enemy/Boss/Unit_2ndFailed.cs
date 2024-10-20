@@ -7,8 +7,6 @@ public class Unit_2ndFailed : Unit_Enemy
     protected override void Start()
     {
         base.Start();
-        All_Manager.instance.UI_M.Update_Enemy_Unit_Current_HP((Current_HP / Max_HP), 0);
-        All_Manager.instance.UI_M.Update_Enemy_Unit_Current_HP(Max_HP, Current_HP, 0);
     }
 
     protected override void SetFirstStatus()
@@ -18,9 +16,11 @@ public class Unit_2ndFailed : Unit_Enemy
     public override void Hitted(int attackPower)
     {
         base.Hitted(attackPower);
+    }
 
-        All_Manager.instance.UI_M.Update_Enemy_Unit_Current_HP((Current_HP / Max_HP), 0);
-        All_Manager.instance.UI_M.Update_Enemy_Unit_Current_HP(Max_HP, Current_HP, 0);
+    protected override void UpdateStateUI()
+    {
+        base.UpdateStateUI();
     }
 
     public override void Set_UnitStat(Unit_Base Unit, STO_UnitBase STO_Unit)

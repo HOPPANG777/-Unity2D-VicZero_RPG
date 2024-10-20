@@ -20,6 +20,9 @@ MonoBehaviour:
     unitSpeed: 10
     attackPower: 50
     defensePower: 70
+    unitSP: 0
   _teamType: 1
   _unitName: 2stFailed
+  _unitIndex: 0
   _rewardExp: 2000
+  _animState: 0

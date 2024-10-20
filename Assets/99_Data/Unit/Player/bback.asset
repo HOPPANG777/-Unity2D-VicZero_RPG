@@ -48,4 +48,5 @@ MonoBehaviour:
     unitSP: 90
   _teamType: 0
   _unitName: bback
+  _unitIndex: 2
   _animState: 0
