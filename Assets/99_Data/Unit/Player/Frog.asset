@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Frog
   m_EditorClassIdentifier: 
   _dieSound: {fileID: 0}
-  _animController: {fileID: 9100000, guid: a1673bd7d1a3c2a47a3a3b291911f0e8, type: 2}
+  _animController: {fileID: 9100000, guid: 7b92fe9b225b3ac43bde384aa4ce9068, type: 2}
   _unitSprite: {fileID: 21300000, guid: a1cfa5d705c61f14091418350efa2745, type: 3}
   _unitInfo:
   - unitHP: 0

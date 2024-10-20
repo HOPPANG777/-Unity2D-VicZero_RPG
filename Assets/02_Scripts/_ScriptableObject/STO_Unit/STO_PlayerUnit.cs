@@ -5,12 +5,12 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "PlayerData", menuName = "UnitData/PlayerData", order = 1)]
 public class STO_PlayerUnit : STO_UnitBase
 {
-    [Header("STO_PlayerUnit")]
+    //[Header("STO_PlayerUnit")]
     // 플레이어 유닛 애니메이션 상태
-    [SerializeField] Animation_State _animState;
-    public Animation_State Anim_State { get { return _animState; } set { _animState = value; } }
 
 
+    //[SerializeField] Animator _animator;
+    //public Animator Unit_Animator { get { return _animator; } set { _animator = value; } }
 
     public override void Set_UnitData(STO_UnitBase STO_Unit)
     {

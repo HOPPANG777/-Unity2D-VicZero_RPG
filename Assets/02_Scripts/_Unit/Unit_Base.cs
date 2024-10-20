@@ -2,6 +2,7 @@ using JetBrains.Annotations;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 // 유닛 정보 : 이름, 레벨, 최대(현재)HP, 어택 파워, 디펜스 파워
@@ -15,12 +16,13 @@ public struct UnitBase_Info
     public int unitSP;
 }
 
-public abstract class Unit_Base : MonoBehaviour, ITeamMember
+public abstract class Unit_Base : MonoBehaviour, ITeamMember, IUnitAnimationState
 {
     [Header("Unit_Base")]
     public Rigidbody2D unitRB;
-    [SerializeField] protected BoxCollider2D unitBC;
-    [SerializeField] protected Animator unitAnimator;
+    public BoxCollider2D unitBC;
+    public Animator unitAnimator;
+    public SpriteRenderer unitSR;
 
     public STO_UnitBase UnitBaseSTO { get { return _unitBaseSTO; } }
     [SerializeField] STO_UnitBase _unitBaseSTO;
@@ -29,6 +31,13 @@ public abstract class Unit_Base : MonoBehaviour, ITeamMember
 
     public TeamType TeamType { get { return _currentUnitBaseSTO.teamType; } set { _currentUnitBaseSTO.teamType = value; } }
     public UnitBase_Info UnitBase_Stat;
+    
+    // 유닛 애니메이터 컨트롤러
+    public RuntimeAnimatorController Unit_Animator { get { return _currentUnitBaseSTO.AnimController; } set { _currentUnitBaseSTO.AnimController = value; } }
+
+    // 유닛 애니메이션 상태
+    [SerializeField] Animation_State _animState;
+    public Animation_State Anim_State { get { return _animState; } set { _animState = value; } }
 
     //유닛 이름
     [SerializeField] protected string _unitName;
@@ -64,6 +73,16 @@ public abstract class Unit_Base : MonoBehaviour, ITeamMember
     
     protected virtual void Start()
     {
+        unitSR = this.AddComponent<SpriteRenderer>();
+
+        unitRB = this.AddComponent<Rigidbody2D>();
+        unitRB.bodyType = RigidbodyType2D.Kinematic;
+
+        unitBC = this.AddComponent<BoxCollider2D>();
+        unitBC.isTrigger = true;
+
+        unitAnimator = this.AddComponent<Animator>();
+
         SetFirstStatus();
 
         UpdateStateUI();
@@ -103,11 +122,13 @@ public abstract class Unit_Base : MonoBehaviour, ITeamMember
         }
     }
 
+    // 유닛 사망
     protected virtual void Unit_Die()
     {
         Is_Dead = true;
     }
 
+    // 업데이트 상태 UI
     protected virtual void UpdateStateUI()
     {
         if (TeamType == TeamType.ALLY)
@@ -120,7 +141,20 @@ public abstract class Unit_Base : MonoBehaviour, ITeamMember
         }
     }
 
+    // 유닛 애니메이션 트리거
+    public virtual void Set_Animation_Trigger(string trigger)
+    {
+        if (unitAnimator != null)
+        {
+            unitAnimator.SetTrigger(trigger);
+        }
+        else
+        {
+            Debug.Log("Animator 없음");
+        }
+    }
 
-    //유닛 스탯 세팅
+
+    // 유닛 스탯 세팅
     public abstract void Set_UnitStat(Unit_Base Unit, STO_UnitBase STO_Unit);
 }

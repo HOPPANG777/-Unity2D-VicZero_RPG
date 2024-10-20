@@ -6,6 +6,21 @@ using UnityEngine;
 
 public class Unit_Name_Sync : MonoBehaviour
 {
+    private void Start()
+    {
+        if (All_Manager.instance.Setting_M.Game_Stop == false)
+        {
+            if (All_Manager.instance.Setting_M.Stage_In == true)
+            {
+                Set_Unit_Name();
+            }
+        }
+        else
+        {
+
+        }
+    }
+
     public void Set_Unit_Name()
     {
         // 모든 UI 패널 비활성화

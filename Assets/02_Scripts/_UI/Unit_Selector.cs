@@ -11,21 +11,44 @@ public class Unit_Selector : MonoBehaviour
     public GameObject Current_Arrow;
     public Unit_Player Current_Unit;
 
+
+    private void Start()
+    {
+        if (All_Manager.instance.Setting_M.Game_Stop == false)
+        {
+            if (All_Manager.instance.Setting_M.Stage_In == true)
+            {
+                // 플레이어 선택
+                {
+                    // 초기 상태에서는 화살표와 컨트롤 패널 비활성화
+                    All_Manager.instance.UI_M.Choice_Controll_Panel.gameObject.SetActive(false);
+                    Current_Arrow = Instantiate(Arrow_Indicator_Prefab);
+                    Current_Arrow.SetActive(false);
+                }
+
+                // 에너미 선택
+                {
+
+                }
+            }
+        }
+
+    }
+
+    private void Update()
+    {
+        if (All_Manager.instance.Setting_M.Game_Stop == false)
+        {
+            if (All_Manager.instance.Setting_M == true)
+            {
+                Update_Unit_Selector();
+            }
+        }
+    }
+
     public void Init_Unit_Selector()
     {
-        // 플레이어 선택
-        {
-            // 초기 상태에서는 화살표와 컨트롤 패널 비활성화
-            Arrow_Indicator_Prefab = All_Manager.instance.Resource_M.UI_Arrow_Prefab;
-            All_Manager.instance.UI_M.Choice_Controll_Panel.gameObject.SetActive(false);
-            Current_Arrow = Instantiate(Arrow_Indicator_Prefab);
-            Current_Arrow.SetActive(false);
-        }
 
-        // 에너미 선택
-        {
-
-        }
     }
 
  

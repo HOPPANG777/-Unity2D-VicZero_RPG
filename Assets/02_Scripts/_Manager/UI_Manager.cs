@@ -73,33 +73,6 @@ public class UI_Manager : MonoBehaviour
     public Unit_State_Sync State_Sync;
     public Unit_Name_Sync Name_Sync;
 
-    private void Start()
-    {
-        if (All_Manager.instance.Setting_M.Game_Stop == false)
-        {
-            if (All_Manager.instance.Setting_M.Stage_In == true)
-            {
-                Unit_Selector_Arrow.Init_Unit_Selector();
-                Name_Sync.Set_Unit_Name();
-            }
-        }
-        else
-        {
-
-        }
-    }
-
-    private void Update()
-    {
-        if (All_Manager.instance.Setting_M.Game_Stop == false)
-        {
-            if (All_Manager.instance.Setting_M == true)
-            {
-                Unit_Selector_Arrow.Update_Unit_Selector();
-            }
-        }
-        
-    }
 
     void Set_UI()
     {

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: bback
   m_EditorClassIdentifier: 
   _dieSound: {fileID: 0}
-  _animController: {fileID: 9100000, guid: 176f3c5b189e7b948a0c7e19cb01444b, type: 2}
+  _animController: {fileID: 9100000, guid: 460941a6cac390b41b508abb74f095c4, type: 2}
   _unitSprite: {fileID: 21300000, guid: 231de0aa0deffda448edde9d014055a3, type: 3}
   _unitInfo:
   - unitHP: 0

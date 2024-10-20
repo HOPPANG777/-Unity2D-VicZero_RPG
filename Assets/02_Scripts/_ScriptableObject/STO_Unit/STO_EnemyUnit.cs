@@ -10,9 +10,6 @@ public class STO_EnemyUnit : STO_UnitBase
     [SerializeField] protected int _rewardExp;
     public int RewardExp { get { return _rewardExp; } set { _rewardExp = value; } }
 
-    [SerializeField] Animation_State _animState;
-    public Animation_State Anim_State { get { return _animState; } set { _animState = value; } }
-
     public override void Set_UnitData(STO_UnitBase STO_Unit)
     {
         base.Set_UnitData(STO_Unit);
