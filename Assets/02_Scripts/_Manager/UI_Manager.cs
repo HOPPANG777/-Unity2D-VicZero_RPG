@@ -73,9 +73,16 @@ public class UI_Manager : MonoBehaviour
     public Unit_State_Sync State_Sync;
     public Unit_Name_Sync Name_Sync;
 
+    public float RTratio960540 = 0.0046296296f;
+    public float RTratio375192 = 0.1778f;
 
     void Set_UI()
     {
         
+    }
+
+    public Vector3 Convert_RectTransform_To_Position(RectTransform p_RT, float ratio)
+    {
+        return new Vector3((p_RT.position.x * 2 - Screen.width) * ratio, (p_RT.position.y * 2 - Screen.height) * ratio, 0);
     }
 }

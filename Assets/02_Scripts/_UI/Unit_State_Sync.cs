@@ -5,28 +5,32 @@ using UnityEngine;
 
 public class Unit_State_Sync : MonoBehaviour
 {
-    public void Update_Unit_State_UI(int Unit_Index, int CurrentHP, int MaxHP, TeamType team, int CurrentSP, int MaxSP)
+
+    public void Update_Unit_State_UI(List<Unit_Base> units, TeamType team)
     {
-        var Temp = TeamType.ALLY;
-        if (team == Temp)
+        for (int i = 0; i < units.Count; i++)
         {
-            if (Unit_Index < All_Manager.instance.UI_M.Character_Current_HP_Image.Count && Unit_Index < All_Manager.instance.UI_M.Character_HP_Text.Count)
+            var unit = units[i];
+            if (team == TeamType.ALLY)
             {
-                All_Manager.instance.UI_M.Character_Current_HP_Image[Unit_Index].fillAmount = (float)CurrentHP / MaxHP;
-                All_Manager.instance.UI_M.Character_HP_Text[Unit_Index].text = MaxHP.ToString() + "/" + CurrentHP.ToString();
+                if (i < All_Manager.instance.UI_M.Character_Current_HP_Image.Count && i < All_Manager.instance.UI_M.Character_HP_Text.Count)
+                {
+                    All_Manager.instance.UI_M.Character_Current_HP_Image[i].fillAmount = (float)unit.Current_HP / unit.Max_HP;
+                    All_Manager.instance.UI_M.Character_HP_Text[i].text = unit.Max_HP.ToString() + "/" + unit.Current_HP.ToString();
+                }
+                if (i < All_Manager.instance.UI_M.Character_Current_SP_Image.Count && i < All_Manager.instance.UI_M.Character_SP_Text.Count)
+                {
+                    All_Manager.instance.UI_M.Character_Current_SP_Image[i].fillAmount = (float)unit.Current_SP / unit.Max_SP;
+                    All_Manager.instance.UI_M.Character_SP_Text[i].text = unit.Max_SP.ToString() + "/" + unit.Current_SP.ToString();
+                }
             }
-            if (Unit_Index < All_Manager.instance.UI_M.Character_Current_SP_Image.Count && Unit_Index < All_Manager.instance.UI_M.Character_SP_Text.Count)
+            else
             {
-                All_Manager.instance.UI_M.Character_Current_SP_Image[Unit_Index].fillAmount = (float)CurrentSP / MaxSP;
-                All_Manager.instance.UI_M.Character_SP_Text[Unit_Index].text = MaxSP.ToString() + "/" + CurrentSP.ToString();
-            }
-        }
-        else
-        {
-            if (Unit_Index < All_Manager.instance.UI_M.Enemy_Current_HP_Image.Count && Unit_Index < All_Manager.instance.UI_M.Enemy_HP_Text.Count)
-            {
-                All_Manager.instance.UI_M.Enemy_Current_HP_Image[Unit_Index].fillAmount = (float)CurrentHP / MaxHP;
-                All_Manager.instance.UI_M.Enemy_HP_Text[Unit_Index].text = MaxHP.ToString() + "/" + CurrentHP.ToString();
+                if (i < All_Manager.instance.UI_M.Enemy_Current_HP_Image.Count && i < All_Manager.instance.UI_M.Enemy_HP_Text.Count)
+                {
+                    All_Manager.instance.UI_M.Enemy_Current_HP_Image[i].fillAmount = (float)unit.Current_HP / unit.Max_HP;
+                    All_Manager.instance.UI_M.Enemy_HP_Text[i].text = unit.Max_HP.ToString() + "/" + unit.Current_HP.ToString();
+                }
             }
         }
     }

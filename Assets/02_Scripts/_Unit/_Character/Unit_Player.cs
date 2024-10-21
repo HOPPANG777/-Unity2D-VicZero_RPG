@@ -105,6 +105,12 @@ public class Unit_Player : Unit_Base
 
     }
 
+    public virtual void Player_Unit_Attack()
+    {
+
+    }
+
+
     public override void Set_Animation_Trigger(string trigger)
     {
         base.Set_Animation_Trigger(trigger);
@@ -127,5 +133,19 @@ public class Unit_Player : Unit_Base
         Unit.unitSR.size = new Vector2(11.52f, 5.12f);
         Unit.unitBC.size = new Vector2(2.0f, 2.5f);
         Unit.unitBC.offset = new Vector2(0.0f, -1.3f);
+        Set_Unit_Position();
+    }
+
+    public override void Set_Unit_Position()
+    {
+        var Units = All_Manager.instance.GameMode_M.Player_List;
+
+        for (int i = 0; i < Units.Count; i++)
+        {
+            if (i < Units.Count)
+            {
+                Units[i].transform.position = All_Manager.instance.Resource_M.Player_Unit_Set_Position[i] + new Vector3(0, 0, _currentPlayerUnitSTO.UnitSetPositionZ);
+            }
+        }
     }
 }

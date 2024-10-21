@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "PlayerData", menuName = "UnitData/PlayerData", order = 1)]
+[CreateAssetMenu(fileName = "Player_Data", menuName = "Unit_Data/Player_Data", order = 1)]
 public class STO_PlayerUnit : STO_UnitBase
 {
-    //[Header("STO_PlayerUnit")]
-    // 플레이어 유닛 애니메이션 상태
+    [Header("STO_PlayerUnit")]
+    // 플레이어 유닛 배치
+    [SerializeField] float _unitSetPositionZ;
+    public float UnitSetPositionZ { get { return _unitSetPositionZ; } set { _unitSetPositionZ = value; } }
 
 
     //[SerializeField] Animator _animator;

@@ -2,17 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class STO_Projectile : MonoBehaviour
+[CreateAssetMenu(fileName = "Projectile_Data", menuName = "Projectile_Data", order = 0)]
+public class STO_Projectile : ScriptableObject
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 }

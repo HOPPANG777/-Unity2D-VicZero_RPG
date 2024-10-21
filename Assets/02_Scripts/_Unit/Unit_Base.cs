@@ -31,7 +31,7 @@ public abstract class Unit_Base : MonoBehaviour, ITeamMember, IUnitAnimationStat
 
     public TeamType TeamType { get { return _currentUnitBaseSTO.teamType; } set { _currentUnitBaseSTO.teamType = value; } }
     public UnitBase_Info UnitBase_Stat;
-    
+
     // 유닛 애니메이터 컨트롤러
     public RuntimeAnimatorController Unit_Animator { get { return _currentUnitBaseSTO.AnimController; } set { _currentUnitBaseSTO.AnimController = value; } }
 
@@ -70,7 +70,7 @@ public abstract class Unit_Base : MonoBehaviour, ITeamMember, IUnitAnimationStat
     //유닛의 순서
     [SerializeField] protected int _unitIndex;
     public int Unit_Index { get { return _unitIndex; } set { _unitIndex = value; } }
-    
+
     protected virtual void Start()
     {
         unitSR = this.AddComponent<SpriteRenderer>();
@@ -133,11 +133,11 @@ public abstract class Unit_Base : MonoBehaviour, ITeamMember, IUnitAnimationStat
     {
         if (TeamType == TeamType.ALLY)
         {
-            All_Manager.instance.UI_M.State_Sync.Update_Unit_State_UI(_currentUnitBaseSTO.Unit_Index, Current_HP, Max_HP, _currentUnitBaseSTO.teamType, Current_SP, Max_SP);
+            All_Manager.instance.UI_M.State_Sync.Update_Unit_State_UI(All_Manager.instance.GameMode_M.Player_List, _currentUnitBaseSTO.teamType);
         }
         else if (TeamType == TeamType.ENEMY)
         {
-            All_Manager.instance.UI_M.State_Sync.Update_Unit_State_UI(_currentUnitBaseSTO.Unit_Index, Current_HP, Max_HP, _currentUnitBaseSTO.teamType, Current_SP, Max_SP);
+            All_Manager.instance.UI_M.State_Sync.Update_Unit_State_UI(All_Manager.instance.GameMode_M.Enemy_List, _currentUnitBaseSTO.teamType);
         }
     }
 
@@ -154,6 +154,7 @@ public abstract class Unit_Base : MonoBehaviour, ITeamMember, IUnitAnimationStat
         }
     }
 
+    public abstract void Set_Unit_Position();
 
     // 유닛 스탯 세팅
     public abstract void Set_UnitStat(Unit_Base Unit, STO_UnitBase STO_Unit);

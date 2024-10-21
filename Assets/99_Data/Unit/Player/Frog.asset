@@ -49,4 +49,4 @@ MonoBehaviour:
   _teamType: 0
   _unitName: Frog
   _unitIndex: 3
-  _animState: 0
+  _unitSetPosition: {x: 7, y: -1.9, z: 0}

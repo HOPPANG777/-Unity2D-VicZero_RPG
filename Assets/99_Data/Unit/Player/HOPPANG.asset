@@ -48,3 +48,5 @@ MonoBehaviour:
     unitSP: 100
   _teamType: 0
   _unitName: HOPPANG
+  _unitIndex: 0
+  _unitSetPositionZ: 1

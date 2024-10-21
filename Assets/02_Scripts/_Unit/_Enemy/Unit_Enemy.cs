@@ -104,12 +104,24 @@ public class Unit_Enemy : Unit_Base
         }
 
     }
-
+    
     public override void Set_Animation_Trigger(string trigger)
     {
         base.Set_Animation_Trigger(trigger);
     }
 
+    // 에너미 유닛 공격
+    public virtual void Enemy_Unit_Attack()
+    {
+        
+    }
+
+    // 에너미 유닛 사망시
+    protected void Enemy_Die()
+    {
+        // 필요 : 플레이어에 경험치 획득 함수, 플레이어 경험치 최대량 과 경험치 바
+        // 에너미 유닛의 로직중 코루틴이 들어갔다면 그걸 멈출게 필요할것이고.
+    }
 
     public override void Set_UnitStat(Unit_Base Unit, STO_UnitBase STO_Unit)
     {
@@ -126,5 +138,10 @@ public class Unit_Enemy : Unit_Base
         Unit.unitSR.size = new Vector2(11.52f, 5.12f);
         Unit.unitBC.size = new Vector2(2.0f, 2.5f);
         Unit.unitBC.offset = new Vector2(0.0f, -1.3f);
+    }
+
+    public override void Set_Unit_Position()
+    {
+
     }
 }

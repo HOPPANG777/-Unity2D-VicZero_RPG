@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // 메뉴에 볼수 있도록 해주는것
-[CreateAssetMenu(fileName = "UnitData", menuName = "UnitData", order = 0)]
+[CreateAssetMenu(fileName = "Unit_Data", menuName = "Unit_Data", order = 0)]
 public class STO_UnitBase : ScriptableObject
 {
     [Header("UnitBase_Date")]

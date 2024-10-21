@@ -12,11 +12,15 @@ public class Resource_Manager : MonoBehaviour
 
     // 프리팹
     public GameObject UI_Arrow_Prefab;
+    public List<GameObject> Unit_Prefab_List = new List<GameObject>();
+
+    // 기타
+    public List<Vector3> Player_Unit_Set_Position = new List<Vector3>();
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     // 이름을 플레이어 유닛으로 컨버트
-    public STO_PlayerUnit ConvertNameToPlayerSTO(string name)
+    public STO_PlayerUnit Convert_Name_To_PlayerSTO(string name)
     {
         STO_PlayerUnit TempPlayerData = null;
 
@@ -29,7 +33,7 @@ public class Resource_Manager : MonoBehaviour
     }
 
     // 이름을 에너미 유닛으로 컨버트
-    public STO_EnemyUnit ConvertNameToEnemySTO(string name)
+    public STO_EnemyUnit Convert_Name_To_EnemySTO(string name)
     {
         STO_EnemyUnit TempEnemyData = null;
 
@@ -40,5 +44,7 @@ public class Resource_Manager : MonoBehaviour
 
         return TempEnemyData;
     }
+
+    //public Unit_Base Convert_Name_And_Team_To_Unit(string name, )
 
 }

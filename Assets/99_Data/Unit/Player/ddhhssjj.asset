@@ -49,4 +49,4 @@ MonoBehaviour:
   _teamType: 0
   _unitName: ddhhssjj
   _unitIndex: 1
-  _animState: 0
+  _unitSetPosition: {x: 4.5, y: -0.15, z: 0}

@@ -300,6 +300,7 @@ MonoBehaviour:
   Arrow_Indicator_Prefab: {fileID: 940241568684783530, guid: 6a8d9cd0912c9984483a3061375e9099, type: 3}
   Current_Arrow: {fileID: 0}
   Current_Unit: {fileID: 0}
+  Current_Enemy: {fileID: 0}
 --- !u!4 &13577323
 Transform:
   m_ObjectHideFlags: 0
@@ -645,7 +646,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: bback
+  m_text: <>
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1440,7 +1441,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: HOPPANG
+  m_text: <>
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3110,7 +3111,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Frog
+  m_text: <>
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -5922,7 +5923,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: ddhhssjj
+  m_text: <>
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -6118,6 +6119,12 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5147e7ad7cc8c284cac70cf0d5182a9b, type: 2}
   - {fileID: 11400000, guid: d857e59fc9ca15d45a01fdd51e8db0d1, type: 2}
   UI_Arrow_Prefab: {fileID: 940241568684783530, guid: 6a8d9cd0912c9984483a3061375e9099, type: 3}
+  Unit_Prefab_List: []
+  Player_Unit_Set_Position:
+  - {x: 3.5, y: 0.8, z: 1}
+  - {x: 4.5, y: -0.15, z: 0}
+  - {x: 5.65, y: -1.25, z: 0}
+  - {x: 6.75, y: -2.45, z: 0}
 --- !u!4 &1068761661
 Transform:
   m_ObjectHideFlags: 0
@@ -6675,6 +6682,8 @@ MonoBehaviour:
   Unit_Selector_Arrow: {fileID: 13577322}
   State_Sync: {fileID: 8924037}
   Name_Sync: {fileID: 1052491843}
+  RTratio960540: 0.0046296297
+  RTratio375192: 0.1778
 --- !u!4 &1104159399
 Transform:
   m_ObjectHideFlags: 0
