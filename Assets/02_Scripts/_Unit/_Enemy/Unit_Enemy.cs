@@ -24,6 +24,8 @@ public class Unit_Enemy : Unit_Base
     public override void Hitted(int attackPower)
     {
         base.Hitted(attackPower);
+        Set_Animation(Animation_State.TAKE_HIT);
+        Set_Animation(Animation_State.IDLE);
     }
 
     protected override void UpdateStateUI()

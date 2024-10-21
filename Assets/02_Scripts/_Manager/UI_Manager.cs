@@ -72,7 +72,9 @@ public class UI_Manager : MonoBehaviour
     public Unit_Selector Unit_Selector_Arrow;
     public Unit_State_Sync State_Sync;
     public Unit_Name_Sync Name_Sync;
+    public Controll_Button Choice_Controll;
 
+    [Header("Canvas_Ratio")]
     public float RTratio960540 = 0.0046296296f;
     public float RTratio375192 = 0.1778f;
 

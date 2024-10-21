@@ -25,4 +25,4 @@ MonoBehaviour:
   _unitName: Interviewer
   _unitIndex: 0
   _rewardExp: 20000
-  _unitSetPosition: {x: -6.75, y: -1.2, z: 0}
+  _unitSetPosition: {x: -6.75, y: -1.2, z: 2}

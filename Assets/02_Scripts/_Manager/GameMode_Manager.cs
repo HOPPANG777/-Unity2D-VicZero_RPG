@@ -7,10 +7,10 @@ using UnityEngine.UI;
 
 public class GameMode_Manager : MonoBehaviour
 {
-    public List<Unit_Base> Player_List = new List<Unit_Base>(); 
-    public List<Unit_Base> Enemy_List = new List<Unit_Base>(); 
+    public List<Unit_Base> Player_List = new List<Unit_Base>();
+    public List<Unit_Base> Enemy_List = new List<Unit_Base>();
 
-    // 턴
+    // 턴 상태 관리
     public enum Battle_State
     {
         IDLE,
@@ -24,17 +24,17 @@ public class GameMode_Manager : MonoBehaviour
     public Battle_State battleState;
     public bool isLive = true;
 
-    //IEnumerator Temp_Coroutine;
+    private bool isProcessingTurn = false; // 현재 턴이 진행 중인지 여부
 
     public void Start()
     {
-        
+        Battle_Awake();
     }
 
     // 전투 시작 알림
     public void Battle_Awake()
     {
-        // 여기에 전투 시작시 타이틀 띄워서 전투 시작 알림 보낼수도 있음
+        // 전투 시작시 타이틀 띄워서 전투 시작 알림 보낼 수 있음
         battleState = Battle_State.START;
         Battle_Start();
     }
@@ -42,31 +42,30 @@ public class GameMode_Manager : MonoBehaviour
     // 전투 시작
     public void Battle_Start()
     {
-        // 전투 시작시 캐릭터 등장 애니메이션 등 연출
-        // 해당 시작은 유닛의 속도에 따라 플레이어 턴과 적의 턴이 정해져야 한다.
-        Debug.Log("전투시작");
+        //Debug.Log("전투시작");
         Unit_Base Faster_Unit = null;
         int HighSpeed = int.MinValue;
 
-        for (int i = 0; i < Player_List.Count; i++)
+        // 속도가 높은 유닛 찾기
+        foreach (var player in Player_List)
         {
-            if (Player_List[i] == null) return;
+            if (player == null) continue;
 
-            if (Player_List[i].UnitBase_Stat.unitSpeed > HighSpeed)
+            if (player.UnitBase_Stat.unitSpeed > HighSpeed)
             {
-                HighSpeed = Player_List[i].UnitBase_Stat.unitSpeed;
-                Faster_Unit = Player_List[i];
+                HighSpeed = player.UnitBase_Stat.unitSpeed;
+                Faster_Unit = player;
             }
         }
 
-        for (int i = 0; i < Enemy_List.Count; i++)
+        foreach (var enemy in Enemy_List)
         {
-            if (Enemy_List[i] == null) return;
+            if (enemy == null) continue;
 
-            if (Enemy_List[i].UnitBase_Stat.unitSpeed > HighSpeed)
+            if (enemy.UnitBase_Stat.unitSpeed > HighSpeed)
             {
-                HighSpeed = Enemy_List[i].UnitBase_Stat.unitSpeed;
-                Faster_Unit = Enemy_List[i];
+                HighSpeed = enemy.UnitBase_Stat.unitSpeed;
+                Faster_Unit = enemy;
             }
         }
 
@@ -83,82 +82,89 @@ public class GameMode_Manager : MonoBehaviour
     // 플레이어 턴
     IEnumerator Player_Turn()
     {
-        yield return new WaitForSeconds(1f);
+        isProcessingTurn = true; // 턴이 진행 중임을 표시
         battleState = Battle_State.PLAYER_TURN;
-        Debug.Log("플레이어 턴 확인");
+        //Debug.Log("플레이어 턴 확인");
+        yield return new WaitForSeconds(1f);
+        isProcessingTurn = false; // 턴이 끝남을 표시
+        All_Manager.instance.UI_M.Unit_Selector_Arrow.Current_Unit.Set_Unit_Position();
     }
 
     // 에너미 턴
     IEnumerator Enemy_Turn()
     {
-        yield return new WaitForSeconds(1f);
+        isProcessingTurn = true; // 턴이 진행 중임을 표시
         battleState = Battle_State.ENEMY_TURN;
-        Debug.Log("에너미 턴 확인");
+        //Debug.Log("에너미 턴 확인");
+        yield return new WaitForSeconds(1f);
 
         Enemy_Attack();
+        isProcessingTurn = false; // 턴이 끝남을 표시
     }
 
     public void On_Attack_Button()
     {
-        if (battleState != Battle_State.PLAYER_TURN) return;
-        Debug.Log("플레이어 공격!" + (Player_List[0].UnitBase_Stat.attackPower));
-        Debug.Log("에너미 처맞음!" + (Enemy_List[0].Current_HP - Player_List[0].UnitBase_Stat.attackPower));
+        // 플레이어의 턴이 아니거나 이미 턴 진행 중이면 공격 불가
+        if (battleState != Battle_State.PLAYER_TURN || isProcessingTurn) return;
+
+        isProcessingTurn = true; // 턴이 진행 중임을 표시
+        All_Manager.instance.UI_M.Unit_Selector_Arrow.Current_Unit.Player_Unit_Attack();
 
         StartCoroutine(Enemy_Turn());
     }
 
     public void On_Skill_Button()
     {
-
+        // 스킬 버튼 로직 추가 가능
     }
 
     public void On_Defense_Button()
     {
-
+        // 방어 버튼 로직 추가 가능
     }
 
     public void Enemy_Attack()
     {
-        Debug.Log("에너미 공격!" + Enemy_List[0].UnitBase_Stat.attackPower);
-        Debug.Log("플레이어 맞음!" + (Player_List[0].Current_HP - Enemy_List[0].UnitBase_Stat.attackPower));
+        // 적의 공격 로직
+        //Debug.Log("에너미 공격!" + Enemy_List[0].UnitBase_Stat.attackPower);
+        //Debug.Log("플레이어 맞음!" + (Player_List[0].Current_HP - Enemy_List[0].UnitBase_Stat.attackPower));
         StartCoroutine(Player_Turn());
     }
 
     public void Lost_or_Win()
     {
-        for (int i = 0; i < Player_List.Count; i++)
+        foreach (var player in Player_List)
         {
-            if (Player_List[i].Is_Dead == true)
+            if (player.Is_Dead)
             {
                 isLive = false;
                 Player_Lost();
                 Battle_End();
+                return; // 패배 시 바로 종료
             }
         }
 
-        for (int i = 0; i < Enemy_List.Count; i++)
+        foreach (var enemy in Enemy_List)
         {
-            if (Enemy_List[i].Is_Dead == true)
+            if (enemy.Is_Dead)
             {
                 isLive = false;
                 Player_Win();
                 Battle_End();
+                return; // 승리 시 바로 종료
             }
         }
-
     }
 
     void Player_Win()
     {
-        // 여기에다가 이제 이겼다고 경험치 주는 거랑 타이틀 띄우는거 하면 될꺼같고
         battleState = Battle_State.WIN;
-
+        // 승리 처리
     }
 
     void Player_Lost()
     {
-        // 졌으면 Lost 타이틀 띄우고 재시작 할꺼냐고 물어보면 된다.
         battleState = Battle_State.LOST;
+        // 패배 처리
     }
-
 }

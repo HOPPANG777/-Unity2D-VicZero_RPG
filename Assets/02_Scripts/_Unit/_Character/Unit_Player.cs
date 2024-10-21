@@ -19,6 +19,8 @@ public class Unit_Player : Unit_Base
     public override void Hitted(int attackPower)
     {
         base.Hitted(attackPower);
+        Set_Animation(Animation_State.TAKE_HIT);
+        Set_Animation(Animation_State.IDLE);
     }
 
     protected override void SetFirstStatus()
@@ -107,7 +109,11 @@ public class Unit_Player : Unit_Base
 
     public virtual void Player_Unit_Attack()
     {
+        All_Manager.instance.UI_M.Unit_Selector_Arrow.Current_Unit.transform.position = All_Manager.instance.UI_M.Unit_Selector_Arrow.Current_Enemy.transform.position + new Vector3(2.75f, 0, 0);
 
+        Set_Animation(Animation_State.ATK_1);
+        All_Manager.instance.UI_M.Unit_Selector_Arrow.Current_Enemy.Hitted(_currentUnitBaseSTO.UnitInfo[Unit_Level].attackPower);
+        Set_Animation(Animation_State.IDLE);
     }
 
 
