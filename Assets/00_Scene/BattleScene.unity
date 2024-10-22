@@ -3450,7 +3450,6 @@ MonoBehaviour:
     attackPower: 0
     defensePower: 0
     unitSP: 0
-  _animState: 0
   _unitName: 
   _unitLevel: 1
   _maxHP: 0
@@ -3459,7 +3458,6 @@ MonoBehaviour:
   _currentSP: 0
   _isDead: 0
   _unitIndex: 0
-  _playerUnitSTO: {fileID: 11400000, guid: 3a0730d1862e9614cb8773135c2eaa57, type: 2}
   _currentPlayerUnitSTO: {fileID: 11400000, guid: 3a0730d1862e9614cb8773135c2eaa57, type: 2}
 --- !u!4 &649809880
 Transform:
@@ -6931,7 +6929,6 @@ MonoBehaviour:
     attackPower: 0
     defensePower: 0
     unitSP: 0
-  _animState: 0
   _unitName: 
   _unitLevel: 1
   _maxHP: 0
@@ -6940,7 +6937,6 @@ MonoBehaviour:
   _currentSP: 0
   _isDead: 0
   _unitIndex: 0
-  _playerUnitSTO: {fileID: 11400000, guid: 421e43327facbbf46b990cd05ee081ab, type: 2}
   _currentPlayerUnitSTO: {fileID: 11400000, guid: 421e43327facbbf46b990cd05ee081ab, type: 2}
 --- !u!4 &1143439358
 Transform:
@@ -7475,7 +7471,6 @@ MonoBehaviour:
     attackPower: 0
     defensePower: 0
     unitSP: 0
-  _animState: 0
   _unitName: 
   _unitLevel: 1
   _maxHP: 0
@@ -7484,7 +7479,6 @@ MonoBehaviour:
   _currentSP: 0
   _isDead: 0
   _unitIndex: 0
-  _playerUnitSTO: {fileID: 11400000, guid: 8417466afa276394f81a830703f4618a, type: 2}
   _currentPlayerUnitSTO: {fileID: 11400000, guid: 8417466afa276394f81a830703f4618a, type: 2}
 --- !u!4 &1251180791
 Transform:
@@ -8557,7 +8551,6 @@ MonoBehaviour:
     attackPower: 0
     defensePower: 0
     unitSP: 0
-  _animState: 0
   _unitName: 
   _unitLevel: 0
   _maxHP: 0
@@ -8566,7 +8559,6 @@ MonoBehaviour:
   _currentSP: 0
   _isDead: 0
   _unitIndex: 0
-  _enemyUnitSTO: {fileID: 11400000, guid: d857e59fc9ca15d45a01fdd51e8db0d1, type: 2}
   _currentEnemyUnitSTO: {fileID: 11400000, guid: d857e59fc9ca15d45a01fdd51e8db0d1, type: 2}
 --- !u!1 &1457743351
 GameObject:
@@ -9955,7 +9947,6 @@ MonoBehaviour:
     attackPower: 0
     defensePower: 0
     unitSP: 0
-  _animState: 0
   _unitName: 
   _unitLevel: 1
   _maxHP: 0
@@ -9964,7 +9955,6 @@ MonoBehaviour:
   _currentSP: 0
   _isDead: 0
   _unitIndex: 0
-  _playerUnitSTO: {fileID: 11400000, guid: 5bbf72a2860db8445ab465df1bc68a90, type: 2}
   _currentPlayerUnitSTO: {fileID: 11400000, guid: 5bbf72a2860db8445ab465df1bc68a90, type: 2}
 --- !u!4 &1721153743
 Transform:
@@ -11057,7 +11047,7 @@ MonoBehaviour:
   Enemy_List:
   - {fileID: 1433196492}
   battleState: 0
-  isLive: 0
+  isLive: 1
 --- !u!1 &1886663074
 GameObject:
   m_ObjectHideFlags: 0

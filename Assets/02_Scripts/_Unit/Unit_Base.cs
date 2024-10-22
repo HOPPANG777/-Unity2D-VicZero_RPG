@@ -118,6 +118,8 @@ public abstract class Unit_Base : MonoBehaviour, ITeamMember
         UpdateStateUI();
 
         Check_Dead();
+
+        All_Manager.instance.GameMode_M.Lost_or_Win();
     }
 
     protected virtual bool Check_Dead()

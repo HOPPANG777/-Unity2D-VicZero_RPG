@@ -54,6 +54,7 @@ public class Atk_1_State : IUnitAnimationState
         {
             // 공격이 끝났으면 Idle 상태로 전환
             Unit.Set_State(new Idle_State());
+            Unit.Set_Unit_Position();
         }
     }
 
@@ -98,6 +99,7 @@ public class Atk_2_State : IUnitAnimationState
         {
             // 공격이 끝났으면 Idle 상태로 전환
             Unit.Set_State(new Idle_State());
+            Unit.Set_Unit_Position();
         }
     }
 
@@ -142,6 +144,7 @@ public class Atk_3_State : IUnitAnimationState
         {
             // 공격이 끝났으면 Idle 상태로 전환
             Unit.Set_State(new Idle_State());
+            Unit.Set_Unit_Position();
         }
     }
 
@@ -186,6 +189,7 @@ public class Skill_1_State : IUnitAnimationState
         {
             // 공격이 끝났으면 Idle 상태로 전환
             Unit.Set_State(new Idle_State());
+            Unit.Set_Unit_Position();
         }
     }
 
@@ -222,6 +226,7 @@ public class Skill_2_State : IUnitAnimationState
 
         // 애니메이션이 끝났는지 확인하는 코루틴을 시작합니다.
         Unit.StartCoroutine(Check_Animation_Complete(Unit));
+        Unit.Set_Unit_Position();
     }
 
     public void Update_State(Unit_Base Unit)
@@ -266,6 +271,7 @@ public class Sp_Atk_State : IUnitAnimationState
 
         // 애니메이션이 끝났는지 확인하는 코루틴을 시작합니다.
         Unit.StartCoroutine(Check_Animation_Complete(Unit));
+        Unit.Set_Unit_Position();
     }
 
     public void Update_State(Unit_Base Unit)
