@@ -9,13 +9,29 @@ public class Unit_2ndFailed : Unit_Enemy
         base.Start();
     }
 
+    protected override void Update()
+    {
+        base.Update();
+    }
+
     protected override void SetFirstStatus()
     {
         base.SetFirstStatus();
     }
+
     public override void Hitted(int attackPower)
     {
         base.Hitted(attackPower);
+    }
+
+    protected override bool Check_Dead()
+    {
+        return base.Check_Dead();
+    }
+
+    protected override void Unit_Die()
+    {
+        base.Unit_Die();
     }
 
     protected override void UpdateStateUI()
@@ -23,8 +39,18 @@ public class Unit_2ndFailed : Unit_Enemy
         base.UpdateStateUI();
     }
 
+    public override void Enemy_Unit_Attack()
+    {
+        base.Enemy_Unit_Attack();
+    }
+
     public override void Set_UnitStat(Unit_Base Unit, STO_UnitBase STO_Unit)
     {
         base.Set_UnitStat(Unit, STO_Unit);
+    }
+
+    public override void Set_Unit_Position()
+    {
+        base.Set_Unit_Position();
     }
 }

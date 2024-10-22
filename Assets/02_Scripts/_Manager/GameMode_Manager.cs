@@ -84,7 +84,7 @@ public class GameMode_Manager : MonoBehaviour
     {
         isProcessingTurn = true; // 턴이 진행 중임을 표시
         battleState = Battle_State.PLAYER_TURN;
-        //Debug.Log("플레이어 턴 확인");
+        Debug.Log("플레이어 턴 확인");
         yield return new WaitForSeconds(1f);
         isProcessingTurn = false; // 턴이 끝남을 표시
         All_Manager.instance.UI_M.Unit_Selector_Arrow.Current_Unit.Set_Unit_Position();
@@ -95,7 +95,7 @@ public class GameMode_Manager : MonoBehaviour
     {
         isProcessingTurn = true; // 턴이 진행 중임을 표시
         battleState = Battle_State.ENEMY_TURN;
-        //Debug.Log("에너미 턴 확인");
+        Debug.Log("에너미 턴 확인");
         yield return new WaitForSeconds(1f);
 
         Enemy_Attack();

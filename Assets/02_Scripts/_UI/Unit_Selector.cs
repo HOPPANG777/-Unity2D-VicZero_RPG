@@ -117,21 +117,6 @@ public class Unit_Selector : MonoBehaviour
 
         Current_Arrow.transform.position = Current_Enemy.transform.position + new Vector3(0, 1.0f, 0);
 
-        //var Enemy_Name = All_Manager.instance.UI_M.Enemy_Name_Text;
-        //TextMeshProUGUI Current_Enemy_Name = null;
-
-        //for (int i = 0; i < Enemy_Name.Count; i++)
-        //{
-        //    if (Enemy_Name[i].text.Contains(Unit.Unit_Name))
-        //    {
-        //        Current_Enemy_Name = Enemy_Name[i];
-        //    }
-        //}
-
-        //var Name_Position = All_Manager.instance.UI_M.Convert_RectTransform_To_Position(Current_Enemy_Name.rectTransform,All_Manager.instance.UI_M.RTratio375192);
-
-        //Current_Arrow.transform.position = Name_Position;
-
         Current_Arrow.SetActive(true);
 
         // 컨트롤 패널 활성화

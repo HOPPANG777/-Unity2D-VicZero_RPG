@@ -4,16 +4,19 @@ using UnityEngine;
 
 public class Unit_Enemy : Unit_Base
 {
-    public STO_EnemyUnit EnemyUnitSTO { get { return _enemyUnitSTO; } }
-    [SerializeField] STO_EnemyUnit _enemyUnitSTO;
+    [Header("Enemy")]
     [SerializeField] protected STO_EnemyUnit _currentEnemyUnitSTO;
-    public STO_EnemyUnit CurrentEnemyUnitSTO { get { return _currentEnemyUnitSTO; } }
+    public STO_EnemyUnit CurrentEnemyUnitSTO { get { return _currentEnemyUnitSTO; } set { _currentEnemyUnitSTO = value; } }
 
 
     protected override void Start()
     {
         base.Start();
-        Set_Animation(Animation_State.IDLE);
+    }
+
+    protected override void Update()
+    {
+        base.Update();
     }
 
     protected override void SetFirstStatus()
@@ -24,8 +27,6 @@ public class Unit_Enemy : Unit_Base
     public override void Hitted(int attackPower)
     {
         base.Hitted(attackPower);
-        Set_Animation(Animation_State.TAKE_HIT);
-        Set_Animation(Animation_State.IDLE);
     }
 
     protected override void UpdateStateUI()
@@ -33,89 +34,14 @@ public class Unit_Enemy : Unit_Base
         base.UpdateStateUI();
     }
 
-    // 유닛 애니메이션 세팅
-    public virtual void Set_Animation(Animation_State State)
+    protected override bool Check_Dead()
     {
-        switch (State)
-        {
-            case Animation_State.IDLE:
-                {
-                    Set_Animation_Trigger("Idle");
-                }
-                break;
-            case Animation_State.ATK_1:
-                {
-                    Set_Animation_Trigger("Atk_1");
-                }
-                break;
-            case Animation_State.ATK_2:
-                {
-                    Set_Animation_Trigger("Atk_2");
-                }
-                break;
-            case Animation_State.ATK_3:
-                {
-                    Set_Animation_Trigger("Atk_3");
-                }
-                break;
-            case Animation_State.Skill_1:
-                {
-                    Set_Animation_Trigger("Skill_1");
-                }
-                break;
-            case Animation_State.Skill_2:
-                {
-                    Set_Animation_Trigger("Skill_2");
-                }
-                break;
-            case Animation_State.SP_ATK:
-                {
-                    Set_Animation_Trigger("Sp_Atk");
-                }
-                break;
-            case Animation_State.ROLL:
-                {
-                    Set_Animation_Trigger("Roll");
-                }
-                break;
-            case Animation_State.DEFEND:
-                {
-                    Set_Animation_Trigger("Defend");
-                }
-                break;
-            case Animation_State.MOVE:
-                {
-                    Set_Animation_Trigger("Move");
-                }
-                break;
-            case Animation_State.JUMP:
-                {
-                    Set_Animation_Trigger("Jump");
-                }
-                break;
-            case Animation_State.TAKE_HIT:
-                {
-                    Set_Animation_Trigger("Take_Hit");
-                }
-                break;
-            case Animation_State.DEATH:
-                {
-                    Set_Animation_Trigger("Death");
-                }
-                break;
-        }
-
-    }
-    
-    public override void Set_Animation_Trigger(string trigger)
-    {
-        base.Set_Animation_Trigger(trigger);
+        return base.Check_Dead();
     }
 
-    // 에너미 유닛 공격
-    public virtual void Enemy_Unit_Attack()
+    protected override void Unit_Die()
     {
-        
+        base.Unit_Die();
     }
 
     // 에너미 유닛 사망시
@@ -123,6 +49,12 @@ public class Unit_Enemy : Unit_Base
     {
         // 필요 : 플레이어에 경험치 획득 함수, 플레이어 경험치 최대량 과 경험치 바
         // 에너미 유닛의 로직중 코루틴이 들어갔다면 그걸 멈출게 필요할것이고.
+    }
+
+    // 에너미 유닛 공격
+    public virtual void Enemy_Unit_Attack()
+    {
+        
     }
 
     public override void Set_UnitStat(Unit_Base Unit, STO_UnitBase STO_Unit)
@@ -146,4 +78,5 @@ public class Unit_Enemy : Unit_Base
     {
 
     }
+
 }

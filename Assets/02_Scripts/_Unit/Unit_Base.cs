@@ -16,7 +16,7 @@ public struct UnitBase_Info
     public int unitSP;
 }
 
-public abstract class Unit_Base : MonoBehaviour, ITeamMember, IUnitAnimationState
+public abstract class Unit_Base : MonoBehaviour, ITeamMember
 {
     [Header("Unit_Base")]
     public Rigidbody2D unitRB;
@@ -36,8 +36,8 @@ public abstract class Unit_Base : MonoBehaviour, ITeamMember, IUnitAnimationStat
     public RuntimeAnimatorController Unit_Animator { get { return _currentUnitBaseSTO.AnimController; } set { _currentUnitBaseSTO.AnimController = value; } }
 
     // 유닛 애니메이션 상태
-    [SerializeField] Animation_State _animState;
-    public Animation_State Anim_State { get { return _animState; } set { _animState = value; } }
+    [SerializeField] IUnitAnimationState _animState;
+    public IUnitAnimationState Current_State { get { return _animState; } set { _animState = value; } }
 
     //유닛 이름
     [SerializeField] protected string _unitName;
@@ -65,7 +65,7 @@ public abstract class Unit_Base : MonoBehaviour, ITeamMember, IUnitAnimationStat
 
     //유닛의 사망 판정
     [SerializeField] protected bool _isDead = false;
-    public bool Is_Dead { get { return _isDead; } set { _isDead = value; } }
+    public bool Is_Dead { get { return _isDead; } }
 
     //유닛의 순서
     [SerializeField] protected int _unitIndex;
@@ -87,6 +87,15 @@ public abstract class Unit_Base : MonoBehaviour, ITeamMember, IUnitAnimationStat
 
         UpdateStateUI();
     }
+
+    protected virtual void Update()
+    {
+        if (Current_State != null)
+        {
+            Current_State.Update_State(this);
+        }
+    }
+
     protected virtual void SetFirstStatus()
     {
         _currentUnitBaseSTO.Set_UnitData(UnitBaseSTO);
@@ -97,6 +106,8 @@ public abstract class Unit_Base : MonoBehaviour, ITeamMember, IUnitAnimationStat
     public virtual void Hitted(int attackPower)
     {
         if (All_Manager.instance.GameMode_M.isLive == true) return;
+
+        Set_State(new Take_Hit_State());
 
         var Temp_Defense = 100f / (100f + CurrentUnitBaseSTO.UnitInfo[Unit_Level].defensePower) * attackPower;
 
@@ -114,6 +125,7 @@ public abstract class Unit_Base : MonoBehaviour, ITeamMember, IUnitAnimationStat
         if (Current_HP <= 0)
         {
             Unit_Die();
+            Set_State(new Death_State());
             return true;
         }
         else
@@ -125,7 +137,7 @@ public abstract class Unit_Base : MonoBehaviour, ITeamMember, IUnitAnimationStat
     // 유닛 사망
     protected virtual void Unit_Die()
     {
-        Is_Dead = true;
+        _isDead = true;
     }
 
     // 업데이트 상태 UI
@@ -141,21 +153,69 @@ public abstract class Unit_Base : MonoBehaviour, ITeamMember, IUnitAnimationStat
         }
     }
 
-    // 유닛 애니메이션 트리거
-    public virtual void Set_Animation_Trigger(string trigger)
+    // 유닛 상태 세팅 
+    public void Set_State(IUnitAnimationState New_State)
     {
-        if (unitAnimator != null)
+        if (Current_State != null)
         {
-            unitAnimator.SetTrigger(trigger);
+            Current_State.Exit_State(this);
         }
-        else
-        {
-            Debug.Log("Animator 없음");
-        }
+
+        Current_State = New_State;
+        Current_State.Enter_State(this);
     }
 
-    public abstract void Set_Unit_Position();
+    #region
+    public void Unit_Animation_Play(Animation_State State)
+    {
+        switch (State)
+        {
+            case Animation_State.IDLE:
+                Set_State(new Idle_State());
+                break;
+            case Animation_State.ATK_1:
+                Set_State(new Atk_1_State());
+                break;
+            case Animation_State.ATK_2:
+                Set_State(new Atk_2_State());
+                break;
+            case Animation_State.ATK_3:
+                Set_State(new Atk_3_State());
+                break;
+            case Animation_State.Skill_1:
+                Set_State(new Skill_1_State());
+                break;
+            case Animation_State.Skill_2:
+                Set_State(new Skill_2_State());
+                break;
+            case Animation_State.SP_ATK:
+                Set_State(new Sp_Atk_State());
+                break;
+            case Animation_State.ROLL:
+                Set_State(new Roll_State());
+                break;
+            case Animation_State.DEFEND:
+                Set_State(new Defend_State());
+                break;
+            case Animation_State.MOVE:
+                Set_State(new Move_State());
+                break;
+            case Animation_State.JUMP:
+                Set_State(new Jump_State());
+                break;
+            case Animation_State.TAKE_HIT:
+                Set_State(new Take_Hit_State());
+                break;
+            case Animation_State.DEATH:
+                Set_State(new Death_State());
+                break;
+        }
+    }
+    #endregion
 
     // 유닛 스탯 세팅
     public abstract void Set_UnitStat(Unit_Base Unit, STO_UnitBase STO_Unit);
+
+    // 유닛 배치 포지션 세팅
+    public abstract void Set_Unit_Position();
 }

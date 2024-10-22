@@ -14,6 +14,10 @@ public class STO_EnemyUnit : STO_UnitBase
     [SerializeField] Vector3 _unitSetPosition;
     public Vector3 UnitSetPosition { get { return _unitSetPosition; } set { _unitSetPosition = value; } }
 
+    // 에너미 유닛 플립
+    [SerializeField] bool _unitSetFlipX = false;
+    public bool UnitSetFlipX { get { return _unitSetFlipX; } set { _unitSetFlipX = value; } }
+
 
     public override void Set_UnitData(STO_UnitBase STO_Unit)
     {

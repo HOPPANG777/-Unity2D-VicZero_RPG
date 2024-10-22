@@ -4,8 +4,11 @@ using UnityEngine;
 
 public interface IUnitAnimationState
 {
-    Animation_State Anim_State { get; set; }
+    void Enter_State(Unit_Base Unit);
+    void Update_State(Unit_Base Unit);
+    void Exit_State(Unit_Base Unit);
 }
+
 public enum Animation_State
 {
     IDLE,
