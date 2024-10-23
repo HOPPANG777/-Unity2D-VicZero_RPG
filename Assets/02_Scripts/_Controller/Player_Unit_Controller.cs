@@ -15,7 +15,15 @@ public class Player_Unit_Controller : MonoBehaviour
                 {
                     if (Act.ProjTrue == false)
                     {
-                        Attacker.transform.position = Target.transform.position + new Vector3(2.75f, 0, 0);
+                        if (Attacker.TeamType == TeamType.ALLY)
+                        {
+                            Attacker.transform.position = Target.transform.position + new Vector3(2.75f, 0, 0);
+                        }
+                        else if (Attacker.TeamType == TeamType.ENEMY)
+                        {
+                            Attacker.transform.position = Target.transform.position + new Vector3(-2.75f, 0, 0);
+                        }
+
                     }
                     All_Manager.instance.Resource_M.EasySet.Easy_Animation(Attacker, Act.Anim_State);
                     Target.Hitted(Act.Power);
@@ -25,7 +33,15 @@ public class Player_Unit_Controller : MonoBehaviour
                 {
                     if (Act.ProjTrue == false)
                     {
-                        Attacker.transform.position = Target.transform.position + new Vector3(2.75f, 0, 0);
+                        if (Attacker.TeamType == TeamType.ALLY)
+                        {
+                            Attacker.transform.position = Target.transform.position + new Vector3(2.75f, 0, 0);
+                        }
+                        else if (Attacker.TeamType == TeamType.ENEMY)
+                        {
+                            Attacker.transform.position = Target.transform.position + new Vector3(-2.75f, 0, 0);
+                        }
+
                     }
                     All_Manager.instance.Resource_M.EasySet.Easy_Animation(Attacker, Act.Anim_State);
                     Target.Hitted(Act.Power);
@@ -35,7 +51,15 @@ public class Player_Unit_Controller : MonoBehaviour
                 {
                     if (Act.ProjTrue == false)
                     {
-                        Attacker.transform.position = Target.transform.position + new Vector3(2.75f, 0, 0);
+                        if (Attacker.TeamType == TeamType.ALLY)
+                        {
+                            Attacker.transform.position = Target.transform.position + new Vector3(2.75f, 0, 0);
+                        }
+                        else if (Attacker.TeamType == TeamType.ENEMY)
+                        {
+                            Attacker.transform.position = Target.transform.position + new Vector3(-2.75f, 0, 0);
+                        }
+
                     }
                     All_Manager.instance.Resource_M.EasySet.Easy_Animation(Attacker, Act.Anim_State);
                     Target.Hitted(Act.Power);
@@ -45,7 +69,15 @@ public class Player_Unit_Controller : MonoBehaviour
                 {
                     if (Act.ProjTrue == false)
                     {
-                        Attacker.transform.position = Target.transform.position + new Vector3(2.75f, 0, 0);
+                        if (Attacker.TeamType == TeamType.ALLY)
+                        {
+                            Attacker.transform.position = Target.transform.position + new Vector3(2.75f, 0, 0);
+                        }
+                        else if (Attacker.TeamType == TeamType.ENEMY)
+                        {
+                            Attacker.transform.position = Target.transform.position + new Vector3(-2.75f, 0, 0);
+                        }
+
                     }
                     All_Manager.instance.Resource_M.EasySet.Easy_Animation(Attacker, Act.Anim_State);
                     Target.Hitted(Act.Power);
@@ -55,7 +87,15 @@ public class Player_Unit_Controller : MonoBehaviour
                 {
                     if (Act.ProjTrue == false)
                     {
-                        Attacker.transform.position = Target.transform.position + new Vector3(2.75f, 0, 0);
+                        if (Attacker.TeamType == TeamType.ALLY)
+                        {
+                            Attacker.transform.position = Target.transform.position + new Vector3(2.75f, 0, 0);
+                        }
+                        else if (Attacker.TeamType == TeamType.ENEMY)
+                        {
+                            Attacker.transform.position = Target.transform.position + new Vector3(-2.75f, 0, 0);
+                        }
+
                     }
                     All_Manager.instance.Resource_M.EasySet.Easy_Animation(Attacker, Act.Anim_State);
                     Target.Hitted(Act.Power);
@@ -65,7 +105,15 @@ public class Player_Unit_Controller : MonoBehaviour
                 {
                     if (Act.ProjTrue == false)
                     {
-                        Attacker.transform.position = Target.transform.position + new Vector3(2.75f, 0, 0);
+                        if (Attacker.TeamType == TeamType.ALLY)
+                        {
+                            Attacker.transform.position = Target.transform.position + new Vector3(2.75f, 0, 0);
+                        }
+                        else if (Attacker.TeamType == TeamType.ENEMY)
+                        {
+                            Attacker.transform.position = Target.transform.position + new Vector3(-2.75f, 0, 0);
+                        }
+
                     }
                     All_Manager.instance.Resource_M.EasySet.Easy_Animation(Attacker, Act.Anim_State);
                     Target.Hitted(Act.Power);
@@ -75,7 +123,15 @@ public class Player_Unit_Controller : MonoBehaviour
                 {
                     if (Act.ProjTrue == false)
                     {
-                        Attacker.transform.position = Target.transform.position + new Vector3(2.75f, 0, 0);
+                        if (Attacker.TeamType == TeamType.ALLY)
+                        {
+                            Attacker.transform.position = Target.transform.position + new Vector3(2.75f, 0, 0);
+                        }
+                        else if (Attacker.TeamType == TeamType.ENEMY)
+                        {
+                            Attacker.transform.position = Target.transform.position + new Vector3(-2.75f, 0, 0);
+                        }
+
                     }
                     All_Manager.instance.Resource_M.EasySet.Easy_Animation(Attacker, Act.Anim_State);
                     Target.Hitted(Act.Power);
@@ -85,7 +141,15 @@ public class Player_Unit_Controller : MonoBehaviour
                 {
                     if (Act.ProjTrue == false)
                     {
-                        Attacker.transform.position = Target.transform.position + new Vector3(2.75f, 0, 0);
+                        if (Attacker.TeamType == TeamType.ALLY)
+                        {
+                            Attacker.transform.position = Target.transform.position + new Vector3(2.75f, 0, 0);
+                        }
+                        else if (Attacker.TeamType == TeamType.ENEMY)
+                        {
+                            Attacker.transform.position = Target.transform.position + new Vector3(-2.75f, 0, 0);
+                        }
+
                     }
                     All_Manager.instance.Resource_M.EasySet.Easy_Animation(Attacker, Act.Anim_State);
                     Target.Hitted(Act.Power);
@@ -95,7 +159,15 @@ public class Player_Unit_Controller : MonoBehaviour
                 {
                     if (Act.ProjTrue == false)
                     {
-                        Attacker.transform.position = Target.transform.position + new Vector3(2.75f, 0, 0);
+                        if (Attacker.TeamType == TeamType.ALLY)
+                        {
+                            Attacker.transform.position = Target.transform.position + new Vector3(2.75f, 0, 0);
+                        }
+                        else if (Attacker.TeamType == TeamType.ENEMY)
+                        {
+                            Attacker.transform.position = Target.transform.position + new Vector3(-2.75f, 0, 0);
+                        }
+
                     }
                     All_Manager.instance.Resource_M.EasySet.Easy_Animation(Attacker, Act.Anim_State);
                     Target.Hitted(Act.Power);
@@ -105,7 +177,15 @@ public class Player_Unit_Controller : MonoBehaviour
                 {
                     if (Act.ProjTrue == false)
                     {
-                        Attacker.transform.position = Target.transform.position + new Vector3(2.75f, 0, 0);
+                        if (Attacker.TeamType == TeamType.ALLY)
+                        {
+                            Attacker.transform.position = Target.transform.position + new Vector3(2.75f, 0, 0);
+                        }
+                        else if (Attacker.TeamType == TeamType.ENEMY)
+                        {
+                            Attacker.transform.position = Target.transform.position + new Vector3(-2.75f, 0, 0);
+                        }
+
                     }
                     All_Manager.instance.Resource_M.EasySet.Easy_Animation(Attacker, Act.Anim_State);
                     Target.Hitted(Act.Power);
@@ -115,6 +195,5 @@ public class Player_Unit_Controller : MonoBehaviour
 
         All_Manager.instance.GameMode_M.Turn_Count += 1;
         All_Manager.instance.GameMode_M.Turn_End();
-        
     }
 }

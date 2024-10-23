@@ -80,7 +80,8 @@ public class Setting_Manager : MonoBehaviour
     // 게임 시작(타이틀 화면에서의 시작)
     public void Game_Start()
     {
-        GM_State = Game_State.INGAME;
+        //GM_State = Game_State.INGAME;
+        GM_State = Game_State.INTBATTLE;
     }
 
     // 게임 종료

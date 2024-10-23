@@ -26,3 +26,4 @@ MonoBehaviour:
   _unitIndex: 0
   _rewardExp: 20000
   _unitSetPosition: {x: -6.75, y: -1.2, z: 2}
+  _unitSetFlipX: 0

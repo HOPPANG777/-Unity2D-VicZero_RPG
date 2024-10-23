@@ -8705,7 +8705,9 @@ MonoBehaviour:
   unitSR: {fileID: 0}
   _unitBaseSTO: {fileID: 11400000, guid: d857e59fc9ca15d45a01fdd51e8db0d1, type: 2}
   _currentUnitBaseSTO: {fileID: 11400000, guid: d857e59fc9ca15d45a01fdd51e8db0d1, type: 2}
-  _Act: []
+  _Act:
+  - {fileID: 11400000, guid: 8d6c5c2ec251e0f49bd7261bd4935cfb, type: 2}
+  - {fileID: 11400000, guid: 3500960a5b4f1ab418978b06ca8379c0, type: 2}
   UnitBase_Stat:
     unitHP: 0
     unitSpeed: 0

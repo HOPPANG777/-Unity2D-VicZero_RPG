@@ -1,6 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Experimental.GraphView;
+//using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
 
@@ -99,8 +99,8 @@ public class Unit_Enemy : Unit_Base
             }
         }
 
-        Attacker.Unit_Animation = Animation_State.IDLE;
-        Set_State(new Idle_State());
+        All_Manager.instance.UI_M.Unit_Selector_Arrow.Current_Unit = null;
+        All_Manager.instance.UI_M.Unit_Selector_Arrow.Current_Enemy = null;
     }
 
 }

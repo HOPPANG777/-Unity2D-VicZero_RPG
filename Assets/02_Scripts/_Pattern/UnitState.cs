@@ -38,6 +38,7 @@ public class Atk_1_State : IUnitAnimationState
     public Atk_1_State()
     {
         animationStrategy = new Atk_1_Animation_Strategy();
+        isAnimationComplete = false;
     }
 
     public void Enter_State(Unit_Base Unit)
@@ -50,11 +51,12 @@ public class Atk_1_State : IUnitAnimationState
 
     public void Update_State(Unit_Base Unit)
     {
-        if (isAnimationComplete)
+        if (isAnimationComplete == true)
         {
+            Unit.Set_Unit_Position();
+
             // 공격이 끝났으면 Idle 상태로 전환
             Unit.Set_State(new Idle_State());
-            Unit.Set_Unit_Position();
         }
     }
 
@@ -68,9 +70,9 @@ public class Atk_1_State : IUnitAnimationState
         // 애니메이션이 끝날 때까지 기다립니다.
         while (!Unit.unitAnimator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
         {
-            yield return null;
+            yield return new WaitForSeconds(5.0f);
         }
-
+        
         isAnimationComplete = true;
     }
 }
@@ -99,7 +101,7 @@ public class Atk_2_State : IUnitAnimationState
         {
             // 공격이 끝났으면 Idle 상태로 전환
             Unit.Set_State(new Idle_State());
-            Unit.Set_Unit_Position();
+            //Unit.Set_Unit_Position();
         }
     }
 
@@ -144,7 +146,7 @@ public class Atk_3_State : IUnitAnimationState
         {
             // 공격이 끝났으면 Idle 상태로 전환
             Unit.Set_State(new Idle_State());
-            Unit.Set_Unit_Position();
+            //Unit.Set_Unit_Position();
         }
     }
 
@@ -189,7 +191,7 @@ public class Skill_1_State : IUnitAnimationState
         {
             // 공격이 끝났으면 Idle 상태로 전환
             Unit.Set_State(new Idle_State());
-            Unit.Set_Unit_Position();
+            //Unit.Set_Unit_Position();
         }
     }
 
@@ -226,7 +228,7 @@ public class Skill_2_State : IUnitAnimationState
 
         // 애니메이션이 끝났는지 확인하는 코루틴을 시작합니다.
         Unit.StartCoroutine(Check_Animation_Complete(Unit));
-        Unit.Set_Unit_Position();
+        //Unit.Set_Unit_Position();
     }
 
     public void Update_State(Unit_Base Unit)
@@ -271,7 +273,7 @@ public class Sp_Atk_State : IUnitAnimationState
 
         // 애니메이션이 끝났는지 확인하는 코루틴을 시작합니다.
         Unit.StartCoroutine(Check_Animation_Complete(Unit));
-        Unit.Set_Unit_Position();
+        //Unit.Set_Unit_Position();
     }
 
     public void Update_State(Unit_Base Unit)

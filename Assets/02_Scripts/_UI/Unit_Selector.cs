@@ -15,8 +15,7 @@ public class Unit_Selector : MonoBehaviour
     public Unit_Player Current_Unit;
     public Unit_Enemy Current_Enemy;
     public List<Unit_Enemy> Selected_Enemies = new List<Unit_Enemy>(); // 선택된 적 유닛 목록 
-
-
+    
     private void Start()
     {
         if (All_Manager.instance.Setting_M.Game_Stop == false)
@@ -37,7 +36,7 @@ public class Unit_Selector : MonoBehaviour
         {
             if (All_Manager.instance.Setting_M.Stage_In == true)
             {
-                Update_Unit_Selector();
+                if (All_Manager.instance.GameMode_M.Turn_State == GameMode_Manager.Battle_State.PLAYER_TURN) Update_Unit_Selector();
             }
         }
     }

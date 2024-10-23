@@ -136,7 +136,8 @@ public abstract class Unit_Base : MonoBehaviour, ITeamMember
         if (Current_HP <= 0)
         {
             Unit_Die();
-            All_Manager.instance.Resource_M.EasySet.Easy_Animation(this, _unitAnimState);
+            All_Manager.instance.Resource_M.EasySet.Easy_Animation(this, Animation_State.DEATH);
+            Current_HP = 0;
             return true;
         }
         else
@@ -149,7 +150,6 @@ public abstract class Unit_Base : MonoBehaviour, ITeamMember
     protected virtual void Unit_Die()
     {
         _isDead = true;
-        Unit_Animation = Animation_State.DEATH;
     }
 
     // 업데이트 상태 UI

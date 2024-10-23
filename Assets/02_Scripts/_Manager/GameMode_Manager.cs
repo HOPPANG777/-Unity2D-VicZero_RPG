@@ -23,9 +23,17 @@ public class GameMode_Manager : MonoBehaviour
     }
 
     public Battle_State Turn_State;
-    public bool isLive = true; // 생존 여부
+    public bool isLive = false; // 생존 여부
     public int Turn_Count = 0; // 턴 카운트
     private bool isTurn = false;
+
+    IEnumerator C_Enemy_Turn;
+    IEnumerator C_Player_Turn;
+
+    private void Update()
+    {
+        //Turn_End();
+    }
 
     public void Battle_Awake()
     {
@@ -37,6 +45,11 @@ public class GameMode_Manager : MonoBehaviour
     void Battle_Start()
     {
         // 전투 시작시 캐릭터 등장 애니메이션 효과 넣기
+        StartCoroutine(Turn_Based_Battle());
+    }
+
+    IEnumerator Turn_Based_Battle()
+    {
         while (isLive)
         {
             switch (Turn_State)
@@ -59,6 +72,7 @@ public class GameMode_Manager : MonoBehaviour
                     Battle_End();
                     break;
             }
+            yield return null;
         }
     }
 
@@ -70,6 +84,8 @@ public class GameMode_Manager : MonoBehaviour
     IEnumerator Player_Turn()
     {
         yield return new WaitUntil(() => Turn_End() == true);
+
+        //yield return new WaitForSeconds(1.0f);
 
         // 적 죽었으면 전투 종료
         if (!isLive)
@@ -85,10 +101,40 @@ public class GameMode_Manager : MonoBehaviour
 
     IEnumerator Enemy_Turn()
     {
-        yield return new WaitUntil(() => Turn_End() == true);
-        
+        //yield return new WaitUntil(() => Turn_End());
+
+        yield return null;
+
+        //Debug.Log("적 턴 시작");
+
+        if (Turn_State == Battle_State.ENEMY_TURN)
+        {
+            while (Turn_Count >= Enemy_List.Count + 1)
+            {
+                for (int i = 0; i < Enemy_List.Count; i++)
+                {
+                    if (Enemy_List[i].Is_Dead == false)
+                    {
+                        Unit_Base target = Get_Random_Player_Unit();
+                        Enemy_List[i].unitTarget = target;
+                        int act = Enemy_List[i].Act.Length;
+                        int Temp_Enemy_Act = Random.Range(0, act + 1);
+                        Enemy_List[i].Perform_Action(Enemy_List[i], target, Enemy_List[i].Act[Temp_Enemy_Act]);
+                    }
+                }
+
+                if (Turn_End() == true) break;
+            }
+
+        }
+
         Turn_State = Battle_State.PLAYER_TURN;
         Turn_Count = 0;
+    }
+
+    public void Enemy_AI()
+    {
+
     }
 
     public bool Turn_End()
@@ -96,34 +142,20 @@ public class GameMode_Manager : MonoBehaviour
         switch (Turn_State)
         {
             case Battle_State.PLAYER_TURN:
+                if (Turn_Count >= Player_List.Count + 1)
                 {
-                    if (Turn_Count >= Player_List.Count)
-                    {
-                        isTurn = true;
-                    }
-                    else if (Turn_Count <= Player_List.Count)
-                    {
-                        isTurn = false;
-                    }
+                    return true;
                 }
                 break;
             case Battle_State.ENEMY_TURN:
+                if (Turn_Count >= Enemy_List.Count + 1)
                 {
-                    if (Turn_Count >= Enemy_List.Count)
-                    {
-                        isTurn = true;
-                    }
-                    else if (Turn_Count <= Enemy_List.Count)
-                    {
-                        isTurn = false;
-                    }
+                    return true;
                 }
                 break;
         }
-
-        return isTurn;
+        return false;
     }
-
 
     void Faster_Turn()
     {
@@ -136,7 +168,7 @@ public class GameMode_Manager : MonoBehaviour
         {
             Turn_State = Battle_State.PLAYER_TURN;
         }
-        else if (Get_Object_Value(Faster_Player) > Get_Object_Value(Faster_Enemy))
+        else if (Get_Object_Value(Faster_Player) < Get_Object_Value(Faster_Enemy))
         {
             Turn_State = Battle_State.ENEMY_TURN;
         }
@@ -159,6 +191,16 @@ public class GameMode_Manager : MonoBehaviour
         }
 
         return largestObject;
+    }
+
+    Unit_Base Get_Random_Player_Unit()
+    {
+        List<Unit_Base> alivePlayers = Player_List.FindAll(unit => !unit.Is_Dead);
+        if (alivePlayers.Count > 0)
+        {
+            return alivePlayers[Random.Range(0, alivePlayers.Count)];
+        }
+        return null;
     }
 
     // 오브젝트에서 특정 값(예: CompareValue)을 가져오는 함수
