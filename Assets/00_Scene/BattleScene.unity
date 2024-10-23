@@ -300,6 +300,7 @@ MonoBehaviour:
   Arrow_Indicator_Prefab: {fileID: 940241568684783530, guid: 6a8d9cd0912c9984483a3061375e9099, type: 3}
   Current_Arrow: {fileID: 0}
   Current_Unit: {fileID: 0}
+  Current_Enemy: {fileID: 0}
   Selected_Enemies: []
 --- !u!4 &13577323
 Transform:
@@ -6953,7 +6954,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1129830673}
   - component: {fileID: 1129830674}
-  - component: {fileID: 1129830675}
   m_Layer: 0
   m_Name: Unit_Animation_Controller
   m_TagString: Untagged
@@ -6977,19 +6977,6 @@ Transform:
   m_Father: {fileID: 1068761661}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1129830674
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1129830672}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b117c06ba2520ee4e842ffc3660800ad, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 0}
---- !u!114 &1129830675
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -11283,7 +11270,6 @@ MonoBehaviour:
   Turn_State: 0
   isLive: 1
   Turn_Count: 0
-  isTurn: 0
 --- !u!1 &1886663074
 GameObject:
   m_ObjectHideFlags: 0
@@ -11581,7 +11567,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1899608788}
   - component: {fileID: 1899608789}
-  - component: {fileID: 1899608790}
   m_Layer: 0
   m_Name: Player_Unit_Controller
   m_TagString: Untagged
@@ -11605,18 +11590,6 @@ Transform:
   m_Father: {fileID: 1068761661}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1899608789
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1899608787}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2599178a6dae1834ca921b59ce55dfd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1899608790
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

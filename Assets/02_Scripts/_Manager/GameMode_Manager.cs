@@ -37,7 +37,7 @@ public class GameMode_Manager : MonoBehaviour
     void Battle_Start()
     {
         // 전투 시작시 캐릭터 등장 애니메이션 효과 넣기
-        while (true)
+        while (isLive)
         {
             switch (Turn_State)
             {
@@ -60,7 +60,6 @@ public class GameMode_Manager : MonoBehaviour
                     break;
             }
         }
-
     }
 
     void Battle_End()
