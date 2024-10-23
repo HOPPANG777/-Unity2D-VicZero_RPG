@@ -33,4 +33,5 @@ public class STO_Base_Act : ScriptableObject
     [SerializeField] RuntimeAnimatorController _projController;
     public RuntimeAnimatorController ProjController { get { return _projController; } set { _projController = value; } }
 
+
 }

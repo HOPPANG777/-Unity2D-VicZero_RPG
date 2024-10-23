@@ -8,156 +8,208 @@ using UnityEngine;
 public class Unit_Selector : MonoBehaviour
 {
     [Header("Arrow_Prefabs")]
-    public GameObject Arrow_Indicator_Prefab; // 화살표 프리팹
+    public GameObject Arrow_Indicator_Prefab; // 화살표 프리팹 
 
     [Header("Arrow_GameObject & Unit_GameObject")]
     public GameObject Current_Arrow;
     public Unit_Player Current_Unit;
-    public List<Unit_Enemy> Selected_Enemies = new List<Unit_Enemy>(); // 선택된 적 유닛 목록
+    public Unit_Enemy Current_Enemy;
+    public List<Unit_Enemy> Selected_Enemies = new List<Unit_Enemy>(); // 선택된 적 유닛 목록 
 
-    private IEnumerator Temp_Blink_Coroutine;
 
     private void Start()
     {
-        if (!All_Manager.instance.Setting_M.Game_Stop && All_Manager.instance.Setting_M.Stage_In)
+        if (All_Manager.instance.Setting_M.Game_Stop == false)
         {
-            // 초기 상태에서는 화살표와 컨트롤 패널 비활성화
-            All_Manager.instance.UI_M.Choice_Controll_Panel.gameObject.SetActive(false);
-            Current_Arrow = Instantiate(Arrow_Indicator_Prefab);
-            Current_Arrow.SetActive(false);
+            if (All_Manager.instance.Setting_M.Stage_In == true)
+            {
+                // 초기 상태에서는 화살표와 컨트롤 패널 비활성화 
+                All_Manager.instance.UI_M.Choice_Controll_Panel.gameObject.SetActive(false);
+                Current_Arrow = Instantiate(Arrow_Indicator_Prefab);
+                Current_Arrow.SetActive(false);
+            }
         }
     }
 
     private void Update()
     {
-        if (!All_Manager.instance.Setting_M.Game_Stop && All_Manager.instance.Setting_M.Stage_In)
+        if (All_Manager.instance.Setting_M.Game_Stop == false)
         {
-            Wait_For_Player_Input();
+            if (All_Manager.instance.Setting_M.Stage_In == true)
+            {
+                Update_Unit_Selector();
+            }
         }
     }
 
-    public void Wait_For_Player_Input()
+    public void Update_Unit_Selector()
     {
-        if (Input.GetMouseButtonDown(0)) // 마우스 클릭
+        // 플레이어 선택 
+        if (Input.GetMouseButtonDown(0)) // 마우스 클릭 
         {
-            Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            Collider2D hitCollider = Physics2D.OverlapPoint(mousePos);
+            Vector3 Mouse_Pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Collider2D Hit_Collider = Physics2D.OverlapPoint(Mouse_Pos);
 
-            if (hitCollider != null)
+            if (Hit_Collider != null)
             {
-                Unit_Player selectedUnit = hitCollider.GetComponent<Unit_Player>();
+                Unit_Player Selected_Unit = Hit_Collider.GetComponent<Unit_Player>();
 
-                if (selectedUnit != null) // 유닛이 클릭되었을 때
+                if (Selected_Unit != null) // 유닛이 클릭되었을 때 
                 {
-                    Select_Player_Unit(selectedUnit);
+                    Select_Player_Unit(Selected_Unit);
                 }
-                else if (Current_Unit != null) // 플레이어 유닛이 선택된 후 적 유닛 선택
+                else if (Current_Unit != null) // 플레이어 유닛이 선택된 후 적 유닛 선택 
                 {
-                    Unit_Enemy selectedEnemy = hitCollider.GetComponent<Unit_Enemy>();
-                    if (selectedEnemy != null)
+                    Unit_Enemy Selected_Enemy = Hit_Collider.GetComponent<Unit_Enemy>();
+                    if (Selected_Enemy != null)
                     {
-                        Select_Enemy_Unit(selectedEnemy);
+                        //Select_Enemy_Unit(Selected_Enemy);
+                        Select_Enemy_Unit_Single(Selected_Enemy);
+
+                        All_Manager.instance.UI_M.Choice_Controll.Set_Button();
                     }
                 }
             }
         }
     }
 
-    public void Select_Player_Unit(Unit_Player unit)
+    public void Select_Player_Unit(Unit_Player Unit)
     {
-        // 이전에 선택된 유닛의 화살표 숨기기
+        // 이전에 선택된 유닛의 화살표 숨기기 
         if (Current_Unit != null)
         {
             Current_Arrow.SetActive(false);
-            foreach (var nameText in All_Manager.instance.UI_M.Character_Name_Text)
+            for (int i = 0; i < All_Manager.instance.UI_M.Character_Name_Text.Count; i++)
             {
-                nameText.color = Color.white;
+                All_Manager.instance.UI_M.Character_Name_Text[i].color = Color.white;
             }
         }
 
-        // 새로운 유닛 선택
-        Current_Unit = unit;
+        // 새로운 유닛 선택 
+        Current_Unit = Unit;
 
-        var playerNameList = All_Manager.instance.UI_M.Character_Name_Text;
-        TextMeshProUGUI currentPlayerName = null;
+        var Player_Name = All_Manager.instance.UI_M.Character_Name_Text;
+        TextMeshProUGUI Current_Player_Name = null;
 
-        foreach (var nameText in playerNameList)
+        for (int i = 0; i < Player_Name.Count; i++)
         {
-            if (nameText.text.Contains(unit.Unit_Name))
+            if (Player_Name[i].text.Contains(Unit.Unit_Name))
             {
-                currentPlayerName = nameText;
-                break;
+                Current_Player_Name = Player_Name[i];
             }
         }
 
-        if (currentPlayerName != null)
-        {
-            currentPlayerName.color = Color.yellow;
-        }
+        Current_Player_Name.color = Color.yellow;
 
-        // 화살표를 현재 선택된 유닛 머리 위로 이동하고 노란색으로 설정한 후 활성화
+        // 화살표를 현재 선택된 유닛 머리 위로 이동하고 노란색으로 설정한 후 활성화 
         Current_Arrow.transform.position = Current_Unit.transform.position + new Vector3(0, -0.3f, 0);
         Current_Arrow.GetComponent<SpriteRenderer>().color = Color.yellow;
         Current_Arrow.SetActive(true);
 
-        // 컨트롤 패널 비활성화 (적 선택 전까지)
+        // 컨트롤 패널 비활성화 (적 선택 전까지) 
         All_Manager.instance.UI_M.Choice_Controll_Panel.gameObject.SetActive(false);
     }
 
-    public void Select_Enemy_Unit(Unit_Enemy unit)
+    public void Select_Enemy_Unit(Unit_Enemy Unit)
     {
-        // 이미 선택된 적 유닛인지 확인
-        if (Selected_Enemies.Contains(unit))
+        // 이미 선택된 적 유닛인지 확인 
+        if (Selected_Enemies.Contains(Unit))
         {
-            // 이미 선택된 경우 선택 해제
-            Selected_Enemies.Remove(unit);
-            Set_Unit_Alpha(unit, 1.0f);
-            if (Temp_Blink_Coroutine != null)
-            {
-                StopCoroutine(Temp_Blink_Coroutine);
-            }
-            unit.gameObject.GetComponent<SpriteRenderer>().enabled = true;
+            // 이미 선택된 경우 선택 해제 
+            Selected_Enemies.Remove(Unit);
+            Current_Unit.unitTarget = null;
+            //Color unitColor = Unit.gameObject.GetComponent<SpriteRenderer>().color;
+            //unitColor.a = 1.0f; // 선택 해제 시 알파값을 원래대로 변경 
+            //Unit.gameObject.GetComponent<SpriteRenderer>().color = unitColor;
         }
         else
         {
-            // 새로운 적 유닛 선택
-            Selected_Enemies.Add(unit);
-            Set_Unit_Alpha(unit, 0.5f);
-            Blink_Coroutine(unit);
+            // 새로운 적 유닛 선택 
+            Selected_Enemies.Add(Unit);
+            Current_Unit.unitTarget = Unit;
+            //Color unitColor = Unit.gameObject.GetComponent<SpriteRenderer>().color;
+            //unitColor.a = 0.5f; // 선택된 유닛은 알파값을 낮춰서 표시 
+            //Unit.gameObject.GetComponent<SpriteRenderer>().color = unitColor;
         }
 
-        // 화살표를 적 유닛 머리 위로 이동하고 빨간색으로 설정한 후 활성화
-        Current_Arrow.transform.position = unit.transform.position + new Vector3(0, 1.0f, 0);
+        // 화살표를 적 유닛 머리 위로 이동하고 빨간색으로 설정한 후 활성화 
+        Current_Arrow.transform.position = Unit.transform.position + new Vector3(0, 1.0f, 0);
         Current_Arrow.GetComponent<SpriteRenderer>().color = Color.red;
         Current_Arrow.SetActive(true);
 
-        // 컨트롤 패널 활성화 (적 유닛이 하나 이상 선택된 경우)
-        All_Manager.instance.UI_M.Choice_Controll_Panel.gameObject.SetActive(Selected_Enemies.Count > 0);
-    }
-
-    void Blink_Coroutine(Unit_Enemy unit)
-    {
-        Temp_Blink_Coroutine = Blink_Unit(unit);
-
-        StartCoroutine(Temp_Blink_Coroutine);
-    }
-
-    IEnumerator Blink_Unit(Unit_Enemy unit)
-    {
-        SpriteRenderer renderer = unit.gameObject.GetComponent<SpriteRenderer>();
-        while (true)
+        // 컨트롤 패널 활성화 (적 유닛이 하나 이상 선택된 경우) 
+        if (Selected_Enemies.Count > 0)
         {
-            renderer.enabled = !renderer.enabled;
-            yield return new WaitForSeconds(0.5f); // 깜박이는 주기 설정
+            All_Manager.instance.UI_M.Choice_Controll_Panel.gameObject.SetActive(true);
+        }
+        else
+        {
+            All_Manager.instance.UI_M.Choice_Controll_Panel.gameObject.SetActive(false);
         }
     }
 
-    void Set_Unit_Alpha(Unit_Enemy unit, float alpha)
+    public void Select_Enemy_Unit_Single(Unit_Enemy Unit)
     {
-        Color unitColor = unit.gameObject.GetComponent<SpriteRenderer>().color;
-        unitColor.a = alpha;
-        unit.gameObject.GetComponent<SpriteRenderer>().color = unitColor;
+        if (Current_Enemy == null)
+        {
+            Current_Arrow.SetActive(false);
+            for (int i = 0; i < All_Manager.instance.UI_M.Enemy_Name_Text.Count; i++)
+            {
+                All_Manager.instance.UI_M.Enemy_Name_Text[i].color = Color.white;
+            }
+        }
+
+        Current_Enemy = Unit;
+
+        Current_Unit.unitTarget = Unit;
+
+        var Enemy_Name = All_Manager.instance.UI_M.Enemy_Name_Text;
+        TextMeshProUGUI Current_Enemy_Name = null;
+
+        for (int i = 0; i < Enemy_Name.Count; i++)
+        {
+            if (Enemy_Name[i].text.Contains(Unit.Unit_Name))
+            {
+                Current_Enemy_Name = Enemy_Name[i];
+            }
+        }
+
+        Current_Enemy_Name.color = Color.blue;
+
+        // 화살표를 적 유닛 머리 위로 이동하고 빨간색으로 설정한 후 활성화 
+        Current_Arrow.transform.position = Unit.transform.position + new Vector3(0, 1.0f, 0);
+        Current_Arrow.GetComponent<SpriteRenderer>().color = Color.red;
+        Current_Arrow.SetActive(true);
+
+        // 컨트롤 패널 활성화
+        if (Current_Enemy != null)
+        {
+            All_Manager.instance.UI_M.Choice_Controll_Panel.gameObject.SetActive(true);
+        }
+        else
+        {
+            All_Manager.instance.UI_M.Choice_Controll_Panel.gameObject.SetActive(false);
+        }
+    }
+
+
+    public void Reset_Arrow()
+    {
+        Current_Arrow.SetActive(false);
+
+        for (int i = 0; i < All_Manager.instance.UI_M.Enemy_Name_Text.Count; i++)
+        {
+            All_Manager.instance.UI_M.Enemy_Name_Text[i].color = Color.white;
+        }
+
+        for (int i = 0; i < All_Manager.instance.UI_M.Character_Name_Text.Count; i++)
+        {
+            All_Manager.instance.UI_M.Character_Name_Text[i].color = Color.white;
+        }
+
     }
 }
+
+
 
 

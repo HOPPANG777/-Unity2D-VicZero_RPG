@@ -9,6 +9,10 @@ public class Unit_Player : Unit_Base
     [SerializeField] protected STO_PlayerUnit _currentPlayerUnitSTO;
     public STO_PlayerUnit CurrentPlayerUnitSTO { get { return _currentPlayerUnitSTO; } set { _currentPlayerUnitSTO = value; } }
 
+    public bool Has_Action_Chosen = false;
+
+    public STO_Base_Act Select_Act = null;
+
     protected override void Start()
     {
         base.Start();
@@ -52,6 +56,7 @@ public class Unit_Player : Unit_Base
     }
 
 
+
     public override void Set_UnitStat(Unit_Base Unit, STO_UnitBase STO_Unit)
     {
         Unit.Unit_Name = STO_Unit.Unit_Name;
@@ -87,6 +92,24 @@ public class Unit_Player : Unit_Base
 
     public override void Perform_Action(Unit_Base Attacker, Unit_Base Target, STO_Base_Act Act)
     {
+        All_Manager.instance.Resource_M.Unit_Controller.Unit_Execute_Act(Attacker, Target, Act);
 
+
+        // 타겟이 사망했을 경우
+        if (Target.Is_Dead == true)
+        {
+            // 새로운 타겟 선택
+            List<Unit_Base> availableTargets = Attacker.TeamType == TeamType.ALLY ? All_Manager.instance.GameMode_M.Enemy_List : All_Manager.instance.GameMode_M.Player_List;
+            availableTargets = availableTargets.FindAll(unit => !unit.Is_Dead);
+
+            if (availableTargets.Count > 0)
+            {
+                Target = availableTargets[0]; // 다른 타겟으로 변경
+                Perform_Action(Attacker, Target, Act);
+            }
+        }
+
+        All_Manager.instance.UI_M.Unit_Selector_Arrow.Current_Unit = null;
+        All_Manager.instance.UI_M.Unit_Selector_Arrow.Current_Enemy = null;
     }
 }

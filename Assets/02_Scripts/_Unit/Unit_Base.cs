@@ -30,14 +30,8 @@ public abstract class Unit_Base : MonoBehaviour, ITeamMember
     public STO_UnitBase CurrentUnitBaseSTO { get { return _currentUnitBaseSTO; } }
 
     // 행동
-    [SerializeField] protected STO_Attack[] _attackAct;
-    public STO_Attack[] Attack_Act { get { return _attackAct; } }
-
-    [SerializeField] protected STO_Skill[] _skillAct;
-    public STO_Skill[] Skill_Act { get { return _skillAct; } }
-
-    [SerializeField] protected STO_Action[] _actionAct;
-    public STO_Action[] Action_Act { get { return _actionAct; } }
+    [SerializeField] protected STO_Base_Act[] _Act;
+    public STO_Base_Act[] Act { get { return _Act; } }
 
     public TeamType TeamType { get { return _currentUnitBaseSTO.teamType; } set { _currentUnitBaseSTO.teamType = value; } }
     public UnitBase_Info UnitBase_Stat;
@@ -48,6 +42,9 @@ public abstract class Unit_Base : MonoBehaviour, ITeamMember
     // 유닛 애니메이션 상태
     [SerializeField] IUnitAnimationState _animState;
     public IUnitAnimationState Current_State { get { return _animState; } set { _animState = value; } }
+
+    [SerializeField] Animation_State _unitAnimState;
+    public Animation_State Unit_Animation { get { return _unitAnimState; } set { _unitAnimState = value; } }
 
     //유닛 이름
     [SerializeField] protected string _unitName;
@@ -113,12 +110,13 @@ public abstract class Unit_Base : MonoBehaviour, ITeamMember
     {
         _currentUnitBaseSTO.Set_UnitData(UnitBaseSTO);
         Set_UnitStat(this, _currentUnitBaseSTO);
+        All_Manager.instance.Resource_M.EasySet.Easy_Animation(this, Animation_State.IDLE);
     }
 
     // 맞았을때
     public virtual void Hitted(int attackPower)
     {
-        if (All_Manager.instance.GameMode_M.isLive == true) return;
+        if (All_Manager.instance.GameMode_M.isLive == false) return;
 
         Set_State(new Take_Hit_State());
 
@@ -131,8 +129,6 @@ public abstract class Unit_Base : MonoBehaviour, ITeamMember
         UpdateStateUI();
 
         Check_Dead();
-
-        All_Manager.instance.GameMode_M.Lost_or_Win();
     }
 
     protected virtual bool Check_Dead()
@@ -140,7 +136,7 @@ public abstract class Unit_Base : MonoBehaviour, ITeamMember
         if (Current_HP <= 0)
         {
             Unit_Die();
-            Set_State(new Death_State());
+            All_Manager.instance.Resource_M.EasySet.Easy_Animation(this, _unitAnimState);
             return true;
         }
         else
@@ -153,6 +149,7 @@ public abstract class Unit_Base : MonoBehaviour, ITeamMember
     protected virtual void Unit_Die()
     {
         _isDead = true;
+        Unit_Animation = Animation_State.DEATH;
     }
 
     // 업데이트 상태 UI

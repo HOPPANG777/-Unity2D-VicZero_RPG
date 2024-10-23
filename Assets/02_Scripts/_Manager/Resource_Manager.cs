@@ -4,18 +4,29 @@ using UnityEngine;
 
 public class Resource_Manager : MonoBehaviour
 {
+    [Header("Player_Unit")]
     // 플레이어 유닛 ScriptableObject
     public STO_PlayerUnit[] STO_PlayerUnits;
 
+    [Header("Enemy_Unit")]
     // 에너미 유닛 ScriptableObject
     public STO_EnemyUnit[] STO_EnemyUnits;
 
+    [Header("Prefabs")]
     // 프리팹
     public GameObject UI_Arrow_Prefab;
     public List<GameObject> Unit_Prefab_List = new List<GameObject>();
 
+    [Header("Misc")]
     // 기타
     public List<Vector3> Player_Unit_Set_Position = new List<Vector3>();
+
+    [Header("System")]
+    // 시스템
+    public EasySetAnimation EasySet;
+    public Player_Unit_Controller Unit_Controller;
+    public Stage_Controller Stage_Ctrl;
+    public Unit_Animation_Controller UA_Ctrl;
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -46,5 +57,17 @@ public class Resource_Manager : MonoBehaviour
     }
 
     //public Unit_Base Convert_Name_And_Team_To_Unit(string name, )
+
+    public STO_Base_Act Convert_Name_To_Act(string name, Unit_Base Unit)
+    {
+        STO_Base_Act TempActData = null;
+
+        for (int i = 0; i < Unit.Act.Length; i++)
+        {
+            if (Unit.Act[i].Act_Name == name) TempActData = Unit.Act[i];
+        }
+
+        return TempActData;
+    }
 
 }

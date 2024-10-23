@@ -60,7 +60,7 @@ public class Atk_1_State : IUnitAnimationState
 
     public void Exit_State(Unit_Base Unit)
     {
-        Debug.Log("Exiting Attack State");
+        //Debug.Log("Exiting Attack State");
     }
 
     private IEnumerator Check_Animation_Complete(Unit_Base Unit)
@@ -329,7 +329,7 @@ public class Roll_State : IUnitAnimationState
 
     public void Exit_State(Unit_Base Unit)
     {
-        Debug.Log("Exiting Attack State");
+        
     }
 
     private IEnumerator Check_Animation_Complete(Unit_Base Unit)
@@ -505,7 +505,7 @@ public class Take_Hit_State : IUnitAnimationState
 
     public void Exit_State(Unit_Base Unit)
     {
-        Debug.Log("Exiting Attack State");
+        
     }
 
     private IEnumerator Check_Animation_Complete(Unit_Base Unit)

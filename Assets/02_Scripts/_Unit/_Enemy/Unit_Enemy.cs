@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class Unit_Enemy : Unit_Base
 {
@@ -81,7 +83,24 @@ public class Unit_Enemy : Unit_Base
 
     public override void Perform_Action(Unit_Base Attacker, Unit_Base Target, STO_Base_Act Act)
     {
+        All_Manager.instance.Resource_M.Unit_Controller.Unit_Execute_Act(Attacker, Target, Act);
 
+        // 타겟이 사망했을 경우
+        if (Target.Is_Dead)
+        {
+            // 새로운 타겟 선택
+            List<Unit_Base> availableTargets = Attacker.TeamType == TeamType.ALLY ? All_Manager.instance.GameMode_M.Enemy_List : All_Manager.instance.GameMode_M.Player_List;
+            availableTargets = availableTargets.FindAll(unit => !unit.Is_Dead);
+
+            if (availableTargets.Count > 0)
+            {
+                Target = availableTargets[0]; // 다른 타겟으로 변경
+                Perform_Action(Attacker, Target, Act);
+            }
+        }
+
+        Attacker.Unit_Animation = Animation_State.IDLE;
+        Set_State(new Idle_State());
     }
 
 }

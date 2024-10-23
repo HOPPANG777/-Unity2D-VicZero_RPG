@@ -4,12 +4,12 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.U2D.IK;
 using UnityEngine.UI;
+using static GameMode_Manager;
 
 public class GameMode_Manager : MonoBehaviour
 {
     public List<Unit_Base> Player_List = new List<Unit_Base>();
     public List<Unit_Base> Enemy_List = new List<Unit_Base>();
-    //public List<Unit_Base> All_Units = new List<Unit_Base>();
 
     // 턴 상태 관리
     public enum Battle_State
@@ -17,124 +17,40 @@ public class GameMode_Manager : MonoBehaviour
         IDLE,
         START,
         PLAYER_TURN,
-        EXECUTE_ACTIONS,
         ENEMY_TURN,
         WIN,
         LOST
     }
 
     public Battle_State Turn_State;
-    public bool isLive = true;
+    public bool isLive = true; // 생존 여부
+    public int Turn_Count = 0; // 턴 카운트
+    private bool isTurn = false;
 
-    private bool is_Processing_Turn = false; // 현재 턴이 진행 중인지 여부
-
-    // 전투 시작 알림
     public void Battle_Awake()
     {
-        // 전투 시작시 타이틀 띄워서 전투 시작 알림 보낼 수 있음
-        Turn_State = Battle_State.START;
+        // 게임 시작시 배틀 시작이라고 타이틀 띄우는거 가능
+        Turn_State = Battle_State.START; // 전투 시작 알림
         Battle_Start();
     }
 
-    // 전투 시작
-    public void Battle_Start()
+    void Battle_Start()
     {
-        Turn_Base_Battle();
-    }
-
-    void Turn_Base_Battle()
-    {
-        StartCoroutine(C_Turn_Base_Battle());
-    }
-
-    void Player_Turn()
-    {
-        StartCoroutine(C_Player_Turn());
-    }
-
-    void Enemy_Turn()
-    {
-        StartCoroutine(C_Enemy_Turn());
-    }
-
-    void Execute_Act()
-    {
-        StartCoroutine(C_Execute_Act());
-    }
-
-    public void Lost_or_Win()
-    {
-        bool allPlayersDead = true;
-        for (int i = 0; i < Player_List.Count; i++)
-        {
-            if (Player_List[i].Is_Dead == true)
-            {
-                allPlayersDead = false;
-                break;
-            }
-        }
-
-        bool allEnemiesDead = true;
-        for (int i = 0; i < Enemy_List.Count; i++)
-        {
-            if (!Enemy_List[i].Is_Dead == true)
-            {
-                allEnemiesDead = false;
-                break;
-            }
-        }
-
-        if (allPlayersDead)
-        {
-            isLive = false;
-            Player_Lost();
-        }
-
-        if (allEnemiesDead)
-        {
-            isLive = false;
-            Player_Win();
-        }
-    }
-
-    void Player_Lost()
-    {
-        Turn_State = Battle_State.LOST;
-        Debug.Log("플레이어 패배 확인");
-    }
-
-    void Player_Win()
-    {
-        Turn_State = Battle_State.WIN;
-        Debug.Log("플레이어 승리 확인");
-    }
-
-
-    public void Battle_End()
-    {
-        Debug.Log("전투 종료");
-    }
-
-    IEnumerator C_Turn_Base_Battle()
-    {
-
-        while (isLive == true)
+        // 전투 시작시 캐릭터 등장 애니메이션 효과 넣기
+        while (true)
         {
             switch (Turn_State)
             {
+                case Battle_State.IDLE:
+                    break;
                 case Battle_State.START:
-                    // 전투 시작시 초기화
-                    yield return new WaitForSeconds(1.0f); 
-                    Faster_Turn();
+                    Faster_Turn(); // 가장 빠른 유닛을 가지고 있는 쪽이 선공
                     break;
                 case Battle_State.PLAYER_TURN:
-                    Player_Turn();
-                    break;
-                case Battle_State.EXECUTE_ACTIONS:
-                    Execute_Act();
+                    StartCoroutine(Player_Turn());
                     break;
                 case Battle_State.ENEMY_TURN:
-                    Enemy_Turn();
+                    StartCoroutine(Enemy_Turn());
                     break;
                 case Battle_State.WIN:
                     Battle_End();
@@ -147,78 +63,68 @@ public class GameMode_Manager : MonoBehaviour
 
     }
 
-    IEnumerator C_Player_Turn()
+    void Battle_End()
     {
-        Debug.Log("플레이어 턴 시작");
-
-        // 플레이어의 각 유닛이 행동을 결정할 때까지 기다림
-        foreach (var playerUnit in Player_List)
-        {
-            if (playerUnit.Is_Dead) continue;
-
-            // 여기서 플레이어의 입력을 기다리며, 행동을 결정
-            All_Manager.instance.UI_M.Unit_Selector_Arrow.Wait_For_Player_Input();
-
-            // 플레이어 행동이 결정되면 타겟 확인
-            if (playerUnit.unitTarget == null || playerUnit.unitTarget.Is_Dead)
-            {
-                playerUnit.unitTarget = Enemy_List.Find(enemy => !enemy.Is_Dead);
-                if (playerUnit.unitTarget == null) yield break; // 더 이상 타겟이 없으면 종료
-            }
-        }
-
-        Turn_State = Battle_State.EXECUTE_ACTIONS;
+        Debug.Log("전투 종료");
     }
 
-    IEnumerator C_Enemy_Turn()
+    IEnumerator Player_Turn()
     {
-        Debug.Log("적 턴 시작");
+        yield return new WaitUntil(() => Turn_End() == true);
 
-        foreach (var enemyUnit in Enemy_List)
+        // 적 죽었으면 전투 종료
+        if (!isLive)
         {
-            if (enemyUnit.Is_Dead) continue;
-
-            // 타겟 결정
-            if (enemyUnit.unitTarget == null || enemyUnit.unitTarget.Is_Dead)
-            {
-                enemyUnit.unitTarget = Player_List.Find(player => !player.Is_Dead);
-                if (enemyUnit.unitTarget == null) yield break; // 더 이상 타겟이 없으면 종료
-            }
-
-            // 행동 수행
-            yield return StartCoroutine(enemyUnit.Perform_Action());
+            Turn_State = Battle_State.WIN;
         }
+        else
+        {
+            Turn_State = Battle_State.ENEMY_TURN;
+            Turn_Count = 0;
+        }
+    }
 
-        // 플레이어 턴으로 전환
+    IEnumerator Enemy_Turn()
+    {
+        yield return new WaitUntil(() => Turn_End() == true);
+        
         Turn_State = Battle_State.PLAYER_TURN;
+        Turn_Count = 0;
     }
 
-    IEnumerator C_Execute_Act()
+    public bool Turn_End()
     {
-        Debug.Log("행동 실행");
-
-        // 모든 유닛이 행동을 수행함
-        foreach (var unit in Player_List)
+        switch (Turn_State)
         {
-            if (unit.Is_Dead) continue;
-
-            // 행동 수행
-            yield return StartCoroutine(unit.Perform_Action());
-
-            // 타겟이 죽었는지 확인 후 재할당
-            if (unit.unitTarget != null && unit.unitTarget.Is_Dead)
-            {
-                unit.unitTarget = unit.TeamType == TeamType.ALLY ?
-                    Enemy_List.Find(enemy => !enemy.Is_Dead) :
-                    Player_List.Find(player => !player.Is_Dead);
-
-                if (unit.unitTarget == null) yield break; // 더 이상 타겟이 없으면 종료
-            }
+            case Battle_State.PLAYER_TURN:
+                {
+                    if (Turn_Count >= Player_List.Count)
+                    {
+                        isTurn = true;
+                    }
+                    else if (Turn_Count <= Player_List.Count)
+                    {
+                        isTurn = false;
+                    }
+                }
+                break;
+            case Battle_State.ENEMY_TURN:
+                {
+                    if (Turn_Count >= Enemy_List.Count)
+                    {
+                        isTurn = true;
+                    }
+                    else if (Turn_Count <= Enemy_List.Count)
+                    {
+                        isTurn = false;
+                    }
+                }
+                break;
         }
 
-        // 적의 턴으로 전환
-        Turn_State = Battle_State.ENEMY_TURN;
+        return isTurn;
     }
+
 
     void Faster_Turn()
     {
