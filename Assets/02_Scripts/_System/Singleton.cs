@@ -13,7 +13,7 @@ public abstract class Singleton<T> : MonoBehaviour where T : MonoBehaviour
         get
         {
             if (_Instance == null)
-            {   
+            {
                 GameObject singletonObject = new GameObject();
                 _Instance = singletonObject.AddComponent<T>();
                 Debug.Log("singleton Manager has been created " + _Instance.name);

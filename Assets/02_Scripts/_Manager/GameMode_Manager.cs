@@ -2,13 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.U2D.IK;
 using UnityEngine.UI;
-
 
 public class GameMode_Manager : MonoBehaviour
 {
     public List<Unit_Base> Player_List = new List<Unit_Base>();
     public List<Unit_Base> Enemy_List = new List<Unit_Base>();
+    public List<Unit_Base> All_Units = new List<Unit_Base>();
 
     // 턴 상태 관리
     public enum Battle_State
@@ -16,209 +17,251 @@ public class GameMode_Manager : MonoBehaviour
         IDLE,
         START,
         PLAYER_TURN,
+        EXECUTE_ACTIONS,
         ENEMY_TURN,
         WIN,
         LOST
     }
 
-    public Battle_State battleState;
+    public Battle_State Turn_State;
     public bool isLive = true;
 
-    private bool isProcessingTurn = false; // 현재 턴이 진행 중인지 여부
+    private bool is_Processing_Turn = false; // 현재 턴이 진행 중인지 여부
 
     // 전투 시작 알림
     public void Battle_Awake()
     {
         // 전투 시작시 타이틀 띄워서 전투 시작 알림 보낼 수 있음
-        battleState = Battle_State.START;
+        Turn_State = Battle_State.START;
         Battle_Start();
     }
 
     // 전투 시작
     public void Battle_Start()
     {
-        //Debug.Log("전투시작");
-        StartCoroutine(Turn_Based_Battle());
+        Turn_Base_Battle();
     }
 
-    // 전투 종료
-    public void Battle_End()
+    void Turn_Base_Battle()
     {
-        Debug.Log("전투 종료 확인");
-        All_Manager.instance.Setting_M.Stage_In = false;
+        StartCoroutine(C_Turn_Base_Battle());
     }
 
-    IEnumerator Turn_Based_Battle()
+    void Player_Turn()
     {
-        // 처음 턴: 가장 빠른 유닛 찾기
-        Unit_Base Faster_Unit = null;
-        int HighSpeed = int.MinValue;
-
-        // 속도가 높은 유닛 찾기 (Player List)
-        for (int i = 0; i < Player_List.Count; i++)
-        {
-            if (Player_List[i] == null) continue;
-
-            if (Player_List[i].UnitBase_Stat.unitSpeed > HighSpeed)
-            {
-                HighSpeed = Player_List[i].UnitBase_Stat.unitSpeed;
-                Faster_Unit = Player_List[i];
-            }
-        }
-
-        // 속도가 높은 유닛 찾기 (Enemy List)
-        for (int i = 0; i < Enemy_List.Count; i++)
-        {
-            if (Enemy_List[i] == null) continue;
-
-            if (Enemy_List[i].UnitBase_Stat.unitSpeed > HighSpeed)
-            {
-                HighSpeed = Enemy_List[i].UnitBase_Stat.unitSpeed;
-                Faster_Unit = Enemy_List[i];
-            }
-        }
-
-        // 첫 번째 턴: 가장 빠른 유닛이 Player 리스트에 있으면 Player 턴, Enemy 리스트에 있으면 Enemy 턴
-        if (Player_List.Contains(Faster_Unit))
-        {
-            yield return StartCoroutine(Player_Turn());
-        }
-        else if (Enemy_List.Contains(Faster_Unit))
-        {
-            yield return StartCoroutine(Enemy_Turn());
-        }
-
-        // 그 이후 턴: 번갈아 가며 진행
-        bool isPlayerTurn = Player_List.Contains(Faster_Unit); // 첫 턴이 플레이어 턴인지 여부
-        int Turn_Count = 0;
-
-        while (true)
-        {
-            // 현재 턴에 행동할 유닛 리스트
-            List<Unit_Base> currentTurnList = isPlayerTurn ? Player_List : Enemy_List;
-
-            // 턴 카운터 초기화
-            Turn_Count = 0;
-
-            // 현재 팀의 유닛들이 전부 행동할 때까지 턴 진행
-            for (int i = 0; i < currentTurnList.Count; i++)
-            {
-                Unit_Base currentUnit = currentTurnList[i];
-
-                if (currentUnit != null)
-                {
-                    // 유닛의 행동 처리
-                    if (isPlayerTurn)
-                    {
-                        yield return StartCoroutine(Player_Turn()); // 플레이어 유닛의 행동
-                    }
-                    else
-                    {
-                        yield return StartCoroutine(Enemy_Turn()); // 적 유닛의 행동
-                    }
-
-                    // 턴 카운터 증가
-                    Turn_Count++;
-
-                    // 모든 유닛이 행동을 완료했는지 확인
-                    if (Turn_Count >= currentTurnList.Count)
-                    {
-                        break; // 현재 턴 종료
-                    }
-                }
-            }
-
-            // 턴 교대
-            isPlayerTurn = !isPlayerTurn;
-
-            // 게임 종료 여부 체크 (필요한 경우 추가)
-            if (isLive == false) break;
-        }
+        StartCoroutine(C_Player_Turn());
     }
 
-
-    // 플레이어 턴
-    IEnumerator Player_Turn()
+    void Enemy_Turn()
     {
-        isProcessingTurn = true; // 턴이 진행 중임을 표시
-        battleState = Battle_State.PLAYER_TURN;
-        Debug.Log("플레이어 턴 확인");
-        yield return new WaitForSeconds(1f);
+        StartCoroutine(C_Enemy_Turn());
     }
 
-    // 에너미 턴
-    IEnumerator Enemy_Turn()
+    void Execute_Act()
     {
-        isProcessingTurn = true; // 턴이 진행 중임을 표시
-        battleState = Battle_State.ENEMY_TURN;
-        Debug.Log("에너미 턴 확인");
-        yield return new WaitForSeconds(1f);
-
-        Enemy_Attack();
-    }
-
-    public void On_Attack_Button()
-    {
-        // 플레이어의 턴이 아니거나 이미 턴 진행 중이면 공격 불가
-        if (battleState != Battle_State.PLAYER_TURN || isProcessingTurn) return;
-
-        //isProcessingTurn = true; // 턴이 진행 중임을 표시
-        All_Manager.instance.UI_M.Unit_Selector_Arrow.Current_Unit.Player_Unit_Attack();
-
-        isProcessingTurn = false; // 턴이 끝남을 표시
-    }
-
-    public void On_Skill_Button()
-    {
-        // 스킬 버튼 로직 추가 가능
-    }
-
-    public void On_Defense_Button()
-    {
-        // 방어 버튼 로직 추가 가능
-    }
-
-    public void Enemy_Attack()
-    {
-        // 적의 공격 로직
-        Debug.Log("에너미 공격");
-        //Debug.Log("에너미 공격!" + Enemy_List[0].UnitBase_Stat.attackPower);
-        //Debug.Log("플레이어 맞음!" + (Player_List[0].Current_HP - Enemy_List[0].UnitBase_Stat.attackPower));
-        isProcessingTurn = false; // 턴이 끝남을 표시
+        StartCoroutine(C_Execute_Act());
     }
 
     public void Lost_or_Win()
     {
+        bool allPlayersDead = true;
         for (int i = 0; i < Player_List.Count; i++)
         {
             if (Player_List[i].Is_Dead == true)
             {
-                isLive = false;
-                Player_Lost();
-                Battle_End();
+                allPlayersDead = false;
+                break;
             }
         }
 
+        bool allEnemiesDead = true;
         for (int i = 0; i < Enemy_List.Count; i++)
         {
-            if (Enemy_List[i].Is_Dead == true)
+            if (!Enemy_List[i].Is_Dead == true)
             {
-                isLive = false;
-                Player_Win();
-                Battle_End();
+                allEnemiesDead = false;
+                break;
             }
         }
-    }
 
-    void Player_Win()
-    {
-        battleState = Battle_State.WIN;
-        // 승리 처리
+        if (allPlayersDead)
+        {
+            isLive = false;
+            Player_Lost();
+        }
+
+        if (allEnemiesDead)
+        {
+            isLive = false;
+            Player_Win();
+        }
     }
 
     void Player_Lost()
     {
-        battleState = Battle_State.LOST;
-        // 패배 처리
+        Turn_State = Battle_State.LOST;
+        Debug.Log("플레이어 패배 확인");
     }
+
+    void Player_Win()
+    {
+        Turn_State = Battle_State.WIN;
+        Debug.Log("플레이어 승리 확인");
+    }
+
+
+    public void Battle_End()
+    {
+        Debug.Log("전투 종료");
+    }
+
+    IEnumerator C_Turn_Base_Battle()
+    {
+
+        while (isLive == true)
+        {
+            switch (Turn_State)
+            {
+                case Battle_State.START:
+                    // 전투 시작시 초기화
+                    yield return new WaitForSeconds(1.0f); 
+                    Faster_Turn();
+                    break;
+                case Battle_State.PLAYER_TURN:
+                    Player_Turn();
+                    break;
+                case Battle_State.EXECUTE_ACTIONS:
+                    Execute_Act();
+                    break;
+                case Battle_State.ENEMY_TURN:
+                    Enemy_Turn();
+                    break;
+                case Battle_State.WIN:
+                    Battle_End();
+                    break;
+                case Battle_State.LOST:
+                    Battle_End();
+                    break;
+            }
+        }
+
+    }
+
+    IEnumerator C_Player_Turn()
+    {
+        Debug.Log("플레이어 턴 시작");
+
+        // 플레이어의 각 유닛이 행동을 결정할 때까지 기다림
+        foreach (var playerUnit in Player_List)
+        {
+            if (playerUnit.Is_Dead) continue;
+
+            // 여기서 플레이어의 입력을 기다리며, 행동을 결정
+            //yield return StartCoroutine(playerUnit.WaitForPlayerInput());
+
+            // 플레이어 행동이 결정되면 타겟 확인
+            if (playerUnit.unitTarget == null || playerUnit.unitTarget.Is_Dead)
+            {
+                playerUnit.unitTarget = Enemy_List.Find(enemy => !enemy.Is_Dead);
+                if (playerUnit.unitTarget == null) yield break; // 더 이상 타겟이 없으면 종료
+            }
+        }
+
+        Turn_State = Battle_State.EXECUTE_ACTIONS;
+    }
+
+    IEnumerator C_Enemy_Turn()
+    {
+        Debug.Log("적 턴 시작");
+
+        foreach (var enemyUnit in Enemy_List)
+        {
+            if (enemyUnit.Is_Dead) continue;
+
+            // 타겟 결정
+            if (enemyUnit.unitTarget == null || enemyUnit.unitTarget.Is_Dead)
+            {
+                enemyUnit.unitTarget = Player_List.Find(player => !player.Is_Dead);
+                if (enemyUnit.unitTarget == null) yield break; // 더 이상 타겟이 없으면 종료
+            }
+
+            // 행동 수행
+            //yield return StartCoroutine(enemyUnit.PerformAction());
+        }
+
+        // 플레이어 턴으로 전환
+        Turn_State = Battle_State.PLAYER_TURN;
+    }
+
+    IEnumerator C_Execute_Act()
+    {
+        Debug.Log("행동 실행");
+
+        // 모든 유닛이 행동을 수행함
+        foreach (var unit in All_Units)
+        {
+            if (unit.Is_Dead) continue;
+
+            // 행동 수행
+            //yield return StartCoroutine(unit.PerformAction());
+
+            // 타겟이 죽었는지 확인 후 재할당
+            if (unit.unitTarget != null && unit.unitTarget.Is_Dead)
+            {
+                unit.unitTarget = unit.TeamType == TeamType.ALLY ?
+                    Enemy_List.Find(enemy => !enemy.Is_Dead) :
+                    Player_List.Find(player => !player.Is_Dead);
+
+                if (unit.unitTarget == null) yield break; // 더 이상 타겟이 없으면 종료
+            }
+        }
+
+        // 적의 턴으로 전환
+        Turn_State = Battle_State.ENEMY_TURN;
+    }
+
+    void Faster_Turn()
+    {
+        // 두 리스트에서 각각 가장 큰 값을 가진 오브젝트를 찾습니다.
+        Unit_Base Faster_Player = Find_Faster_Unit(Player_List);
+        Unit_Base Faster_Enemy = Find_Faster_Unit(Enemy_List);
+
+        // 두 값을 비교하여 더 큰 값을 가진 리스트를 찾습니다.
+        if (Get_Object_Value(Faster_Player) > Get_Object_Value(Faster_Enemy))
+        {
+            Turn_State = Battle_State.PLAYER_TURN;
+        }
+        else if (Get_Object_Value(Faster_Player) > Get_Object_Value(Faster_Enemy))
+        {
+            Turn_State = Battle_State.ENEMY_TURN;
+        }
+    }
+
+    // 리스트에서 가장 큰 값을 가진 오브젝트를 찾는 함수
+    Unit_Base Find_Faster_Unit(List<Unit_Base> objects)
+    {
+        Unit_Base largestObject = objects[0];
+        int largestValue = Get_Object_Value(largestObject);
+
+        for (int i = 1; i < objects.Count; i++)
+        {
+            int currentValue = Get_Object_Value(objects[i]);
+            if (currentValue > largestValue)
+            {
+                largestValue = currentValue;
+                largestObject = objects[i];
+            }
+        }
+
+        return largestObject;
+    }
+
+    // 오브젝트에서 특정 값(예: CompareValue)을 가져오는 함수
+    int Get_Object_Value(Unit_Base obj)
+    {
+        // 여기서는 CompareValue가 있는 컴포넌트에서 값을 가져오는 것으로 가정합니다.
+        // 실제 프로젝트에서는 이 부분을 수정하여 오브젝트에서 가져올 값을 결정하세요.
+        return obj.GetComponent<Unit_Base>().UnitBase_Stat.unitSpeed;
+    }
+
 }

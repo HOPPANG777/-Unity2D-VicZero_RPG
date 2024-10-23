@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 
 public enum Button_State
-{ 
+{
     Attack,
     Action,
     Skill
@@ -24,7 +24,7 @@ public class Controll_Button : MonoBehaviour
 
     private void Update()
     {
-        
+
     }
 
     private void On_Choice_Button(Button_State State)

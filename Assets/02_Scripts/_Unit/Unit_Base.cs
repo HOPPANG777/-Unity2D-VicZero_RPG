@@ -29,6 +29,16 @@ public abstract class Unit_Base : MonoBehaviour, ITeamMember
     [SerializeField] protected STO_UnitBase _currentUnitBaseSTO;
     public STO_UnitBase CurrentUnitBaseSTO { get { return _currentUnitBaseSTO; } }
 
+    // Çàµ¿
+    [SerializeField] protected STO_Attack[] _attackAct;
+    public STO_Attack[] Attack_Act { get { return _attackAct; } }
+
+    [SerializeField] protected STO_Skill[] _skillAct;
+    public STO_Skill[] Skill_Act { get { return _skillAct; } }
+
+    [SerializeField] protected STO_Action[] _actionAct;
+    public STO_Action[] Action_Act { get { return _actionAct; } }
+
     public TeamType TeamType { get { return _currentUnitBaseSTO.teamType; } set { _currentUnitBaseSTO.teamType = value; } }
     public UnitBase_Info UnitBase_Stat;
 
@@ -70,6 +80,9 @@ public abstract class Unit_Base : MonoBehaviour, ITeamMember
     //À¯´ÖÀÇ ¼ø¼­
     [SerializeField] protected int _unitIndex;
     public int Unit_Index { get { return _unitIndex; } set { _unitIndex = value; } }
+
+    //À¯´ÖÀÇ Å¸°Ù
+    public Unit_Base unitTarget = null;
 
     protected virtual void Start()
     {

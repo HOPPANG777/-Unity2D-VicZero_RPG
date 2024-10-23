@@ -46,9 +46,9 @@ public class Unit_Player : Unit_Base
    
     public virtual void Player_Unit_Attack()
     {
-        All_Manager.instance.UI_M.Unit_Selector_Arrow.Current_Unit.transform.position = All_Manager.instance.UI_M.Unit_Selector_Arrow.Current_Enemy.transform.position + new Vector3(2.75f, 0, 0);
+        //All_Manager.instance.UI_M.Unit_Selector_Arrow.Current_Unit.transform.position = All_Manager.instance.UI_M.Unit_Selector_Arrow.Current_Enemy.transform.position + new Vector3(2.75f, 0, 0);
         Set_State(new Atk_1_State());
-        All_Manager.instance.UI_M.Unit_Selector_Arrow.Current_Enemy.Hitted(_currentUnitBaseSTO.UnitInfo[Unit_Level].attackPower);
+        //All_Manager.instance.UI_M.Unit_Selector_Arrow.Current_Enemy.Hitted(_currentUnitBaseSTO.UnitInfo[Unit_Level].attackPower);
     }
 
 

@@ -12,7 +12,7 @@ public class Unit_Selector : MonoBehaviour
     [Header("Arrow_GameObject & Unit_GameObject")]
     public GameObject Current_Arrow;
     public Unit_Player Current_Unit;
-    public Unit_Enemy Current_Enemy;
+    public List<Unit_Enemy> Selected_Enemies = new List<Unit_Enemy>(); // 선택된 적 유닛 목록
 
     private void Start()
     {
@@ -67,9 +67,8 @@ public class Unit_Selector : MonoBehaviour
         }
     }
 
-    void Select_Player_Unit(Unit_Player Unit)
+    public void Select_Player_Unit(Unit_Player Unit)
     {
-
         // 이전에 선택된 유닛의 화살표 숨기기
         if (Current_Unit != null)
         {
@@ -96,30 +95,62 @@ public class Unit_Selector : MonoBehaviour
 
         Current_Player_Name.color = Color.yellow;
 
-        // 화살표를 현재 선택된 유닛 머리 위로 이동하고 활성화
+        // 화살표를 현재 선택된 유닛 머리 위로 이동하고 노란색으로 설정한 후 활성화
         Current_Arrow.transform.position = Current_Unit.transform.position + new Vector3(0, -0.3f, 0);
+        Current_Arrow.GetComponent<SpriteRenderer>().color = Color.yellow;
         Current_Arrow.SetActive(true);
 
         // 컨트롤 패널 비활성화 (적 선택 전까지)
         All_Manager.instance.UI_M.Choice_Controll_Panel.gameObject.SetActive(false);
     }
 
-    void Select_Enemy_Unit(Unit_Enemy Unit)
+    public void Select_Enemy_Unit(Unit_Enemy Unit)
     {
-        // 이전에 선택된 적 유닛의 화살표 숨기기
-        if (Current_Enemy != null)
+        // 이미 선택된 적 유닛인지 확인
+        if (Selected_Enemies.Contains(Unit))
         {
-            Current_Arrow.SetActive(false);
+            // 이미 선택된 경우 선택 해제
+            Selected_Enemies.Remove(Unit);
+            Color unitColor = Unit.gameObject.GetComponent<SpriteRenderer>().color;
+            unitColor.a = 1.0f; // 선택 해제 시 알파값을 원래대로 변경
+            Unit.gameObject.GetComponent<SpriteRenderer>().color = unitColor;
+            StopCoroutine("BlinkUnit");
+            Unit.gameObject.GetComponent<SpriteRenderer>().enabled = true;
+        }
+        else
+        {
+            // 새로운 적 유닛 선택
+            Selected_Enemies.Add(Unit);
+            Color unitColor = Unit.gameObject.GetComponent<SpriteRenderer>().color;
+            unitColor.a = 0.5f; // 선택된 유닛은 알파값을 낮춰서 표시
+            Unit.gameObject.GetComponent<SpriteRenderer>().color = unitColor;
+            StartCoroutine(Blink_Unit(Unit));
         }
 
-        // 새로운 적 유닛 선택
-        Current_Enemy = Unit;
-
-        Current_Arrow.transform.position = Current_Enemy.transform.position + new Vector3(0, 1.0f, 0);
-
+        // 화살표를 적 유닛 머리 위로 이동하고 빨간색으로 설정한 후 활성화
+        Current_Arrow.transform.position = Unit.transform.position + new Vector3(0, 1.0f, 0);
+        Current_Arrow.GetComponent<SpriteRenderer>().color = Color.red;
         Current_Arrow.SetActive(true);
 
-        // 컨트롤 패널 활성화
-        All_Manager.instance.UI_M.Choice_Controll_Panel.gameObject.SetActive(true);
+        // 컨트롤 패널 활성화 (적 유닛이 하나 이상 선택된 경우)
+        if (Selected_Enemies.Count > 0)
+        {
+            All_Manager.instance.UI_M.Choice_Controll_Panel.gameObject.SetActive(true);
+        }
+        else
+        {
+            All_Manager.instance.UI_M.Choice_Controll_Panel.gameObject.SetActive(false);
+        }
+    }
+
+    IEnumerator Blink_Unit(Unit_Enemy unit)
+    {
+        SpriteRenderer renderer = unit.gameObject.GetComponent<SpriteRenderer>();
+        while (true)
+        {
+            renderer.enabled = !renderer.enabled;
+            yield return new WaitForSeconds(0.5f); // 깜박이는 주기 설정
+        }
     }
 }
+
