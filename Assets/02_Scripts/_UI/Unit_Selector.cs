@@ -158,9 +158,6 @@ public class Unit_Selector : MonoBehaviour
         unitColor.a = alpha;
         unit.gameObject.GetComponent<SpriteRenderer>().color = unitColor;
     }
-    
-
-
 }
 
 

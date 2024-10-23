@@ -9,7 +9,7 @@ public class GameMode_Manager : MonoBehaviour
 {
     public List<Unit_Base> Player_List = new List<Unit_Base>();
     public List<Unit_Base> Enemy_List = new List<Unit_Base>();
-    public List<Unit_Base> All_Units = new List<Unit_Base>();
+    //public List<Unit_Base> All_Units = new List<Unit_Base>();
 
     // 턴 상태 관리
     public enum Battle_State
@@ -157,7 +157,7 @@ public class GameMode_Manager : MonoBehaviour
             if (playerUnit.Is_Dead) continue;
 
             // 여기서 플레이어의 입력을 기다리며, 행동을 결정
-            yield return StartCoroutine(playerUnit.WaitForPlayerInput());
+            All_Manager.instance.UI_M.Unit_Selector_Arrow.Wait_For_Player_Input();
 
             // 플레이어 행동이 결정되면 타겟 확인
             if (playerUnit.unitTarget == null || playerUnit.unitTarget.Is_Dead)
@@ -186,7 +186,7 @@ public class GameMode_Manager : MonoBehaviour
             }
 
             // 행동 수행
-            yield return StartCoroutine(enemyUnit.PerformAction());
+            yield return StartCoroutine(enemyUnit.Perform_Action());
         }
 
         // 플레이어 턴으로 전환
@@ -198,12 +198,12 @@ public class GameMode_Manager : MonoBehaviour
         Debug.Log("행동 실행");
 
         // 모든 유닛이 행동을 수행함
-        foreach (var unit in All_Units)
+        foreach (var unit in Player_List)
         {
             if (unit.Is_Dead) continue;
 
             // 행동 수행
-            yield return StartCoroutine(unit.PerformAction());
+            yield return StartCoroutine(unit.Perform_Action());
 
             // 타겟이 죽었는지 확인 후 재할당
             if (unit.unitTarget != null && unit.unitTarget.Is_Dead)

@@ -53,4 +53,8 @@ public class Unit_ddhhssjj : Unit_Player
     {
         base.Set_Unit_Position();
     }
+    public override void Perform_Action(Unit_Base Attacker, Unit_Base Target, STO_Base_Act Act)
+    {
+        base.Perform_Action(Attacker, Target, Act);
+    }
 }

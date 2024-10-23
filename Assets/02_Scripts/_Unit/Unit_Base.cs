@@ -233,4 +233,6 @@ public abstract class Unit_Base : MonoBehaviour, ITeamMember
 
     // 유닛 배치 포지션 세팅
     public abstract void Set_Unit_Position();
+
+    public abstract void Perform_Action(Unit_Base Attacker, Unit_Base Target, STO_Base_Act Act);
 }
