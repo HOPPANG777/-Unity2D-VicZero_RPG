@@ -157,7 +157,7 @@ public class GameMode_Manager : MonoBehaviour
             if (playerUnit.Is_Dead) continue;
 
             // 여기서 플레이어의 입력을 기다리며, 행동을 결정
-            //yield return StartCoroutine(playerUnit.WaitForPlayerInput());
+            yield return StartCoroutine(playerUnit.WaitForPlayerInput());
 
             // 플레이어 행동이 결정되면 타겟 확인
             if (playerUnit.unitTarget == null || playerUnit.unitTarget.Is_Dead)
@@ -186,7 +186,7 @@ public class GameMode_Manager : MonoBehaviour
             }
 
             // 행동 수행
-            //yield return StartCoroutine(enemyUnit.PerformAction());
+            yield return StartCoroutine(enemyUnit.PerformAction());
         }
 
         // 플레이어 턴으로 전환
@@ -203,7 +203,7 @@ public class GameMode_Manager : MonoBehaviour
             if (unit.Is_Dead) continue;
 
             // 행동 수행
-            //yield return StartCoroutine(unit.PerformAction());
+            yield return StartCoroutine(unit.PerformAction());
 
             // 타겟이 죽었는지 확인 후 재할당
             if (unit.unitTarget != null && unit.unitTarget.Is_Dead)
