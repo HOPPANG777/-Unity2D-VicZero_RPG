@@ -5,4 +5,5 @@ using UnityEngine;
 public interface IUnitAnimationStrategy
 {
     void Play_Animation(Animator animator);
+    string Get_Animation_Name();
 }

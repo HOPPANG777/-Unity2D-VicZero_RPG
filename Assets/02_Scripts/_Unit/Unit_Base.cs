@@ -100,6 +100,9 @@ public abstract class Unit_Base : MonoBehaviour, ITeamMember
 
     protected virtual void Update()
     {
+        // Idle 상태에서는 업데이트를 수행하지 않음
+        if (Current_State == null || Current_State is Idle_State) return;
+
         if (Current_State != null)
         {
             Current_State.Update_State(this);
@@ -116,19 +119,27 @@ public abstract class Unit_Base : MonoBehaviour, ITeamMember
     // 맞았을때
     public virtual void Hitted(int attackPower)
     {
-        if (All_Manager.instance.GameMode_M.isLive == false) return;
+        if (Current_HP < 0)
+        {
+            All_Manager.instance.Resource_M.EasySet.Easy_Animation(this, Animation_State.DEATH);
+            Current_HP = 0;
+            Unit_Die();
+        }
+        else
+        {
+            if (All_Manager.instance.GameMode_M.isLive == false) return;
 
-        Set_State(new Take_Hit_State());
+            Set_State(new Take_Hit_State());
 
-        var Temp_Defense = 100f / (100f + CurrentUnitBaseSTO.UnitInfo[Unit_Level].defensePower) * attackPower;
+            var Temp_Defense = 100f / (100f + CurrentUnitBaseSTO.UnitInfo[Unit_Level].defensePower) * attackPower;
 
-        int Temp_Defense_Int = Mathf.RoundToInt(Temp_Defense);
+            int Temp_Defense_Int = Mathf.RoundToInt(Temp_Defense);
 
-        Current_HP -= Temp_Defense_Int;
+            Current_HP -= Temp_Defense_Int;
 
-        UpdateStateUI();
+            UpdateStateUI();
+        }
 
-        Check_Dead();
     }
 
     protected virtual bool Check_Dead()
@@ -136,8 +147,6 @@ public abstract class Unit_Base : MonoBehaviour, ITeamMember
         if (Current_HP <= 0)
         {
             Unit_Die();
-            All_Manager.instance.Resource_M.EasySet.Easy_Animation(this, Animation_State.DEATH);
-            Current_HP = 0;
             return true;
         }
         else
@@ -168,13 +177,23 @@ public abstract class Unit_Base : MonoBehaviour, ITeamMember
     // 유닛 상태 세팅 
     public void Set_State(IUnitAnimationState New_State)
     {
+        if (Current_State != null && Current_State.GetType() == Current_State.GetType())
+        {
+            // 현재 상태와 전환하려는 상태가 동일한 경우, 상태 전환을 방지합니다.
+            return;
+        }
+
         if (Current_State != null)
         {
-            Current_State.Exit_State(this);
+            Current_State.Exit_State(this); // 이전 상태 종료 처리
         }
 
         Current_State = New_State;
-        Current_State.Enter_State(this);
+
+        if (Current_State != null)
+        {
+            Current_State.Enter_State(this); // 새로운 상태 진입 처리
+        }
     }
 
     #region

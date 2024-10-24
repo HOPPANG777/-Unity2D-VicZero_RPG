@@ -26,8 +26,7 @@ public class Resource_Manager : MonoBehaviour
     public EasySetAnimation EasySet;
     public Player_Unit_Controller Unit_Controller;
     public Stage_Controller Stage_Ctrl;
-    public Unit_Animation_Controller UA_Ctrl;
-
+  
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     // 이름을 플레이어 유닛으로 컨버트

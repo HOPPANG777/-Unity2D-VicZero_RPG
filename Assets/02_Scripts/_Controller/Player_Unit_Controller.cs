@@ -193,7 +193,7 @@ public class Player_Unit_Controller : MonoBehaviour
                 break;
         }
 
-        All_Manager.instance.GameMode_M.Turn_Count += 1;
+        All_Manager.instance.GameMode_M.Turn_Count++;
         All_Manager.instance.GameMode_M.Turn_End();
     }
 }

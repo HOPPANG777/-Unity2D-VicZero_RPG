@@ -4,6 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.U2D.IK;
 using UnityEngine.UI;
+using UnityEngine.UIElements;
 using static GameMode_Manager;
 
 public class GameMode_Manager : MonoBehaviour
@@ -25,14 +26,19 @@ public class GameMode_Manager : MonoBehaviour
     public Battle_State Turn_State;
     public bool isLive = false; // 생존 여부
     public int Turn_Count = 0; // 턴 카운트
-    private bool isTurn = false;
+    //private bool isTurn = false;
 
     IEnumerator C_Enemy_Turn;
     IEnumerator C_Player_Turn;
 
+    private void Start()
+    {
+        
+    }
+
     private void Update()
     {
-        //Turn_End();
+        
     }
 
     public void Battle_Awake()
@@ -60,10 +66,10 @@ public class GameMode_Manager : MonoBehaviour
                     Faster_Turn(); // 가장 빠른 유닛을 가지고 있는 쪽이 선공
                     break;
                 case Battle_State.PLAYER_TURN:
-                    StartCoroutine(Player_Turn());
+                    yield return StartCoroutine(Player_Turn());
                     break;
                 case Battle_State.ENEMY_TURN:
-                    StartCoroutine(Enemy_Turn());
+                    yield return StartCoroutine(Enemy_Turn());
                     break;
                 case Battle_State.WIN:
                     Battle_End();
@@ -72,7 +78,7 @@ public class GameMode_Manager : MonoBehaviour
                     Battle_End();
                     break;
             }
-            yield return null;
+            //yield return null;
         }
     }
 
@@ -85,10 +91,12 @@ public class GameMode_Manager : MonoBehaviour
     {
         yield return new WaitUntil(() => Turn_End() == true);
 
+        Debug.Log("플레이어 턴 끝");
+
         //yield return new WaitForSeconds(1.0f);
 
         // 적 죽었으면 전투 종료
-        if (!isLive)
+        if (isLive == false)
         {
             Turn_State = Battle_State.WIN;
         }
@@ -101,35 +109,38 @@ public class GameMode_Manager : MonoBehaviour
 
     IEnumerator Enemy_Turn()
     {
-        //yield return new WaitUntil(() => Turn_End());
-
-        yield return null;
-
-        //Debug.Log("적 턴 시작");
-
         if (Turn_State == Battle_State.ENEMY_TURN)
         {
-            while (Turn_Count >= Enemy_List.Count + 1)
+            Debug.Log("적 턴 시작");
+
+            for (int i = 0; i < Enemy_List.Count; i++)
             {
-                for (int i = 0; i < Enemy_List.Count; i++)
+                if (!Enemy_List[i].Is_Dead)
                 {
-                    if (Enemy_List[i].Is_Dead == false)
+                    // 적 유닛이 살아있으면 공격 수행
+                    Unit_Base target = Get_Random_Player_Unit();
+                    if (target != null)
                     {
-                        Unit_Base target = Get_Random_Player_Unit();
                         Enemy_List[i].unitTarget = target;
+
+                        // 적의 행동 선택 및 수행
                         int act = Enemy_List[i].Act.Length;
-                        int Temp_Enemy_Act = Random.Range(0, act + 1);
+                        int Temp_Enemy_Act = Random.Range(0, act);
                         Enemy_List[i].Perform_Action(Enemy_List[i], target, Enemy_List[i].Act[Temp_Enemy_Act]);
+
+                        // 행동 수행 중 대기
+                        yield return new WaitForSeconds(1.0f);
                     }
                 }
-
-                if (Turn_End() == true) break;
             }
 
-        }
+            yield return new WaitUntil(() => Turn_End());
 
-        Turn_State = Battle_State.PLAYER_TURN;
-        Turn_Count = 0;
+            // 모든 적 유닛의 행동이 끝났으면 턴을 플레이어 턴으로 전환
+            Turn_State = Battle_State.PLAYER_TURN;
+            Turn_Count = 0;
+            yield return null;
+        }
     }
 
     public void Enemy_AI()
@@ -142,13 +153,13 @@ public class GameMode_Manager : MonoBehaviour
         switch (Turn_State)
         {
             case Battle_State.PLAYER_TURN:
-                if (Turn_Count >= Player_List.Count + 1)
+                if (Turn_Count >= Player_List.Count)
                 {
                     return true;
                 }
                 break;
             case Battle_State.ENEMY_TURN:
-                if (Turn_Count >= Enemy_List.Count + 1)
+                if (Turn_Count >= Enemy_List.Count)
                 {
                     return true;
                 }
