@@ -4,24 +4,22 @@ using UnityEngine;
 
 public interface IUnitAnimationState
 {
-    void Enter_State(Unit_Base Unit);
-    void Update_State(Unit_Base Unit);
-    void Exit_State(Unit_Base Unit);
+    Animation_State Animation_State { get; set; }
 }
 
 public enum Animation_State
 {
-    IDLE,
-    ATK_1,
-    ATK_2,
-    ATK_3,
+    Idle,
+    Atk_1,
+    Atk_2,
+    Atk_3,
     Skill_1,
     Skill_2,
-    SP_ATK,
-    ROLL,
-    DEFEND,
-    MOVE,
-    JUMP,
-    TAKE_HIT,
-    DEATH
+    Sp_Atk,
+    Roll,
+    Defend,
+    Move,
+    Jump,
+    Take_Hit,
+    Death
 }

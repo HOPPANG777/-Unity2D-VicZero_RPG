@@ -31,9 +31,8 @@ public class STO_UnitBase : ScriptableObject
     [SerializeField] protected string _unitName;
     public string Unit_Name { get { return _unitName; } set { _unitName = value; } }
 
-    // À¯´ÖÀÇ ¼ø¼­
-    [SerializeField] protected int _unitIndex;
-    public int Unit_Index { get { return _unitIndex; } set { _unitIndex = value; } }
+    [SerializeField] private float _maxATB = 100.0f;
+    public float Max_ATB { get { return _maxATB; } set { _maxATB = value; } }
 
     public virtual void Set_UnitData(STO_UnitBase STO_Unit)
     {

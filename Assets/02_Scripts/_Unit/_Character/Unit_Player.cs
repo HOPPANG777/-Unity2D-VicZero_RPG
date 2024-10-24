@@ -51,7 +51,7 @@ public class Unit_Player : Unit_Base
     public virtual void Player_Unit_Attack()
     {
         //All_Manager.instance.UI_M.Unit_Selector_Arrow.Current_Unit.transform.position = All_Manager.instance.UI_M.Unit_Selector_Arrow.Current_Enemy.transform.position + new Vector3(2.75f, 0, 0);
-        Set_State(new Atk_1_State());
+        //Set_State(new Atk_1_State());
         //All_Manager.instance.UI_M.Unit_Selector_Arrow.Current_Enemy.Hitted(_currentUnitBaseSTO.UnitInfo[Unit_Level].attackPower);
     }
 
@@ -92,24 +92,6 @@ public class Unit_Player : Unit_Base
 
     public override void Perform_Action(Unit_Base Attacker, Unit_Base Target, STO_Base_Act Act)
     {
-        All_Manager.instance.Resource_M.Unit_Controller.Unit_Execute_Act(Attacker, Target, Act);
-
-
-        // 타겟이 사망했을 경우
-        if (Target.Is_Dead == true)
-        {
-            // 새로운 타겟 선택
-            List<Unit_Base> availableTargets = Attacker.TeamType == TeamType.ALLY ? All_Manager.instance.GameMode_M.Enemy_List : All_Manager.instance.GameMode_M.Player_List;
-            availableTargets = availableTargets.FindAll(unit => !unit.Is_Dead);
-
-            if (availableTargets.Count > 0)
-            {
-                Target = availableTargets[0]; // 다른 타겟으로 변경
-                Perform_Action(Attacker, Target, Act);
-            }
-        }
-
-        All_Manager.instance.UI_M.Unit_Selector_Arrow.Current_Unit = null;
-        All_Manager.instance.UI_M.Unit_Selector_Arrow.Current_Enemy = null;
+        base.Perform_Action(Attacker, Target, Act);
     }
 }

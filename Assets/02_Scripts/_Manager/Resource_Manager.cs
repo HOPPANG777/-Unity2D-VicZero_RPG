@@ -23,10 +23,7 @@ public class Resource_Manager : MonoBehaviour
 
     [Header("System")]
     // ╫ц╫╨еш
-    public EasySetAnimation EasySet;
-    public Player_Unit_Controller Unit_Controller;
     public Stage_Controller Stage_Ctrl;
-    public Unit_Animation_Controller UA_Ctrl;
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

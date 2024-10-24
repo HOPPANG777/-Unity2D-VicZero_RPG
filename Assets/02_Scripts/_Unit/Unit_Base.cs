@@ -35,16 +35,14 @@ public abstract class Unit_Base : MonoBehaviour, ITeamMember
 
     public TeamType TeamType { get { return _currentUnitBaseSTO.teamType; } set { _currentUnitBaseSTO.teamType = value; } }
     public UnitBase_Info UnitBase_Stat;
+    public float Max_ATB { get { return _currentUnitBaseSTO.Max_ATB; } set { _currentUnitBaseSTO.Max_ATB = value; } }
 
     // 유닛 애니메이터 컨트롤러
     public RuntimeAnimatorController Unit_Animator { get { return _currentUnitBaseSTO.AnimController; } set { _currentUnitBaseSTO.AnimController = value; } }
 
     // 유닛 애니메이션 상태
-    [SerializeField] IUnitAnimationState _animState;
-    public IUnitAnimationState Current_State { get { return _animState; } set { _animState = value; } }
-
-    [SerializeField] Animation_State _unitAnimState;
-    public Animation_State Unit_Animation { get { return _unitAnimState; } set { _unitAnimState = value; } }
+    [SerializeField] Unit_State _animState;
+    public Unit_State Current_State { get { return _animState; } set { _animState = value; } }
 
     //유닛 이름
     [SerializeField] protected string _unitName;
@@ -74,12 +72,11 @@ public abstract class Unit_Base : MonoBehaviour, ITeamMember
     [SerializeField] protected bool _isDead = false;
     public bool Is_Dead { get { return _isDead; } }
 
-    //유닛의 순서
-    [SerializeField] protected int _unitIndex;
-    public int Unit_Index { get { return _unitIndex; } set { _unitIndex = value; } }
-
     //유닛의 타겟
     public Unit_Base unitTarget = null;
+
+    public float Current_ATB;
+    public bool isReadyToAct;
 
     protected virtual void Start()
     {
@@ -100,43 +97,74 @@ public abstract class Unit_Base : MonoBehaviour, ITeamMember
 
     protected virtual void Update()
     {
-        if (Current_State != null)
-        {
-            Current_State.Update_State(this);
-        }
+        Charge_ATB();
     }
 
     protected virtual void SetFirstStatus()
     {
         _currentUnitBaseSTO.Set_UnitData(UnitBaseSTO);
         Set_UnitStat(this, _currentUnitBaseSTO);
-        All_Manager.instance.Resource_M.EasySet.Easy_Animation(this, Animation_State.IDLE);
+        
     }
+
+    protected virtual void Charge_ATB()
+    {
+
+        if (!isReadyToAct)
+        {
+            Current_ATB += UnitBase_Stat.unitSpeed * Time.deltaTime;
+            if (Current_ATB >= Max_ATB)
+            {
+                Current_ATB = Max_ATB;
+                isReadyToAct = true; // 게이지가 가득 차면 행동 가능
+            }
+        }
+ 
+    }
+
+    protected virtual void Take_Action()
+    {
+        if (isReadyToAct)
+        {
+            // 행동 선택
+            
+        }
+    }
+
+    protected virtual void Reset_ATB()
+    {
+        Current_ATB = 0;
+        isReadyToAct = false;
+    }
+
 
     // 맞았을때
     public virtual void Hitted(int attackPower)
     {
-        if (All_Manager.instance.GameMode_M.isLive == false) return;
+        if (Current_HP < 0)
+        {
+            Unit_Die();
+            Current_HP = 0;
+        }
+        else
+        {
+            if (All_Manager.instance.GameMode_M.isLive == false) return;
 
-        Set_State(new Take_Hit_State());
+            var Temp_Defense = 100f / (100f + CurrentUnitBaseSTO.UnitInfo[Unit_Level].defensePower) * attackPower;
 
-        var Temp_Defense = 100f / (100f + CurrentUnitBaseSTO.UnitInfo[Unit_Level].defensePower) * attackPower;
+            int Temp_Defense_Int = Mathf.RoundToInt(Temp_Defense);
 
-        int Temp_Defense_Int = Mathf.RoundToInt(Temp_Defense);
+            Current_HP -= Temp_Defense_Int;
 
-        Current_HP -= Temp_Defense_Int;
-
-        UpdateStateUI();
-
-        Check_Dead();
+            UpdateStateUI();
+        }
     }
 
     protected virtual bool Check_Dead()
     {
-        if (Current_HP <= 0)
+        if (Current_HP < 0)
         {
             Unit_Die();
-            All_Manager.instance.Resource_M.EasySet.Easy_Animation(this, Animation_State.DEATH);
             Current_HP = 0;
             return true;
         }
@@ -165,61 +193,55 @@ public abstract class Unit_Base : MonoBehaviour, ITeamMember
         }
     }
 
-    // 유닛 상태 세팅 
-    public void Set_State(IUnitAnimationState New_State)
+    protected virtual void Set_State(Unit_State New_State)
     {
-        if (Current_State != null)
-        {
-            Current_State.Exit_State(this);
-        }
-
         Current_State = New_State;
-        Current_State.Enter_State(this);
+        Current_State.Handle();
     }
 
     #region
-    public void Unit_Animation_Play(Animation_State State)
+    public void Easy_State(Unit_Base Unit, Animation_State State)
     {
         switch (State)
         {
-            case Animation_State.IDLE:
-                Set_State(new Idle_State());
+            case Animation_State.Idle:
+                Set_State(new Idle_State(Unit.unitAnimator));
                 break;
-            case Animation_State.ATK_1:
-                Set_State(new Atk_1_State());
+            case Animation_State.Atk_1:
+                Set_State(new Atk_1_State(Unit.unitAnimator));
                 break;
-            case Animation_State.ATK_2:
-                Set_State(new Atk_2_State());
+            case Animation_State.Atk_2:
+                Set_State(new Atk_2_State(Unit.unitAnimator));
                 break;
-            case Animation_State.ATK_3:
-                Set_State(new Atk_3_State());
+            case Animation_State.Atk_3:
+                Set_State(new Atk_3_State(Unit.unitAnimator));
                 break;
             case Animation_State.Skill_1:
-                Set_State(new Skill_1_State());
+                Set_State(new Skill_1_State(Unit.unitAnimator));
                 break;
             case Animation_State.Skill_2:
-                Set_State(new Skill_2_State());
+                Set_State(new Skill_2_State(Unit.unitAnimator));
                 break;
-            case Animation_State.SP_ATK:
-                Set_State(new Sp_Atk_State());
+            case Animation_State.Sp_Atk:
+                Set_State(new Sp_Atk_State(Unit.unitAnimator));
                 break;
-            case Animation_State.ROLL:
-                Set_State(new Roll_State());
+            case Animation_State.Roll:
+                Set_State(new Roll_State(Unit.unitAnimator));
                 break;
-            case Animation_State.DEFEND:
-                Set_State(new Defend_State());
+            case Animation_State.Defend:
+                Set_State(new Defend_State(Unit.unitAnimator));
                 break;
-            case Animation_State.MOVE:
-                Set_State(new Move_State());
+            case Animation_State.Move:
+                Set_State(new Move_State(Unit.unitAnimator));
                 break;
-            case Animation_State.JUMP:
-                Set_State(new Jump_State());
+            case Animation_State.Jump:
+                Set_State(new Jump_State(Unit.unitAnimator));
                 break;
-            case Animation_State.TAKE_HIT:
-                Set_State(new Take_Hit_State());
+            case Animation_State.Take_Hit:
+                Set_State(new Take_Hit_State(Unit.unitAnimator));
                 break;
-            case Animation_State.DEATH:
-                Set_State(new Death_State());
+            case Animation_State.Death:
+                Set_State(new Death_State(Unit.unitAnimator));
                 break;
         }
     }
@@ -231,5 +253,34 @@ public abstract class Unit_Base : MonoBehaviour, ITeamMember
     // 유닛 배치 포지션 세팅
     public abstract void Set_Unit_Position();
 
-    public abstract void Perform_Action(Unit_Base Attacker, Unit_Base Target, STO_Base_Act Act);
+    // 다음 액션
+    public virtual void Perform_Action(Unit_Base Attacker, Unit_Base Target, STO_Base_Act Act)
+    {
+
+        if (isReadyToAct)
+        {
+            Easy_State(Attacker, Act.Anim_State);
+
+            // 타겟이 사망했을 경우
+            if (Target.Is_Dead)
+            {
+                // 새로운 타겟 선택
+                List<Unit_Base> availableTargets = Attacker.TeamType == TeamType.ALLY ? All_Manager.instance.GameMode_M.Enemy_List : All_Manager.instance.GameMode_M.Player_List;
+                availableTargets = availableTargets.FindAll(unit => !unit.Is_Dead);
+
+                if (availableTargets.Count > 0)
+                {
+                    Target = availableTargets[0]; // 다른 타겟으로 변경
+                    Perform_Action(Attacker, Target, Act);
+                }
+            }
+
+            All_Manager.instance.UI_M.Unit_Selector_Arrow.Current_Unit = null;
+            All_Manager.instance.UI_M.Unit_Selector_Arrow.Current_Enemy = null;
+
+            // 행동 수행 로직
+            Current_ATB = 0;
+            isReadyToAct = false; // 행동을 수행한 후 ATB를 초기화
+        }
+    }
 }

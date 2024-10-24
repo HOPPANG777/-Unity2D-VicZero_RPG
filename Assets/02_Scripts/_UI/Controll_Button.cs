@@ -70,7 +70,6 @@ public class Controll_Button : MonoBehaviour
         var Choice_Panel = All_Manager.instance.UI_M.Choice_Controll_Panel;
         var Attack_Panel = All_Manager.instance.UI_M.Attack_Choice_Panel;
         var Temp_Player = All_Manager.instance.UI_M.Unit_Selector_Arrow.Current_Unit;
-        var Temp_Execute = All_Manager.instance.Resource_M.Unit_Controller;
         var Temp_Act = All_Manager.instance.Resource_M;
 
         // 비활성화/활성화
@@ -105,7 +104,6 @@ public class Controll_Button : MonoBehaviour
         var Choice_Panel = All_Manager.instance.UI_M.Choice_Controll_Panel;
         var Skill_Panel = All_Manager.instance.UI_M.Skill_Choice_Panel;
         var Temp_Player = All_Manager.instance.UI_M.Unit_Selector_Arrow.Current_Unit;
-        var Temp_Execute = All_Manager.instance.Resource_M.Unit_Controller;
         var Temp_Act = All_Manager.instance.Resource_M;
 
         Choice_Panel.gameObject.SetActive(false);
@@ -138,7 +136,6 @@ public class Controll_Button : MonoBehaviour
         var Choice_Panel = All_Manager.instance.UI_M.Choice_Controll_Panel;
         var Action_Panel = All_Manager.instance.UI_M.Action_Choice_Panel;
         var Temp_Player = All_Manager.instance.UI_M.Unit_Selector_Arrow.Current_Unit;
-        var Temp_Execute = All_Manager.instance.Resource_M.Unit_Controller;
         var Temp_Act = All_Manager.instance.Resource_M;
 
         Choice_Panel.gameObject.SetActive(false);
